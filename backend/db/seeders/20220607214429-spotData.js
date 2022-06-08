@@ -1,0 +1,180 @@
+'use strict';
+
+module.exports = {
+  up: (queryInterface, Sequelize) => {
+    /*
+      Add altering commands here.
+      Return a promise to correctly handle asynchronicity.
+
+      Example:
+      */
+    return queryInterface.bulkInsert('Spots', [
+      {
+        userId: 1,
+        name: "NEW - Modern Home Close to Downtown-Hot Tub!",
+        description: "This free-standing condo has an open floor plan with a grand room that combines the kitchen with the dining room and the living room. Two king bedrooms with attached bathrooms, and a dedicated office to accompany working from home.",
+        guests: 6,
+        beds: 3,
+        baths: 4,
+        address: "123 Pink Place",
+        city: "Bozeman",
+        state: "Montana",
+        country: "United States",
+        price: 675,
+      },
+      {
+        userId: 2,
+        name: "Luxury Condo - Historic Downtown Savannah",
+        description: "This is the luxury downtown Airbnb you have always dreamed of in this remodeled 1891 historic Savannah building. This top floor condo features original exposed brick walls, hardwood floors throughout, an updated fully equipped kitchen, high ceilings, exposed duct work giving an industrial open concept living space. Enjoy tons of natural sunlight through the plantation blinds overlooking the famous Broughton street filled with high end shopping and restaurants. You will be steps away from Savannah's City Market, River Street, the new Plant Riverside District and more!",
+        guests: 4,
+        beds: 1,
+        baths: 2,
+        address: "321 Green Place",
+        city: "Savannah",
+        state: "Georgia",
+        country: "United States",
+        price: 502,
+      },
+      {
+        userId: 4,
+        name: "Mountain View w/Pool, Hot- tub, Theatre & More!",
+        description: "Book our home for an unforgettable getaway and experience the magic of Eucalyptus hills!!",
+        guests: 16,
+        beds: 8,
+        baths: 5,
+        address: "555 Purple Ave",
+        city: "San Diego",
+        state: "California",
+        country: "United States",
+        price: 923,
+      },
+      {
+        userId: 5,
+        name: "Magnificent & Bright Apartment in Brooklyn",
+        description: "Our place is a large apartment, it is a beautiful, has 3 bedrooms and 2 bathrooms, the third room is on the second floor inside the apartment with private bathroom master room with terrace, TV . We have all the comforts you can imagine here.",
+        guests: 7,
+        beds: 3,
+        baths: 3,
+        address: "666 Brown Circle",
+        city: "Brooklyn",
+        state: "New York",
+        country: "United States",
+        price: 522,
+      },
+      {
+        userId: 7,
+        name: "Cabin nestled in the Black Hills",
+        description: "Three level cabin on two acres of wooded land. Main level kitchen, living, dining, laundry and 1/2 bath. Second level has living area, extra bed if needed, main bedroom and full bath. The loft has two beds with trundle units for extra sleeping. Wild life includes deer and turkeys. Close to city for shopping and restaurants. Hiking, biking, boating and other attractions close by as well. Bookings for 7 days or longer receive a 10% disc. Repeat stays get 10% disc if you email me before booking.",
+        guests: 6,
+        beds: 6,
+        baths: 2,
+        address: "777 Yellow Tree",
+        city: "Black Hill Forest",
+        state: "South Dakota",
+        country: "United States",
+        price: 440,
+      },
+      {
+        userId: 8,
+        name: "Hot Tub, Pool Table, Sound System, Amazing Views!",
+        description: "Totally remodeled home in the beautiful town of Lake Lure. This 3 -level home has an open floor plan with amazing mountain views. Completely updated with an open kitchen, huge deck, updated bathrooms and a spectacular master shower. Also has a game room with pool table and large flat screen tv, outdoor ping pong table, hot tub, whole-house sound system and dedicated home theater.",
+        guests: 12,
+        beds: 3,
+        baths: 3,
+        address: "888 Grey Bay",
+        city: "Lake Lure",
+        state: "North Carolina",
+        country: "United States",
+        price: 440,
+      },
+      {
+        userId: 9,
+        name: "Singer House on the Water",
+        description: "This townhouse is located on a deep water canal in Las Olas, Fort Lauderdale and it is 5 minutes by car from Fort Lauderdale beach.The luxurious and immaculate interior of this home will allow you to enjoy an upscale design within a very comfortable space. The floor plan allows for up to 6 people to stay in this waterfront property, which includes a spacious outdoor entertainment area. The Dock area and BBQ grill is shared with one other rental unit, and allows our guests to enjoy the warm breeze from the ocean. The outdoor table and seating area under the white and yellow awning is private for this unit only.",
+        guests: 6,
+        beds: 4,
+        baths: 2,
+        address: "999 Sky Blvd",
+        city: "Fort Lauderdale",
+        state: "Florida",
+        country: "United States",
+        price: 290,
+      },
+      {
+        userId: 10,
+        name: "Oceanfront Boho Retreat - Pacific Sunset Views",
+        description: "Just steps away from the beach! Cozy up around the fire pit and watch the sunset over the Pacific, or gather around the 2nd large fire pit in the closed back garden to play bocci, cornhole or giant Connect 4, all under a giant old growth Cypress tree.",
+        guests: 7,
+        beds: 3,
+        baths: 5,
+        address: "1010 Road Road",
+        city: "Pacifica",
+        state: "California",
+        country: "United States",
+        price: 595,
+      },
+      {
+        userId: 11,
+        name: "Parking Available - Fully Furnished 4br, 2ba Flat!",
+        description: "This 4 Bed, 2 Bath beautifully furnished apartment with Laundry in unit, and fully equipped kitchen available for both long and short term rental. With one King bed and 3 Queens, this beautifully designed and furnished loft is located right in downtown Boston. Includes all furnishings and cooking equipment!",
+        guests: 8,
+        beds: 4,
+        baths: 2,
+        address: "1111 Uni Circle",
+        city: "Boston",
+        state: "Massachusetts",
+        country: "United States",
+        price: 948,
+      },
+      {
+        userId: 12,
+        name: "Sparkling Clean Twnhse, Prvt Rooftop, Free Parking",
+        description: "Enjoy breathtaking views of Seattle skyline, Space Needle, and Olympic Mountains from your roof deck. Walk anywhere on Capitol Hill with our 99 Walk Score! Highest quality 4 Star Built Green. Master en suite penthouse, guest bed with separate entrance, and flex room. Free on-site parking.",
+        guests: 4,
+        beds: 2,
+        baths: 2,
+        address: "1212 Slip Rd",
+        city: "Seattle",
+        state: "Washington",
+        country: "United States",
+        price: 380,
+      },
+      {
+        userId: 1,
+        name: "Starlight Sanctuary: Stargazer Yurt",
+        description: "Our Starlight Sanctuary is 30+ acres off-grid, about six acres of which are devoted to your privacy. From the seclusion of your campsite, experience the Wild West. After twilight, behold the majesty of the universe, bursting with shooting stars and and cosmic wonders galore, under the darkest night sky on the continent—the BEST place to see the stars!",
+        guests: 1,
+        beds: 1,
+        baths: 1,
+        address: "1313 Dirt Road ",
+        city: "Terlingua",
+        state: "Texas",
+        country: "United States",
+        price: 100,
+      },
+      {
+        userId: 5,
+        name: "Murdock by AvantStay | Cozy Townhouse w/ Hot Tub | Walk To Park City Mountain!",
+        description: "Murdock by AvantStay | Cozy Townhouse w/ Hot Tub | Walk To Park City Mountain!",
+        guests: 10,
+        beds: 3,
+        baths: 3,
+        address: "1414 Blue Sky Court",
+        city: "Park City",
+        state: "Utah",
+        country: "United States",
+        price: 303,
+      },
+    ], {});
+  },
+
+  down: (queryInterface, Sequelize) => {
+    /*
+      Add reverting commands here.
+      Return a promise to correctly handle asynchronicity.
+
+      Example:
+      */
+   return queryInterface.bulkDelete('Spots', null, {});
+  }
+};

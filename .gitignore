@@ -1,0 +1,8 @@
+node_modules
+.env
+build
+.DS_Store
+COMMANDS.md
+part-1-backend.md
+part-2-backend.md
+part-3-backend.md
