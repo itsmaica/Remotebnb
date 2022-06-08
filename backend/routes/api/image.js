@@ -4,11 +4,14 @@ const asyncHandler = require("express-async-handler");
 
 const { User, Spot, Booking, Image, Sequelize } = require("../../db/models")
 
+// const {
+//     multipleMulterUpload,
+//     multiplePublicFileUpload
+// } = require ("../../awsS3.js")
+
 const router = express.Router();
 
 const Op = Sequelize.Op
-
-
 
 // Get all the Images for a Spot - 'api/images/'
 //layer this with '/api/spots/spotId/images'
