@@ -9,6 +9,9 @@ function Spots() {
     const dispatch = useDispatch();
     // const history = useHistory();
 
+    // const user = useSelector((state) => state?.session?.user?.id)
+    // console.log("WHat is user?", user)
+
     const spots = useSelector((state) => state?.spots?.spots)
     // console.log("SPOTS MAICA \n\n", spots)
 
@@ -24,7 +27,7 @@ function Spots() {
             { spots?.map((spot) => (
                 <div key={spot.id} className='spotGrid'>
                     <h3>SPOT</h3>
-                    <div><p>{spot.city}</p><p>{spot.state}</p></div>
+                    {/* <span><p>{spot.city}</p><p>{spot.state}</p></span> */}
                     <SpotGridComponent spotId={spot?.id} />
                 </div>
             ))}
