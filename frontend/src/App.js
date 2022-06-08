@@ -7,7 +7,8 @@ import * as sessionActions from './store/session';
 import Navigation from './components/Navigation';
 import { Modal } from './context/Modal';
 import Spots from './components/Spots/Spots';
-
+import ManageSpots from './components/Account/ManageSpots';
+import CreateASpot from './components/Account/UserSpots/CreateASpot';
 
 
 
@@ -34,18 +35,28 @@ function App() {
             <LoginFormPage />
           </Route> */}
 
+          <Route exact path='/test'>
+          </Route>
+
+           {/* Goes to the page where you can see all of your spots and the button to make a new spot*/}
+          <Route exact path='/:userId/spots'>
+            <ManageSpots />
+          </Route>
+
+          {/* The Form To Create a Spot - CreateAForm Page */}
+          <Route exact path='/:userId/spots/new'>
+            <CreateASpot />
+          </Route>
+
           <Route path='/signup'>
             <SignupFormPage />
           </Route>
 
           {/* See All Spots*/}
-          <Route to='/'>
+          <Route path='/'>
             <Spots />
           </Route>
 
-          <Route to='/test' exact={true}>
-
-          </Route>
 
         </Switch>
       )}

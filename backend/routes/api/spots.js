@@ -55,7 +55,7 @@ router.post(
             userId: req.body.userId,
             name: req.body.name,
             description: req.body.description,
-            guests: req.body.quests,
+            guests: req.body.guests,
             beds: req.body.beds,
             baths: req.body.baths,
             address: req.body.address,

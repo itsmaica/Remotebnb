@@ -54,14 +54,31 @@ export const logout = () => async (dispatch) => {
   return response;
 };
 
+// const initialState = { user: null };
+
+// function reducer(state = initialState, action) {
+//   let newState;
+//   switch (action.type) {
+//     case SET_USER:
+//       newState = Object.assign({}, state, { user: action.payload });
+//       return newState;
+//     case REMOVE_USER:
+//       newState = Object.assign({}, state, { user: null });
+//       return newState;
+//     default:
+//       return state;
+//   }
+// }
+
 const initialState = { user: null };
 
 function reducer(state = initialState, action) {
   let newState;
   switch (action.type) {
     case SET_USER:
-      newState = Object.assign({}, state, { user: action.payload });
-      return newState;
+      // newState = Object.assign({}, state, { user: action.payload });
+      // return newState;
+      return { user: action.payload }
     case REMOVE_USER:
       newState = Object.assign({}, state, { user: null });
       return newState;
@@ -69,5 +86,4 @@ function reducer(state = initialState, action) {
       return state;
   }
 }
-
 export default reducer;
