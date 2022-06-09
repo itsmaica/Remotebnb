@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createSpotThunk } from "../../../store/spot";
+import { createSpotThunk } from "../../store/spot";
 import {  useHistory, useParams } from "react-router-dom";
 
 import "./CreateASpot.css"
@@ -40,7 +40,7 @@ function CreateASpot() {
         }
         console.log("What is the thunk getting?", );
         dispatch(createSpotThunk(spot));
-        history.push(`/${userId}/spots`)
+        history.push(`/users/${userId}/spots`)
 
     }
 

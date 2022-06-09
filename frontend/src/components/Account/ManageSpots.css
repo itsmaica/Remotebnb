@@ -1,0 +1,51 @@
+.spots-num-and-button{
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.heading-list{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100vw;
+}
+
+#user-spots{
+    border: black solid 1px;
+    width: 95vw;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#pic-name {
+    /* border: black solid 1px; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100px;
+}
+
+#spot-pic{
+    height: 50px;
+    width: 50px;
+    background-color: aqua;
+}
+
+#spot-slots{
+    width: 300px;
+}
+
+#create{
+    width: 150px;
+    height: 50px;
+    text-decoration: none;
+    background-color: blueviolet;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

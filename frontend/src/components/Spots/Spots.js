@@ -12,7 +12,7 @@ function Spots() {
     // const user = useSelector((state) => state?.session?.user?.id)
     // console.log("WHat is user?", user)
 
-    const spots = useSelector((state) => state?.spots?.spots)
+    const spots = useSelector((state) => state?.allSpots?.spots)
     // console.log("SPOTS MAICA \n\n", spots)
 
     // const array = spots.map(spot => spot)
@@ -24,10 +24,11 @@ function Spots() {
 
     return(
         <>
+            <h1>Hello?</h1>
             { spots?.map((spot) => (
                 <div key={spot.id} className='spotGrid'>
                     <h3>SPOT</h3>
-                    {/* <span><p>{spot.city}</p><p>{spot.state}</p></span> */}
+                    <span><p>{spot.city}</p><p>{spot.state}</p></span>
                     <SpotGridComponent spotId={spot?.id} />
                 </div>
             ))}

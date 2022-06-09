@@ -1,12 +1,14 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import session from './session'
-import spot from './spot';
+import allSpots from './spot';
+import userSpots from './userSpots'
 // import image from './images'
 
 const rootReducer = combineReducers({
   session,
-  spot,
+  allSpots,
+  userSpots
   // image,
 });
 
