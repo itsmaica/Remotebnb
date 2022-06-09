@@ -83,7 +83,7 @@ router.post(
 )
 
 router.delete(
-    '/:spotId/delete',
+    'spots/:spotId/delete',
     asyncHandler(async(req, res) => {
         console.log("HELLO FROM DELETE ROUTE!!!!!!!! \n\n")
         const { spotId } = req.params;

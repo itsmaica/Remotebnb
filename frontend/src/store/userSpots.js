@@ -1,6 +1,7 @@
 import { csrfFetch } from "./csrf";
 
 const LOAD_USER_SPOTS = 'user/loadUserSpots'
+const DELETE_SPOT = 'spot/deleteSpot'
 
 export const loadUserSpots = (userSpots) => ({
     type: LOAD_USER_SPOTS,
@@ -8,17 +9,33 @@ export const loadUserSpots = (userSpots) => ({
     userSpots
 })
 
+export const deleteSpot = (spotId) => ({
+    type: DELETE_SPOT,
+    spotId
+})
 
 // Get the User Spots
 export const loadUserSpotsThunk = (userId) => async (dispatch) => {
     const response = await csrfFetch(`/api/users/${userId}/spots`);
     if(response.ok) {
         const userSpots = await response.json();
-        // console.log("Hello from userSpots Thunk! \n\n", userSpots)
+        console.log("Hello from userSpots Thunk! \n\n", userSpots)
         dispatch(loadUserSpots(userSpots));
         return userSpots
     };
     return response;
+};
+
+export const deleteSpotThunk = (userId, spotId) => async (dispatch) => {
+    const response = await csrfFetch(`/api/users/${userId}/spots/${spotId}/delete`, {
+        method: 'DELETE'
+    });
+    if (response.ok) {
+        const spotId = await response.json();
+        dispatch(deleteSpot(spotId))
+        return response;
+    }
+    return response
 };
 
 const initialState = {};
@@ -37,6 +54,10 @@ const userSpotsReducer = (state=initialState, action) => {
             })
             // console.log(newState, "this is initial state")
             return newState
+        case DELETE_SPOT:
+            newState = {...state}
+            const id = action.spotId.id
+            delete newState[id]
 
             // 1
             // console.log("HEllo from the REDUCER\n\n")

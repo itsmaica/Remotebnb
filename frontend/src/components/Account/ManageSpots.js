@@ -2,8 +2,8 @@
 // import { useEffect } from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
-import { deleteSpotThunk } from "../../store/spot";
+import { NavLink, useParams } from "react-router-dom";
+import { deleteSpotThunk } from "../../store/userSpots";
 // import { loadAllSpotsThunk } from "../../store/spot";
 import { loadUserSpotsThunk } from "../../store/userSpots";
 
@@ -18,7 +18,7 @@ function ManageSpots() {
     const userSpots = useSelector((state) => state?.userSpots)
 
     const [isLoaded, setLoaded] = useState(false);
-    // console.log("HOw many spots?? \n\n", userSpots.length)
+    console.log("HOw many spots?? \n\n", userSpots)
 
     // const spotArray = Object.values(userSpots)
     // console.log('This is spot Array \n\n', spotArray.length)
@@ -33,11 +33,11 @@ function ManageSpots() {
             .then(() => setLoaded(true))
     }, [dispatch])
 
-    const deleteSpot = (e, spotId) => {
+    const deleteSpot = (e, userId, spotId) => {
         console.log("What is spotId for DELETE \n\n")
         e.preventDefault();
         e.stopPropagation();
-        return dispatch(deleteSpotThunk(spotId))
+        dispatch(deleteSpotThunk(userId, spotId))
     }
 
     if (!isLoaded) {
@@ -50,7 +50,8 @@ function ManageSpots() {
                 <h2>{Object.values(userSpots)?.length} SPOTS</h2>
                 <NavLink exact to={`/users/${userId}/spots/new`} id='create'>Create a Spot</NavLink>
             </div>
-            { Object.values(userSpots).map((spot) => (
+            { userSpots && (Object.values(userSpots).map((spot) => (
+                //<h1>{spot.id}</h1>
                 // console.log(spot.name)
                 <>
                 <div id='spot-slots' key={spot.id}>
@@ -66,13 +67,13 @@ function ManageSpots() {
                         <div id='user-spots'>
                             <div id='pic-name'>
                                 <div id='spot-pic'>PIC</div>
-                                <div>{spot?.name}</div>
+                                <div>{spot.name}</div>
                             </div>
                             <div>
                                 <button>EDIT</button>
                                 <button
                                     id={`delete-${spot?.id}`}
-                                    onClick={(e) => deleteSpot(e, spot?.id)}
+                                    onClick={(e) => deleteSpot(e, userId, spot.id)}
                                 >DELETE</button>
                             </div>
                             <div>{spot.guests}</div>
@@ -83,6 +84,7 @@ function ManageSpots() {
                     </div>
                 </div>
                 </>
+                )
             ))}
         </>
         )

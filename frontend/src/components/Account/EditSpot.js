@@ -5,7 +5,6 @@ import {  useHistory, useParams } from "react-router-dom";
 
 import "./CreateASpot.css"
 
-
 function EditASpot() {
     // const { userId } = useParams();
 

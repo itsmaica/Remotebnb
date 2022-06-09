@@ -60,4 +60,14 @@ router.get(
   })
 )
 
+router.delete(
+  '/:userId/spots/:spotId/delete',
+  asyncHandler(async(req, res) => {
+      console.log("HELLO FROM DELETE ROUTE!!!!!!!! \n\n")
+      const { spotId } = req.params;
+      const deleteThisSpot = await Spot.findByPk(spotId);
+      return deleteThisSpot.destroy();
+  })
+)
+
 module.exports = router;
