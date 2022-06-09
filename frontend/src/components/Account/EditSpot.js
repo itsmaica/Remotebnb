@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createSpotThunk } from "../../../store/spot";
+import { createSpotThunk } from "../../store/spot";
 import {  useHistory, useParams } from "react-router-dom";
 
 import "./CreateASpot.css"
 
 
-function CreateASpot() {
+function EditASpot() {
     // const { userId } = useParams();
 
     const userId = useSelector((state) => state.session.user.id)
@@ -40,7 +40,7 @@ function CreateASpot() {
         }
         console.log("What is the thunk getting?", );
         dispatch(createSpotThunk(spot));
-        history.push(`/${userId}/spots`)
+        history.push(`/users/${userId}/spots`)
 
     }
 
@@ -51,7 +51,7 @@ function CreateASpot() {
 
     return(
         <>
-        <h1>Create A New Spot</h1>
+        <h1>Edit Your Spot</h1>
         <div>
             <form onSubmit={handleSubmit} className='form'>
             <h3>Form</h3>
@@ -152,4 +152,4 @@ function CreateASpot() {
     )
 }
 
-export default CreateASpot
+export default EditASpot;

@@ -12,7 +12,10 @@ const asyncHandler = require("express-async-handler");
 //Need below for error validation later on
 // const { handleValidationErrors } = require("../../utils/validation");
 // const { setTokenCookie, restoreUser } = require("../../utils/auth");
-const { User, Spot, Booking, Image } = require("../../db/models");
+const { Spot, Sequelize } = require("../../db/models");
+
+
+// const Op = Sequelize.Op
 
 const router = express.Router();
 
@@ -44,6 +47,17 @@ router.get(
     })
 )
 
+// Get One User's Spots
+// router.get(
+//     '/:userId',
+//     asyncHandler(async(req,res) => {
+//         const { userId } = req.params;
+//         const userSpots = await Spot.findAll({
+//             where: { userId : { [Op.eq]: userId} }
+//         })
+//     })
+// )
+
 
 //Create A Spot - MUST VALIDATE CREATION
 router.post(
@@ -66,7 +80,16 @@ router.post(
         })
         return res.json(spot)
     })
+)
 
+router.delete(
+    '/:spotId/delete',
+    asyncHandler(async(req, res) => {
+        console.log("HELLO FROM DELETE ROUTE!!!!!!!! \n\n")
+        const { spotId } = req.params;
+        const deleteThisSpot = await Spot.findByPk(spotId);
+        return deleteThisSpot.destroy();
+    })
 )
 
 module.exports = router;

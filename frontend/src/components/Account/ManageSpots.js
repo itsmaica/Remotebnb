@@ -1,35 +1,91 @@
 // import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+// import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
+import { deleteSpotThunk } from "../../store/spot";
+// import { loadAllSpotsThunk } from "../../store/spot";
+import { loadUserSpotsThunk } from "../../store/userSpots";
+
+import './ManageSpots.css'
 
 
 function ManageSpots() {
-    const history = useHistory()
 
-    const { userId } = useParams()
+    const dispatch = useDispatch()
 
-    const sessionUser = useSelector((state) => state.session.user);
-    console.log(sessionUser)
+    const userId = useSelector((state) => state.session.user.id);
+    const userSpots = useSelector((state) => state?.userSpots)
 
-    // if (sessionUser) return <Redirect to="/" />;
+    const [isLoaded, setLoaded] = useState(false);
+    // console.log("HOw many spots?? \n\n", userSpots.length)
 
-    // console.log("manage spots what is userId \n\n", userId)
+    // const spotArray = Object.values(userSpots)
+    // console.log('This is spot Array \n\n', spotArray.length)
 
-    const createASpot = (e) => {
-        e.preventDefault()
-        history.push(`/${userId}/spots/new`)
+    console.log("SHow meee length please",Object.values(userSpots).length)
+
+
+    useEffect( () => {
+        // window.location.reload
+        dispatch(loadUserSpotsThunk(userId))
+            // .then(() => dispatch((loadUserSpotsThunk(userId))))
+            .then(() => setLoaded(true))
+    }, [dispatch])
+
+    const deleteSpot = (e, spotId) => {
+        console.log("What is spotId for DELETE \n\n")
+        e.preventDefault();
+        e.stopPropagation();
+        return dispatch(deleteSpotThunk(spotId))
     }
 
+    if (!isLoaded) {
+        return <h1>Loading...</h1>
+    } else {
     return(
-        <>
-        <h1>ManageSpots</h1>
-        <div>
-            <button
-                onClick={(e) => createASpot(e)}
-            >Create a Spot</button>
-        </div>
+            <>
+            <h1>Manage Spots</h1>
+            <div className="spots-num-and-button">
+                <h2>{Object.values(userSpots)?.length} SPOTS</h2>
+                <NavLink exact to={`/users/${userId}/spots/new`} id='create'>Create a Spot</NavLink>
+            </div>
+            { Object.values(userSpots).map((spot) => (
+                // console.log(spot.name)
+                <>
+                <div id='spot-slots' key={spot.id}>
+                    <div className=''>
+                        <div className='heading-list'>
+                            <p>Spot</p>
+                            <p>To Do</p>
+                            <p>Guests</p>
+                            <p>Beds</p>
+                            <p>Baths</p>
+                            <p>Location</p>
+                        </div>
+                        <div id='user-spots'>
+                            <div id='pic-name'>
+                                <div id='spot-pic'>PIC</div>
+                                <div>{spot?.name}</div>
+                            </div>
+                            <div>
+                                <button>EDIT</button>
+                                <button
+                                    id={`delete-${spot?.id}`}
+                                    onClick={(e) => deleteSpot(e, spot?.id)}
+                                >DELETE</button>
+                            </div>
+                            <div>{spot.guests}</div>
+                            <div>{spot.beds}</div>
+                            <div>{spot.baths}</div>
+                            <div>{spot.city}e</div>
+                        </div>
+                    </div>
+                </div>
+                </>
+            ))}
         </>
-    )
+        )
+    }
 }
-
-export default ManageSpots
+export default ManageSpots;
