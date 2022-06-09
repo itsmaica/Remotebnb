@@ -4,7 +4,7 @@ const asyncHandler = require("express-async-handler");
 
 const { handleValidationErrors } = require("../../utils/validation");
 const { setTokenCookie, requireAuth } = require("../../utils/auth");
-const { User } = require("../../db/models");
+const { User, Spot, Sequelize } = require("../../db/models");
 
 const router = express.Router();
 
@@ -28,6 +28,8 @@ const validateSignup = [
   handleValidationErrors,
 ];
 
+const Op = Sequelize.Op
+
 // Sign up
 router.post(
   '',
@@ -44,5 +46,18 @@ router.post(
     });
   }),
 );
+
+//Get A User's Spots
+router.get(
+  '/:userId/spots',
+  asyncHandler(async(req,res) => {
+    const { userId } = req.params;
+    const userSpots = await Spot.findAll({
+      where:{ userId : { [Op.eq]: userId} },
+      order: [ ['id', 'DESC'] ]
+    })
+    return res.json(userSpots)
+  })
+)
 
 module.exports = router;

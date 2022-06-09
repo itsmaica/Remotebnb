@@ -3,6 +3,7 @@ import { csrfFetch } from "./csrf";
 const LOAD_ALL_SPOTS = 'spots/loadAllSpots'
 // const GET_ONE_SPOT = 'spots/getOneSpot'
 const CREATE_SPOT = 'spots/createSpot'
+const DELETE_SPOT = 'spot/deleteSpot'
 
 //------ Actions -----
 
@@ -21,6 +22,10 @@ export const createSpot = (spot) => ({
     spot
 })
 
+export const deleteSpot = (spotId) => ({
+    type: DELETE_SPOT,
+    spotId
+})
 
 //------ Thunks -------
 
@@ -32,7 +37,7 @@ export const loadAllSpotsThunk = () => async (dispatch) => {
         const spots = await response.json();
         dispatch(loadAllSpots(spots));
         return spots;
-    }
+    };
     return response;
 };
 
@@ -47,17 +52,14 @@ export const loadAllSpotsThunk = () => async (dispatch) => {
 //     return response;
 // }
 
-
 //Create a spot
 export const createSpotThunk = (spot) => async (dispatch) => {
-    console.log("CREATE SPOT THUNK \n\n")
+    // console.log("CREATE SPOT THUNK \n\n")
     const response = await csrfFetch(`/api/spots/new`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(spot)
     });
-
-    // console.log("What is the response?", response)
 
     if (response.ok) {
         const spot = await response.json();
@@ -67,21 +69,31 @@ export const createSpotThunk = (spot) => async (dispatch) => {
     return response;
 }
 
-const initialState = {}
+//Delete a Post
+export const deleteSpotThunk = (spotId) => async (dispatch) => {
+    const response = await csrfFetch(`/api/spots/${spotId}/delete`, {
+        method: 'DELETE'
+    });
+    const spotId = await response.json();
+    dispatch(deleteSpot(spotId))
+    return response;
+}
+
+const initialState = {};
 
 const spotReducer = ( state=initialState, action ) => {
     let newState;
     switch(action.type) {
         case LOAD_ALL_SPOTS:
-            newState = {...state}
-            // // console.log('This is new state', newState)
-            // action.spots.forEach(spot => {
-            //     newState[spot.id] = spot
-            // });
-            newState["spots"] = action.spots
+            newState = {...state};
+            newState["spots"] = action.spots;
             return newState;
         case CREATE_SPOT:
-            return newState = {...state.spots, [action.spot.id]: action.spot}
+            return newState = {...state.spots, [action.spot.id]: action.spot};
+        case DELETE_SPOT:
+            newState = {...state}
+            const id = action.spotId.id
+            delete newState[id]
         default:
             return state;
     };
