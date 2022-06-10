@@ -49,7 +49,7 @@ router.post(
 router.get(
   '/:userId/spots',
   asyncHandler(async(req,res) => {
-    console.log("HELLO FROM THE GET USER SPOTS ROUTE")
+    // console.log("HELLO FROM THE GET USER SPOTS ROUTE")
     const { userId } = req.params;
     const userSpots = await Spot.findAll({
       where:{ userId : { [Op.eq]: userId} },
@@ -81,9 +81,7 @@ router.delete(
 router.put(
   '/:userId/spots/:spotId/edit',
   asyncHandler(async(req,res) => {
-
-    console.log("HELLO????? ------",req.body)
-
+    // console.log("HELLO????? ------",req.body)
       const { spotId } = req.params
       const id = req.params.spotId
       const newName = req.body.name
@@ -98,51 +96,51 @@ router.put(
       const newPrice = req.body.price
 
       const spot = await Spot.findByPk(id)
-      console.log("what is spot?? \n\n", spot)
+      // console.log("what is spot?? \n\n", spot)
 
       const {
           name, description, guests, beds,
           baths, address, city, state, country, price
-      } = spot
-      console.log("HELLO HELLO ______----___-",name, newName)
+      } = spot;
+      // console.log("HELLO HELLO ______----___-",name, newName)
 
-      if (name !== newName) {
+      if (name !== newName){
           spot.name = newName
           await spot.save()
       }
-      if (description !== newDescription) {
+      if (description !== newDescription){
           spot.description = newDescription
           await spot.save()
       }
-      if (guests !== newGuests) {
+      if (guests !== newGuests){
           spot.guests = newGuests
           await spot.save()
       }
-      if (beds !== newBeds) {
+      if (beds !== newBeds){
           spot.beds = newBeds
           await spot.save()
       }
-      if (baths !== newBaths) {
+      if (baths !== newBaths){
           spot.baths = newBaths
           await spot.save()
       }
-      if (address !== newAddress) {
+      if (address !== newAddress){
           spot.address = newAddress
           await spot.save()
       }
-      if (city !== newCity) {
+      if (city !== newCity){
           spot.city = newCity
           await spot.save()
       }
-      if (state !== newState) {
+      if (state !== newState){
           spot.state = newState
           await spot.save()
       }
-      if (country !== newCountry) {
+      if (country !== newCountry){
           spot.country = newCountry
           await spot.save()
       }
-      if (price !== newPrice) {
+      if (price !== newPrice){
           spot.price = newPrice
           await spot.save()
       }
@@ -150,7 +148,6 @@ router.put(
       const updatedSpot = await Spot.findByPk(id)
 
       return res.json(updatedSpot)
-
   })
 )
 

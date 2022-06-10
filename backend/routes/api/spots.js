@@ -32,7 +32,7 @@ router.get(
         const spots = await Spot.findAll({
             include: [Image, Review]
         })
-        return res.send(spots)
+        return res.json(spots);
     })
 );
 
@@ -43,11 +43,11 @@ router.get(
         const { spotId } = req.params;
         const oneSpot = await Spot.findByPk(spotId, {
             include: [Image, Review]
-        })
-        // const spot = await Spot.findByPk(spotId)
-        return res.json(oneSpot)
+        });
+
+        return res.json(oneSpot);
     })
-)
+);
 
 // Get One User's Spots
 // router.get(
@@ -83,91 +83,6 @@ router.post(
         return res.json(spot)
     })
 )
-
-
-
-// router.put(
-//     '/:spotId/edit',
-//     asyncHandler(async(req,res) => {
-//         const { spotId } = req.params
-//         const id = req.params.spotId
-//         const newName = req.body.name
-//         const newDescription = req.body.description
-//         const newGuests = req.body.guests
-//         const newBeds = req.body.beds
-//         const newBaths = req.body.baths
-//         const newAddress = req.body.address
-//         const newCity = req.body.city
-//         const newState = req.body.state
-//         const newCountry = req.body.country
-//         const newPrice = req.body.price
-
-//         const spot = await Spot.findByPk(id)
-//         console.log("what is spot?? \n\n", spot)
-
-//         const {
-//             name, description, guests, beds,
-//             baths, address, city, state, country, price
-//         } = spot
-
-//         if (name !== newName) {
-//             spot.name = newName
-//             await spot.save()
-//         }
-//         if (description !== newDescription) {
-//             spot.description = newDescription
-//             await spot.save()
-//         }
-//         if (guests !== newGuests) {
-//             spot.guests = newGuests
-//             await spot.save()
-//         }
-//         if (beds !== newBeds) {
-//             spot.beds = newBeds
-//             await spot.save()
-//         }
-//         if (baths !== newBaths) {
-//             spot.baths = newBaths
-//             await spot.save()
-//         }
-//         if (address !== newAddress) {
-//             spot.address = newAddress
-//             await spot.save()
-//         }
-//         if (city !== newCity) {
-//             spot.city = newCity
-//             await spot.save()
-//         }
-//         if (state !== newState) {
-//             spot.state = newState
-//             await spot.save()
-//         }
-//         if (country !== newCountry) {
-//             spot.country = newCountry
-//             await spot.save()
-//         }
-//         if (price !== newPrice) {
-//             spot.price = newPrice
-//             await spot.save()
-//         }
-
-//         const updatedSpot = await Spot.findByPk(id)
-
-//         return res.json(updatedSpot)
-
-//     })
-// )
-
-
-// router.delete(
-//     '/:userId/spots/:spotId/delete',
-//     asyncHandler(async(req, res) => {
-//         console.log("HELLO FROM DELETE ROUTE!!!!!!!! \n\n")
-//         const { spotId } = req.params;
-//         const deleteThisSpot = await Spot.findByPk(spotId);
-//         return deleteThisSpot.destroy();
-//     })
-//   )
 
 
 module.exports = router;
