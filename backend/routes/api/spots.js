@@ -158,12 +158,6 @@ router.post(
 //     })
 // )
 
-// router.put(
-//     '/:spotId/edit',
-//     asyncHandler(async(req,res) => {
-
-//     })
-// )
 
 // router.delete(
 //     '/:userId/spots/:spotId/delete',
