@@ -41,9 +41,7 @@ router.post(
 
     await setTokenCookie(res, user);
 
-    return res.json({
-      user,
-    });
+    return res.json({user});
   }),
 );
 
@@ -75,13 +73,14 @@ router.delete(
           where: { spotId: spotId }
       })
       await Spot.destroy({ where: {id: spotId} })
+      return res.json(spot)
   })
 )
 
 router.put(
   '/:userId/spots/:spotId/edit',
   asyncHandler(async(req,res) => {
-    
+
     console.log("HELLO????? ------",req.body)
 
       const { spotId } = req.params

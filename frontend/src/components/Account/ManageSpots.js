@@ -28,7 +28,6 @@ function ManageSpots() {
     const deleteSpot = (e, userId, spotId) => {
         console.log("What is spotId for DELETE \n\n")
         e.preventDefault();
-        e.stopPropagation();
         dispatch(deleteSpotThunk(userId, spotId))
             .then(() => dispatch((loadUserSpotsThunk(userId))))
     }

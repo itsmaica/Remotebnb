@@ -25,6 +25,8 @@ function EditASpot() {
         .then(() => setIsLoaded(true))
     }, [dispatch])
 
+  
+
     const [name, setName] = useState(spot?.name);
     const [description, setDescription] = useState(spot?.description);
     const [guests, setGuests] = useState(spot?.guests);
