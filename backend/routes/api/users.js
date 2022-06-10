@@ -3,8 +3,8 @@ const { check } = require("express-validator");
 const asyncHandler = require("express-async-handler");
 
 const { handleValidationErrors } = require("../../utils/validation");
-const { setTokenCookie, requireAuth } = require("../../utils/auth");
-const { User, Spot, Sequelize } = require("../../db/models");
+const { setTokenCookie } = require("../../utils/auth");
+const { User, Spot, Review, Image, Sequelize } = require("../../db/models");
 
 const router = express.Router();
 
@@ -57,6 +57,100 @@ router.get(
       order: [ ['id', 'DESC'] ]
     })
     return res.json(userSpots)
+  })
+)
+
+// Delete A User's Spot
+router.delete(
+  '/:userId/spots/:spotId/delete',
+  asyncHandler(async(req,res) => {
+      const spotId = req.params.spotId;
+      const spot = await Spot.findByPk(spotId, {
+          include: [Review, Image]
+      })
+      await Review.destroy({
+          where: { spotId: spotId }
+      })
+      await Image.destroy({
+          where: { spotId: spotId }
+      })
+      await Spot.destroy({ where: {id: spotId} })
+  })
+)
+
+router.put(
+  '/:userId/spots/:spotId/edit',
+  asyncHandler(async(req,res) => {
+    
+    console.log("HELLO????? ------",req.body)
+
+      const { spotId } = req.params
+      const id = req.params.spotId
+      const newName = req.body.name
+      const newDescription = req.body.description
+      const newGuests = req.body.guests
+      const newBeds = req.body.beds
+      const newBaths = req.body.baths
+      const newAddress = req.body.address
+      const newCity = req.body.city
+      const newState = req.body.state
+      const newCountry = req.body.country
+      const newPrice = req.body.price
+
+      const spot = await Spot.findByPk(id)
+      console.log("what is spot?? \n\n", spot)
+
+      const {
+          name, description, guests, beds,
+          baths, address, city, state, country, price
+      } = spot
+      console.log("HELLO HELLO ______----___-",name, newName)
+
+      if (name !== newName) {
+          spot.name = newName
+          await spot.save()
+      }
+      if (description !== newDescription) {
+          spot.description = newDescription
+          await spot.save()
+      }
+      if (guests !== newGuests) {
+          spot.guests = newGuests
+          await spot.save()
+      }
+      if (beds !== newBeds) {
+          spot.beds = newBeds
+          await spot.save()
+      }
+      if (baths !== newBaths) {
+          spot.baths = newBaths
+          await spot.save()
+      }
+      if (address !== newAddress) {
+          spot.address = newAddress
+          await spot.save()
+      }
+      if (city !== newCity) {
+          spot.city = newCity
+          await spot.save()
+      }
+      if (state !== newState) {
+          spot.state = newState
+          await spot.save()
+      }
+      if (country !== newCountry) {
+          spot.country = newCountry
+          await spot.save()
+      }
+      if (price !== newPrice) {
+          spot.price = newPrice
+          await spot.save()
+      }
+
+      const updatedSpot = await Spot.findByPk(id)
+
+      return res.json(updatedSpot)
+
   })
 )
 

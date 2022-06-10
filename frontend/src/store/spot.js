@@ -2,8 +2,8 @@ import { csrfFetch } from "./csrf";
 
 const LOAD_ALL_SPOTS = 'spots/loadAllSpots'
 // const GET_ONE_SPOT = 'spots/getOneSpot'
-const CREATE_SPOT = 'spots/createSpot'
-const DELETE_SPOT = 'spot/deleteSpot'
+// const CREATE_SPOT = 'spots/createSpot'
+
 
 //------ Actions -----
 
@@ -17,15 +17,12 @@ export const loadAllSpots = (spots) => ({
 //     spot
 // })
 
-export const createSpot = (spot) => ({
-    type: CREATE_SPOT,
-    spot
-})
+// export const createSpot = (spot) => ({
+//     type: CREATE_SPOT,
+//     spot
+// })
 
-export const deleteSpot = (spotId) => ({
-    type: DELETE_SPOT,
-    spotId
-})
+
 
 //------ Thunks -------
 
@@ -52,32 +49,25 @@ export const loadAllSpotsThunk = () => async (dispatch) => {
 //     return response;
 // }
 
-//Create a spot
-export const createSpotThunk = (spot) => async (dispatch) => {
-    // console.log("CREATE SPOT THUNK \n\n")
-    const response = await csrfFetch(`/api/spots/new`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(spot)
-    });
+// //Create a spot
+// export const createSpotThunk = (spot) => async (dispatch) => {
+//     // console.log("CREATE SPOT THUNK \n\n")
+//     const response = await csrfFetch(`/api/spots/new`, {
+//         method: 'POST',
+//         headers: { 'Content-Type': 'application/json' },
+//         body: JSON.stringify(spot)
+//     });
 
-    if (response.ok) {
-        const spot = await response.json();
-        dispatch(createSpot(spot));
-        return spot;
-    }
-    return response;
-}
+//     if (response.ok) {
+//         const spot = await response.json();
+//         dispatch(createSpot(spot));
+//         return spot;
+//     }
+//     return response;
+// }
 
 //Delete a Post
-export const deleteSpotThunk = (spotId) => async (dispatch) => {
-    const response = await csrfFetch(`/api/spots/${spotId}/delete`, {
-        method: 'DELETE'
-    });
-    const spotId = await response.json();
-    dispatch(deleteSpot(spotId))
-    return response;
-}
+
 
 const initialState = {};
 
@@ -88,12 +78,8 @@ const spotReducer = ( state=initialState, action ) => {
             newState = {...state};
             newState["spots"] = action.spots;
             return newState;
-        case CREATE_SPOT:
-            return newState = {...state.spots, [action.spot.id]: action.spot};
-        case DELETE_SPOT:
-            newState = {...state}
-            const id = action.spotId.id
-            delete newState[id]
+        // case CREATE_SPOT:
+        //     return newState = {...state.spots, [action.spot.id]: action.spot};
         default:
             return state;
     };
