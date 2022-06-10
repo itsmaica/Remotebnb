@@ -46,7 +46,7 @@ function ProfileButton({ user }) {
         <ul className="profile-dropdown">
           <li>{user.username}</li>
           <li>{user.email}</li>
-          <NavLink exact to={`users/${userId}/spots`} >Manage Spots</NavLink>
+          <NavLink exact to={`users/${userId}/spots`}>Manage Spots</NavLink>
           <li>
             <button onClick={logout}>Log Out</button>
           </li>
