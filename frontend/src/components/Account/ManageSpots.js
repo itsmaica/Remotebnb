@@ -9,7 +9,6 @@ import { loadUserSpotsThunk } from "../../store/userSpots";
 
 import './ManageSpots.css'
 
-
 function ManageSpots() {
 
     const dispatch = useDispatch()
@@ -54,7 +53,7 @@ function ManageSpots() {
             <>
             <h1>Manage Spots</h1>
             <div className="spots-num-and-button">
-                <h2>{Object.values(userSpots)?.length} SPOTS</h2>
+                <h2>{Object.values(userSpots).length} SPOTS</h2>
                 <NavLink exact to={`/users/${userId}/spots/new`} id='create'>Create a Spot</NavLink>
             </div>
             { userSpots && (Object.values(userSpots).map((spot) => (

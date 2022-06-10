@@ -30,6 +30,7 @@ function CreateASpot() {
     const [state, setState] = useState("")
     const [country, setCountry] = useState("United States");
     const [price, setPrice] = useState(0);
+    const [disabled, setDisabled] = useState(false)
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -41,6 +42,7 @@ function CreateASpot() {
         console.log("What is the thunk getting?", );
         dispatch(createSpotThunk(spot))
             // .then(() => dispatch(loadUserSpots(userId)))
+            .then(() => setDisabled(true))
         history.push(`/users/${userId}/spots`)
 
     }
@@ -52,102 +54,118 @@ function CreateASpot() {
 
     return(
         <>
-        <h1>Create A New Spot</h1>
-        <div>
-            <form onSubmit={handleSubmit} className='form'>
-            <h3>Form</h3>
-                <label> Name
-                    <input
-                        type="text"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        required
-                    />
-                </label>
+        <div className="container">
 
-                <label> Description
-                    <input
-                        type="text"
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                        required
-                    />
-                </label>
+            <h1>Create A New Spot</h1>
+            <div className="form-container">
+                <form onSubmit={handleSubmit} className='form'>
+                <h3>Form</h3>
+                    <label> Name
+                        <input
+                            className="form-input"
+                            type="text"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            required
+                        />
+                    </label>
 
-                <label> Guests
-                    <input
-                        type="text"
-                        value={guests}
-                        onChange={(e) => setGuests(e.target.value)}
-                        required
-                    />
-                </label>
+                    <label> Description
+                        <input
+                            className="form-input"
+                            type="text"
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
+                            required
+                        />
+                    </label>
 
-                <label> Beds
-                    <input
-                        type="text"
-                        value={beds}
-                        onChange={(e) => setBeds(e.target.value)}
-                        required
-                    />
-                </label>
+                    <label> Guests
+                        <input
+                            className="form-input"
+                            type="text"
+                            value={guests}
+                            onChange={(e) => setGuests(e.target.value)}
+                            required
+                        />
+                    </label>
 
-                <label> Baths
-                    <input
-                        type="text"
-                        value={baths}
-                        onChange={(e) => setBaths(e.target.value)}
-                        required
-                    />
-                </label>
+                    <label> Beds
+                        <input
+                            className="form-input"
+                            type="text"
+                            value={beds}
+                            onChange={(e) => setBeds(e.target.value)}
+                            required
+                        />
+                    </label>
 
-                <label> Address
-                    <input
-                        type="text"
-                        value={address}
-                        onChange={(e) => setAddress(e.target.value)}
-                        required
-                    />
-                </label>
+                    <label> Baths
+                        <input
+                            className="form-input"
+                            type="text"
+                            value={baths}
+                            onChange={(e) => setBaths(e.target.value)}
+                            required
+                        />
+                    </label>
 
-                <label> City
-                    <input
-                        type="text"
-                        value={city}
-                        onChange={(e) => setCity(e.target.value)}
-                        required
-                    />
-                </label>
+                    <label> Address
+                        <input
+                            className="form-input"
+                            type="text"
+                            value={address}
+                            onChange={(e) => setAddress(e.target.value)}
+                            required
+                        />
+                    </label>
 
-                <label> State
-                    <input
-                        type="text"
-                        value={state}
-                        onChange={(e) => setState(e.target.value)}
-                        required
-                    />
-                </label>
+                    <label> City
+                        <input
+                            className="form-input"
+                            type="text"
+                            value={city}
+                            onChange={(e) => setCity(e.target.value)}
+                            required
+                        />
+                    </label>
 
-                <label> Country
-                    <input
-                        type="text"
-                        value={country}
-                        onChange={(e) => setCountry(e.target.value)}
-                        required
-                    />
-                </label>
+                    <label> State
+                        <input
+                            className="form-input"
+                            type="text"
+                            value={state}
+                            onChange={(e) => setState(e.target.value)}
+                            required
+                        />
+                    </label>
 
-                <label> Price
-                    <input
-                        type="text"
-                        value={price}
-                        onChange={(e) => setPrice(e.target.value)}
-                        required
-                    />
-                </label>
+                    <label> Country
+                        <input
+                            className="form-input"
+                            type="text"
+                            value={country}
+                            onChange={(e) => setCountry(e.target.value)}
+                            required
+                        />
+                    </label>
 
-                <button>Submit</button>
-            </form>
+                    <label> Price
+                        <input
+                            className="form-input"
+                            type="text"
+                            value={price}
+                            onChange={(e) => setPrice(e.target.value)}
+                            required
+                        />
+                    </label>
+
+                    <button
+                        disabled={disabled}
+                        // onClick={() => setDisabled(true)}
+                        >Submit</button>
+                </form>
+            </div>
         </div>
         </>
     )
