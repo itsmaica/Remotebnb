@@ -12,7 +12,7 @@ const asyncHandler = require("express-async-handler");
 //Need below for error validation later on
 // const { handleValidationErrors } = require("../../utils/validation");
 // const { setTokenCookie, restoreUser } = require("../../utils/auth");
-const { Spot, Sequelize } = require("../../db/models");
+const { Spot, Image, Review } = require("../../db/models");
 
 
 // const Op = Sequelize.Op
@@ -29,7 +29,9 @@ const router = express.Router();
 router.get(
     '/',
     asyncHandler(async (req,res) => {
-        const spots = await Spot.findAll()
+        const spots = await Spot.findAll({
+            include: [Image, Review]
+        })
         return res.send(spots)
     })
 );
@@ -39,11 +41,11 @@ router.get(
     '/:spotId',
     asyncHandler(async(req,res) => {
         const { spotId } = req.params;
-        // const oneSpot = await Spot.findByPk(spotId, {
-        //     include: Booking
-        // })
-        const spot = await Spot.findByPk(spotId)
-        return res.json(spot)
+        const oneSpot = await Spot.findByPk(spotId, {
+            include: [Image, Review]
+        })
+        // const spot = await Spot.findByPk(spotId)
+        return res.json(oneSpot)
     })
 )
 
@@ -82,14 +84,96 @@ router.post(
     })
 )
 
-router.delete(
-    'spots/:spotId/delete',
-    asyncHandler(async(req, res) => {
-        console.log("HELLO FROM DELETE ROUTE!!!!!!!! \n\n")
-        const { spotId } = req.params;
-        const deleteThisSpot = await Spot.findByPk(spotId);
-        return deleteThisSpot.destroy();
-    })
-)
+
+
+// router.put(
+//     '/:spotId/edit',
+//     asyncHandler(async(req,res) => {
+//         const { spotId } = req.params
+//         const id = req.params.spotId
+//         const newName = req.body.name
+//         const newDescription = req.body.description
+//         const newGuests = req.body.guests
+//         const newBeds = req.body.beds
+//         const newBaths = req.body.baths
+//         const newAddress = req.body.address
+//         const newCity = req.body.city
+//         const newState = req.body.state
+//         const newCountry = req.body.country
+//         const newPrice = req.body.price
+
+//         const spot = await Spot.findByPk(id)
+//         console.log("what is spot?? \n\n", spot)
+
+//         const {
+//             name, description, guests, beds,
+//             baths, address, city, state, country, price
+//         } = spot
+
+//         if (name !== newName) {
+//             spot.name = newName
+//             await spot.save()
+//         }
+//         if (description !== newDescription) {
+//             spot.description = newDescription
+//             await spot.save()
+//         }
+//         if (guests !== newGuests) {
+//             spot.guests = newGuests
+//             await spot.save()
+//         }
+//         if (beds !== newBeds) {
+//             spot.beds = newBeds
+//             await spot.save()
+//         }
+//         if (baths !== newBaths) {
+//             spot.baths = newBaths
+//             await spot.save()
+//         }
+//         if (address !== newAddress) {
+//             spot.address = newAddress
+//             await spot.save()
+//         }
+//         if (city !== newCity) {
+//             spot.city = newCity
+//             await spot.save()
+//         }
+//         if (state !== newState) {
+//             spot.state = newState
+//             await spot.save()
+//         }
+//         if (country !== newCountry) {
+//             spot.country = newCountry
+//             await spot.save()
+//         }
+//         if (price !== newPrice) {
+//             spot.price = newPrice
+//             await spot.save()
+//         }
+
+//         const updatedSpot = await Spot.findByPk(id)
+
+//         return res.json(updatedSpot)
+
+//     })
+// )
+
+// router.put(
+//     '/:spotId/edit',
+//     asyncHandler(async(req,res) => {
+
+//     })
+// )
+
+// router.delete(
+//     '/:userId/spots/:spotId/delete',
+//     asyncHandler(async(req, res) => {
+//         console.log("HELLO FROM DELETE ROUTE!!!!!!!! \n\n")
+//         const { spotId } = req.params;
+//         const deleteThisSpot = await Spot.findByPk(spotId);
+//         return deleteThisSpot.destroy();
+//     })
+//   )
+
 
 module.exports = router;

@@ -36,7 +36,6 @@ function App() {
           </Route> */}
 
           <Route exact path='/test'>
-            <EditASpot />
           </Route>
 
           {/* See All Spots*/}
@@ -44,14 +43,18 @@ function App() {
             <Spots />
           </Route>
 
+      
+
+          {/* To Form To Edit a spot */}
+          <Route exact path='/users/:userId/spots/:spotId/edit'>
+            <EditASpot />
+          </Route>
+
           {/* The Form To Create a Spot - CreateAForm Page */}
           <Route exact path='/users/:userId/spots/new'>
             <CreateASpot />
           </Route>
 
-          {/* Edit A Spot */}
-          {/* <Route exact path='users/:userId/spots/:spotId/edit'>
-          </Route> */}
 
            {/* Goes to the page where you can see all of your spots and the button to make a new spot*/}
           <Route exact path='/users/:userId/spots'>

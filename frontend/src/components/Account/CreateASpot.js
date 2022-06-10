@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createSpotThunk } from "../../store/spot";
-import {  useHistory, useParams } from "react-router-dom";
+import { createSpotThunk, loadUserSpots } from "../../store/userSpots";
+import {  useHistory,  } from "react-router-dom";
 
 import "./CreateASpot.css"
 
@@ -9,7 +9,7 @@ import "./CreateASpot.css"
 function CreateASpot() {
     // const { userId } = useParams();
 
-    const userId = useSelector((state) => state.session.user.id)
+    const userId = useSelector((state) => state?.session?.user?.id)
 
     console.log("Can I grab the session user? \n\n", userId)
     // console.log("What is user id? create a spot \n\n", userId)
@@ -39,7 +39,8 @@ function CreateASpot() {
             baths, address, city, state, country, price
         }
         console.log("What is the thunk getting?", );
-        dispatch(createSpotThunk(spot));
+        dispatch(createSpotThunk(spot))
+            // .then(() => dispatch(loadUserSpots(userId)))
         history.push(`/users/${userId}/spots`)
 
     }

@@ -2,9 +2,9 @@
 // import { useEffect } from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { deleteSpotThunk } from "../../store/userSpots";
-// import { loadAllSpotsThunk } from "../../store/spot";
+import { loadAllSpotsThunk } from "../../store/spot";
 import { loadUserSpotsThunk } from "../../store/userSpots";
 
 import './ManageSpots.css'
@@ -13,24 +13,16 @@ import './ManageSpots.css'
 function ManageSpots() {
 
     const dispatch = useDispatch()
-
-    const userId = useSelector((state) => state.session.user.id);
+    const history = useHistory()
+    const userId = useSelector((state) => state?.session?.user?.id);
     const userSpots = useSelector((state) => state?.userSpots)
 
     const [isLoaded, setLoaded] = useState(false);
-    console.log("HOw many spots?? \n\n", userSpots)
-
-    // const spotArray = Object.values(userSpots)
-    // console.log('This is spot Array \n\n', spotArray.length)
-
-    console.log("SHow meee length please",Object.values(userSpots).length)
-
 
     useEffect( () => {
-        // window.location.reload
-        dispatch(loadUserSpotsThunk(userId))
-            // .then(() => dispatch((loadUserSpotsThunk(userId))))
-            .then(() => setLoaded(true))
+        dispatch(loadAllSpotsThunk())
+        .then(() => dispatch((loadUserSpotsThunk(userId))))
+        .then(() => setLoaded(true))
     }, [dispatch])
 
     const deleteSpot = (e, userId, spotId) => {
@@ -38,6 +30,12 @@ function ManageSpots() {
         e.preventDefault();
         e.stopPropagation();
         dispatch(deleteSpotThunk(userId, spotId))
+            .then(() => dispatch((loadUserSpotsThunk(userId))))
+    }
+
+    const toEdit = (e, userId, spotId) => {
+        e.preventDefault();
+        history.push(`/users/${userId}/spots/${spotId}/edit`)
     }
 
     if (!isLoaded) {
@@ -70,7 +68,10 @@ function ManageSpots() {
                                 <div>{spot.name}</div>
                             </div>
                             <div>
-                                <button>EDIT</button>
+                                <button
+                                    id={`edit-${spot.id}`}
+                                    onClick={(e) => toEdit(e, userId, spot.id)}
+                                >EDIT</button>
                                 <button
                                     id={`delete-${spot?.id}`}
                                     onClick={(e) => deleteSpot(e, userId, spot.id)}
@@ -79,7 +80,7 @@ function ManageSpots() {
                             <div>{spot.guests}</div>
                             <div>{spot.beds}</div>
                             <div>{spot.baths}</div>
-                            <div>{spot.city}e</div>
+                            <div>{spot.city}</div>
                         </div>
                     </div>
                 </div>
