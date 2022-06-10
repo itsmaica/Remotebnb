@@ -19,7 +19,7 @@ module.exports = {
         lastName: "Lucina",
         username: 'coco_chere',
         email: "chere@aa.io",
-        hashedPassword: bcrypt.hashSync(faker.internet.password()),
+        hashedPassword: 'blueblue',
       },
       {
         profilePic: "https://remotebnb.s3.us-west-1.amazonaws.com/defaultbird.png",
