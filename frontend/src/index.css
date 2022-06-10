@@ -2,10 +2,13 @@
 
 /* User className container to center*/
 .container{
-    height: 100vh;
+    /* height: 100vh; */
     width: 100vw;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
+    box-sizing: border-box;
 }
+
+

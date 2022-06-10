@@ -37,6 +37,16 @@ function ManageSpots() {
         history.push(`/users/${userId}/spots/${spotId}/edit`)
     }
 
+    //Make Pic clickable here
+    // window.onload = function() {
+    //     const spotPicDiv = document.getElementById("spot-pic");
+    //     spotPicDiv.onclick = goToOnePage()
+    // }
+
+    const goToOnePage = (spotId) => {
+        history.push(`/test`);
+    }
+
     if (!isLoaded) {
         return <h1>Loading...</h1>
     } else {
@@ -63,7 +73,10 @@ function ManageSpots() {
                         </div>
                         <div id='user-spots'>
                             <div id='pic-name'>
-                                <div id='spot-pic'>PIC</div>
+                                <div
+                                id='spot-pic'
+                                onClick={(e) => {goToOnePage()}}
+                                >PIC</div>
                                 <div>{spot.name}</div>
                             </div>
                             <div>

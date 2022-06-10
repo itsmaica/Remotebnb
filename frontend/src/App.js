@@ -11,7 +11,7 @@ import ManageSpots from './components/Account/ManageSpots';
 import CreateASpot from './components/Account/CreateASpot';
 import EditASpot from './components/Account/EditSpot';
 import Splash from './components/Splash/Splash';
-
+import OneSpot from './components/Spots/OneSpot';
 
 
 function App() {
@@ -38,8 +38,12 @@ function App() {
           </Route> */}
 
           <Route exact path='/test'>
+            <OneSpot/>
           </Route>
 
+          <Route path='/signup'>
+            <SignupFormPage />
+          </Route>
 
           {/* See All Spots*/}
           <Route exact path='/spots'>
@@ -69,9 +73,6 @@ function App() {
             <Splash />
           </Route>
 
-          <Route path='/signup'>
-            <SignupFormPage />
-          </Route>
 
 
 

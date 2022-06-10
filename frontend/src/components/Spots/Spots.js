@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loadAllSpotsThunk } from "../../store/spot";
 import SpotGridComponent from "./SpotGridComponent";
 
+import "./Spots.css"
 
 function Spots() {
     const dispatch = useDispatch();
@@ -24,14 +25,23 @@ function Spots() {
 
     return(
         <>
-            <h1>Hello?</h1>
-            { spots?.map((spot) => (
-                <div key={spot.id} className='spotGrid'>
-                    <h3>SPOT</h3>
-                    <span><p>{spot.city}</p><p>{spot.state}</p></span>
-                    <SpotGridComponent spotId={spot?.id} />
+            <div className="container">
+
+                <h1>SPOTS</h1>
+                <div id='spots-main'>
+                    { spots?.map((spot) => (
+                            <div
+                                key={spot.id}
+                                className='box'
+                            >
+                                <h3>Spot Name</h3>
+                                <span><p>{spot.city}</p><p>{spot.state}</p></span>
+                                <SpotGridComponent spotId={spot?.id} />
+                            </div>
+                    ))}
+
                 </div>
-            ))}
+            </div>
         </>
     )
 
