@@ -10,6 +10,8 @@ import Spots from './components/Spots/Spots';
 import ManageSpots from './components/Account/ManageSpots';
 import CreateASpot from './components/Account/CreateASpot';
 import EditASpot from './components/Account/EditSpot';
+import Splash from './components/Splash/Splash';
+
 
 
 function App() {
@@ -38,17 +40,18 @@ function App() {
           <Route exact path='/test'>
           </Route>
 
+
           {/* See All Spots*/}
-          <Route exact path='/'>
+          <Route exact path='/spots'>
             <Spots />
           </Route>
 
-      
 
           {/* To Form To Edit a spot */}
           <Route exact path='/users/:userId/spots/:spotId/edit'>
             <EditASpot />
           </Route>
+
 
           {/* The Form To Create a Spot - CreateAForm Page */}
           <Route exact path='/users/:userId/spots/new'>
@@ -61,6 +64,10 @@ function App() {
             <ManageSpots />
           </Route>
 
+          {/* Splash Page */}
+          <Route exact to="/">
+            <Splash />
+          </Route>
 
           <Route path='/signup'>
             <SignupFormPage />
