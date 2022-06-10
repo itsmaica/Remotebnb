@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import * as sessionActions from '../../store/session';
 
-
+import "./ProfileButton.css"
 
 function ProfileButton({ user }) {
+  const history = useHistory()
+
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
 
@@ -14,6 +17,11 @@ function ProfileButton({ user }) {
 
   const userId = user.id
   // console.log("Hello from profile button", user.id)
+
+  // const toManageSpots = (e, userId) => {
+  //   e.preventDefault();
+  //   history.push(`/users/${userId}/spots`)
+  // }
 
   const openMenu = () => {
     if (showMenu) return;
@@ -34,24 +42,28 @@ function ProfileButton({ user }) {
 
   const logout = (e) => {
     e.preventDefault();
-    dispatch(sessionActions.logout());
+    dispatch(sessionActions.logout())
+      .then(() => history.push(`/spots`))
   };
 
   return (
     <>
-      <button onClick={openMenu}>
-        <i className="fas fa-user-circle" />
-      </button>
-      {showMenu && (
-        <ul className="profile-dropdown">
-          <li>{user.username}</li>
-          <li>{user.email}</li>
-          <NavLink exact to={`users/${userId}/spots`}>Manage Spots</NavLink>
-          <li>
-            <button onClick={logout}>Log Out</button>
-          </li>
-        </ul>
-      )}
+      <div>
+          <button onClick={openMenu}>
+            <i className="fas fa-user-circle" />
+          </button>
+          {showMenu && (
+            <ul className="profile-dropdown">
+              <li>{user.username}</li>
+              <li>{user.email}</li>
+              <li><NavLink to={`users/${userId}/spots`}>Manage Spots</NavLink></li>
+              {/* <li><button onClick={toManageSpots}>Manage Spots</button></li> */}
+              <li>
+                <button onClick={logout}>Log Out</button>
+              </li>
+            </ul>
+          )}
+      </div>
     </>
   );
 }

@@ -35,6 +35,10 @@
     background-color: aqua;
 }
 
+#spot-pic:hover{
+    cursor: pointer;
+}
+
 #spot-slots{
     width: 300px;
 }
