@@ -32,7 +32,7 @@ router.get(
     '/',
     asyncHandler(async (req,res) => {
         const spots = await Spot.findAll({
-            include: [Review]
+            include: [Image, Review]
         })
         return res.json(spots);
     })

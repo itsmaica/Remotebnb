@@ -12,7 +12,10 @@ import CreateASpot from './components/Account/CreateASpot';
 import EditASpot from './components/Account/EditSpot';
 import Splash from './components/Splash/Splash';
 import OneSpot from './components/Spots/OneSpot';
+import Loading from './components/LoadingAndPageNotFound/Loading';
 // import Test from './components/Test.js.bak';
+import SplashSpot from './components/Spots/SplashSpot';
+
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -23,6 +26,7 @@ function App() {
 
   return (
     <>
+
       <Navigation isLoaded={isLoaded} />
       {/* <button onClick={() => setShowModal(true)}>Modal</button>
       {showModal && (
@@ -36,10 +40,16 @@ function App() {
             <LoginFormPage />
           </Route> */}
 
-          <Route exact path='/test'>
-            <OneSpot/>
-            {/* <Test /> */}
+          <Route exact path='/text'>
+            <Splash />
+          </Route>
 
+          <Route exact path='/Maica'>
+            {/* <Test /> */}
+            {/* <OneSpot/> */}
+            {/* <Loading />
+             */}
+             <SplashSpot />
           </Route>
 
           <Route path='/signup'>
@@ -49,6 +59,10 @@ function App() {
           {/* See All Spots*/}
           <Route exact path='/spots'>
             <Spots />
+          </Route>
+
+          <Route exact path='/spots/:spotId'>
+            <OneSpot/>
           </Route>
 
 
