@@ -1,0 +1,31 @@
+#s-gallery{
+    height: 300px;
+    width: 300px;
+    background-color: palevioletred;
+    border-radius: 5%;
+}
+
+.s-card{
+    /* height: 400px;
+    width: 450px;
+    border: palegreen solid 3px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.s-bottom{
+    /* same as gallery */
+    width: 300px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.city-rating{
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+}
