@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { createSpotThunk, loadUserSpots } from "../../store/userSpots";
 import {  useHistory,  } from "react-router-dom";
 
-import {createImagesThunk} from "../../store/image"
+// import {createImagesThunk} from "../../store/image"
 import "./CreateASpot.css"
 
 
@@ -23,37 +23,36 @@ function CreateASpot() {
 
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
-    const [guests, setGuests] = useState("2");
-    const [beds, setBeds] = useState("2");
-    const [baths, setBaths] = useState("1");
+    const [guests, setGuests] = useState(1);
+    const [beds, setBeds] = useState(1);
+    const [baths, setBaths] = useState(1);
     const [address, setAddress] = useState("");
     const [city, setCity] = useState("");
     const [state, setState] = useState("")
     const [country, setCountry] = useState("United States");
-    const [price, setPrice] = useState(0);
+    const [price, setPrice] = useState(1);
     const [disabled, setDisabled] = useState(false)
-    const [images, setImages] = useState([]);
+    const [image, setImage] = useState(null);
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         const spot = {
             userId, name, description, guests, beds,
-            baths, address, city, state, country, price, images
+            baths, address, city, state, country, price, image
         }
-        // console.log("What is the thunk getting?", );
-
+        console.log("What is the thunk getting? from handleSubmit CreateSpot.js", spot.image);
 
         dispatch(createSpotThunk(spot))
-        .then(() => dispatch(createImagesThunk(userId)))
+        // .then(() => dispatch(createImagesThunk(spot)))
         .then(() => setDisabled(true))
         history.push(`/users/${userId}/spots`)
-
     }
 
-    const updateFiles = (e) => {
-        const file = e.target.files[0];
-        if (file) setImages(file);
+    const updateFile = (e) => {
+        // const file = e.target.files[0];
+        const file = e.target.file;
+        if (file) setImage(file);
       };
 
     useEffect(() => {
@@ -61,6 +60,9 @@ function CreateASpot() {
     },[isLoaded])
 
 
+    if (!isLoaded) {
+        return <h1>Loading...</h1>
+    } else {
     return(
         <>
         <div className="container">
@@ -169,16 +171,17 @@ function CreateASpot() {
                         />
                     </label>
 
-                    {/* <label>
-                    <input type="file" onChange={updateFile} />
-                    </label> */}
                     <label>
+                        Upload a Picture
+                    <input type="file" onChange={updateFile} />
+                    </label>
+                    {/* <label>
                     Multiple Upload
                     <input
                     type="file"
                     multiple
                     onChange={updateFiles} />
-                    </label>
+                    </label> */}
 
                     <button
                         disabled={disabled}
@@ -189,6 +192,6 @@ function CreateASpot() {
         </div>
         </>
     )
+  }
 }
-
 export default CreateASpot

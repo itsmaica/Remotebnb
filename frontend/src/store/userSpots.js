@@ -43,7 +43,7 @@ export const loadUserSpotsThunk = (userId) => async (dispatch) => {
 export const createSpotThunk = (spot) => async (dispatch) => {
     const {
         userId, name, description, guests, beds,
-        baths, address, city, state, country, images
+        baths, address, city, state, country, image
     } = spot;
 
     console.log("WHAT IS BEING CREATED WITH THAT IMAGE? userSpots.js -spot-\n\n", spot)
@@ -60,13 +60,15 @@ export const createSpotThunk = (spot) => async (dispatch) => {
     formData.append("city", city)
     formData.append("state", state)
     formData.append("country", country)
-    formData.append("images", images)
+    formData.append("image", image)
 
-    if (images && images.length !== 0) {
-        for (let i = 0; i < images.length; i++) {
-          formData.append("images", images[i]);
-        }
-    }
+    // if (images && images.length !== 0) {
+    //     for (let i = 0; i < images.length; i++) {
+    //       formData.append("images", images[i]);
+    //     }
+    // }
+
+    if (image) formData.append("image", image);
 
     // console.log("CREATE SPOT THUNK \n\n")
     const response = await csrfFetch(`/api/spots/new`, {
@@ -137,7 +139,7 @@ const userSpotsReducer = (state=initialState, action) => {
             return newState
         case CREATE_SPOT:
             console.log("action.spot.id??", action.spot)
-            return newState = {...state.spots, [action.spot]: action.spot};
+            return newState = {...state.spots, [action.spot.id]: action.spot};
             // return { ...state, spot: action.payload };
         case DELETE_SPOT:
             newState = {...state};

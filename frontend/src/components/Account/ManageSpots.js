@@ -6,10 +6,11 @@ import { NavLink, useHistory } from "react-router-dom";
 import { deleteSpotThunk } from "../../store/userSpots";
 import { loadAllSpotsThunk } from "../../store/spot";
 import { loadUserSpotsThunk } from "../../store/userSpots";
-
+import { loadAllImagesThunk } from "../../store/image";
 import './ManageSpots.css'
 
 function ManageSpots() {
+
 
     const dispatch = useDispatch()
     const history = useHistory()
@@ -19,7 +20,8 @@ function ManageSpots() {
     const [isLoaded, setLoaded] = useState(false);
 
     useEffect( () => {
-        dispatch(loadAllSpotsThunk())
+        dispatch(loadAllSpotsThunk(userId))
+        .then(() => dispatch(loadAllImagesThunk()))
         .then(() => dispatch((loadUserSpotsThunk(userId))))
         .then(() => setLoaded(true))
     }, [dispatch])
