@@ -1,6 +1,7 @@
 const AWS = require("aws-sdk");
 // name of your bucket here
-const remotebnb = "aws-s3-pern-demo";
+const NAME_OF_BUCKET = process.env.AWS_BUCKET_NAME;
+
 
 const multer = require("multer");
 
@@ -19,7 +20,7 @@ const singlePublicFileUpload = async (file) => {
   // name of the file in your S3 bucket will be the date in ms plus the extension name
   const Key = new Date().getTime().toString() + path.extname(originalname);
   const uploadParams = {
-    Bucket: remotebnb,
+    Bucket: NAME_OF_BUCKET,
     Key,
     Body: buffer,
     ACL: "public-read",
@@ -31,6 +32,7 @@ const singlePublicFileUpload = async (file) => {
 };
 
 const multiplePublicFileUpload = async (files) => {
+  console.log("WHAT IS FILES? from awsS3.js \n\n", files)
   return await Promise.all(
     files.map((file) => {
       return singlePublicFileUpload(file);
@@ -46,7 +48,7 @@ const multiplePublicFileUpload = async (files) => {
 //   // name of the file in your S3 bucket will be the date in ms plus the extension name
 //   const Key = new Date().getTime().toString() + path.extname(originalname);
 //   const uploadParams = {
-//     Bucket: remotebnb,
+//     Bucket:
 //     Key,
 //     Body: buffer,
 //   };
@@ -68,7 +70,7 @@ const multiplePublicFileUpload = async (files) => {
 //   let fileUrl;
 //   if (key) {
 //     fileUrl = s3.getSignedUrl("getObject", {
-//       Bucket: remotebnb,
+//       Bucket:
 //       Key: key,
 //     });
 //   }

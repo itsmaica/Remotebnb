@@ -60,7 +60,7 @@ function ManageSpots() {
                 //<h1>{spot.id}</h1>
                 // console.log(spot.name)
                 <>
-                <div id='spot-slots' key={spot.id}>
+                <div id='spot-slots' key={spot?.id}>
                     <div className=''>
                         <div className='heading-list'>
                             <p>Spot</p>
@@ -76,22 +76,22 @@ function ManageSpots() {
                                 id='spot-pic'
                                 onClick={(e) => {goToOnePage()}}
                                 >PIC</div>
-                                <div>{spot.name}</div>
+                                <div>{spot?.name}</div>
                             </div>
                             <div>
                                 <button
-                                    id={`edit-${spot.id}`}
-                                    onClick={(e) => toEdit(e, userId, spot.id)}
+                                    id={`edit-${spot?.id}`}
+                                    onClick={(e) => toEdit(e, userId, spot?.id)}
                                 >EDIT</button>
                                 <button
                                     id={`delete-${spot?.id}`}
-                                    onClick={(e) => deleteSpot(e, userId, spot.id)}
+                                    onClick={(e) => deleteSpot(e, userId, spot?.id)}
                                 >DELETE</button>
                             </div>
-                            <div>{spot.guests}</div>
-                            <div>{spot.beds}</div>
-                            <div>{spot.baths}</div>
-                            <div>{spot.city}</div>
+                            <div>{spot?.guests}</div>
+                            <div>{spot?.beds}</div>
+                            <div>{spot?.baths}</div>
+                            <div>{spot?.city}</div>
                         </div>
                     </div>
                 </div>

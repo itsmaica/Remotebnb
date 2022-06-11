@@ -12,8 +12,7 @@ import CreateASpot from './components/Account/CreateASpot';
 import EditASpot from './components/Account/EditSpot';
 import Splash from './components/Splash/Splash';
 import OneSpot from './components/Spots/OneSpot';
-
-
+// import Test from './components/Test.js.bak';
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -39,6 +38,8 @@ function App() {
 
           <Route exact path='/test'>
             <OneSpot/>
+            {/* <Test /> */}
+
           </Route>
 
           <Route path='/signup'>

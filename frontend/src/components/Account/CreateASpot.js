@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { createSpotThunk, loadUserSpots } from "../../store/userSpots";
 import {  useHistory,  } from "react-router-dom";
 
+import {createImagesThunk} from "../../store/image"
 import "./CreateASpot.css"
 
 
@@ -11,7 +12,7 @@ function CreateASpot() {
 
     const userId = useSelector((state) => state?.session?.user?.id)
 
-    console.log("Can I grab the session user? \n\n", userId)
+    // console.log("Can I grab the session user? \n\n", userId)
     // console.log("What is user id? create a spot \n\n", userId)
 
     const history = useHistory();
@@ -31,21 +32,29 @@ function CreateASpot() {
     const [country, setCountry] = useState("United States");
     const [price, setPrice] = useState(0);
     const [disabled, setDisabled] = useState(false)
+    const [images, setImages] = useState([]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         const spot = {
             userId, name, description, guests, beds,
-            baths, address, city, state, country, price
+            baths, address, city, state, country, price, images
         }
-        console.log("What is the thunk getting?", );
+        // console.log("What is the thunk getting?", );
+
+
         dispatch(createSpotThunk(spot))
-            // .then(() => dispatch(loadUserSpots(userId)))
-            .then(() => setDisabled(true))
+        .then(() => dispatch(createImagesThunk(userId)))
+        .then(() => setDisabled(true))
         history.push(`/users/${userId}/spots`)
 
     }
+
+    const updateFiles = (e) => {
+        const file = e.target.files[0];
+        if (file) setImages(file);
+      };
 
     useEffect(() => {
         setIsLoaded(true)
@@ -158,6 +167,17 @@ function CreateASpot() {
                             onChange={(e) => setPrice(e.target.value)}
                             required
                         />
+                    </label>
+
+                    {/* <label>
+                    <input type="file" onChange={updateFile} />
+                    </label> */}
+                    <label>
+                    Multiple Upload
+                    <input
+                    type="file"
+                    multiple
+                    onChange={updateFiles} />
                     </label>
 
                     <button

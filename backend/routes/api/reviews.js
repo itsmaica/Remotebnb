@@ -45,35 +45,42 @@ router.post(
 router.put(
     '/:reviewId/',
     asyncHandler(async(req,res) => {
-        // console.log("BODY \n\n", req.body)
+        console.log("BODY \n\n", req.body)
         // console.log("Hello from the put router!!!\n\n")
-        const { reviewId } = req.params;
+        // const { reviewId } = req.params;
+        // console.log("What is {reviewId }", reviewId)
         // const { userId } = req.params
-        // const id = reviewId
+
+        const id = req.params.reviewId
+        console.log("Need Id", id)
+
         // const id = req.body.id
         // console.log("ID IS UNDEFINED", id)
         // const userId = req.body.userId
         // const spotId = req.body.spotId
         const newReview = req.body.review
+        console.log("newReview \n\n", newReview)
         const newRating = req.body.rating
+        console.log("newRatng\n\n", newRating )
 
-        const reviewOne = Review.findByPk(reviewId);
-        console.log("reviewView.save is not func??", reviewOne)
+        const rev = await Review.findByPk(id);
+        console.log("reviewView.save is not func??", rev)
 
-        const { review, rating } = reviewOne;
+        const { review, rating } = rev;
 
         if (review !== newReview){
-            reviewOne.review = newReview;
-            await reviewOne.save()
+            rev.review = newReview;
+            await rev.save()
         }
         if (rating !== newRating){
-            reviewOne.rating = newRating;
-            await reviewOne.save()
+            rev.rating = newRating;
+            await rev.save()
         }
 
-        const updatedReview = await Spot.findByPk(id)
+        const newRev = await Review.findByPk(id)
 
-        return res.json(updatedReview);
+        return res.json(newRev);
+        // res.send("HELLO")
     })
 );
 

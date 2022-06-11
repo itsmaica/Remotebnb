@@ -96,7 +96,7 @@ router.put(
       const newPrice = req.body.price
 
       const spot = await Spot.findByPk(id)
-      // console.log("what is spot?? \n\n", spot)
+      console.log("what is spot?? \n\n", spot)
 
       const {
           name, description, guests, beds,

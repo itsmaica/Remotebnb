@@ -43,7 +43,7 @@ function EditASpot() {
         e.preventDefault()
         const newSpot = {
             userId, name, description, guests, beds,
-            baths, address, city, state, country, price
+            baths, address, city, state, country, price,
         }
         // console.log("WHAT IS THE FORM SENDING? \n\n", newSpot)
         // console.log("WHAT IS THE USERID THE FORM IS SENDING? \n\n", userId)
