@@ -15,6 +15,15 @@ const Op = Sequelize.Op
 
 // Get all the Images for a Spot - 'api/images/'
 //layer this with '/api/spots/spotId/images'
+
+router.get(
+    '/',
+    asyncHandler(async(req,res) => {
+        const images = await Image.findAll();
+        return res.json(images)
+    })
+)
+
 router.get(
     '/:spotId',
     asyncHandler(async(req,res) => {

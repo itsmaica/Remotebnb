@@ -15,6 +15,7 @@ const s3 = new AWS.S3({ apiVersion: "2006-03-01" });
 // --------------------------- Public UPLOAD ------------------------
 
 const singlePublicFileUpload = async (file) => {
+  console.log("What is file from singlePublicFileUpload \n\n", file)
   const { originalname, mimetype, buffer } = await file;
   const path = require("path");
   // name of the file in your S3 bucket will be the date in ms plus the extension name
@@ -32,7 +33,7 @@ const singlePublicFileUpload = async (file) => {
 };
 
 const multiplePublicFileUpload = async (files) => {
-  console.log("WHAT IS FILES? from awsS3.js \n\n", files)
+  // console.log("WHAT IS FILES? from awsS3.js \n\n", files)
   return await Promise.all(
     files.map((file) => {
       return singlePublicFileUpload(file);

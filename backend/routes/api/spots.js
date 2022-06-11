@@ -5,8 +5,10 @@ const asyncHandler = require("express-async-handler");
 
 //Might upload to images on a different form altogether!
 const {
-    multipleMulterUpload,
-    multiplePublicFileUpload
+    // multipleMulterUpload,
+    // multiplePublicFileUpload,
+    singleMulterUpload,
+    singlePublicFileUpload
 } = require ("../../awsS3.js")
 
 //Need below for error validation later on
@@ -24,8 +26,6 @@ const router = express.Router();
 // const validateSpot = [
 //     check("")
 // ]
-
-
 
 //Get all the spots
 router.get(
@@ -107,10 +107,10 @@ const validateSPot = [
 //Create A Spot - MUST VALIDATE CREATION
 router.post(
     '/new',
-    multipleMulterUpload("images"),
+    singleMulterUpload("image"),
     validateSPot,
     asyncHandler(async(req, res) => {
-        // console.log("HELLO REQ.BODY \n\n",req.body)
+        console.log("HELLO REQ.BODY -from spots.js api--\n\n",req.body)
         const spot = await Spot.create({
             userId: req.body.userId,
             name: req.body.name,
@@ -125,27 +125,36 @@ router.post(
             price: req.body.price,
         })
 
+        console.log("What is req.file??? \n\n", req.file)
         //2.
-        // console.log("What is spot \n\n", spot)
+        // not accepting the return?
+        console.log("What is req.file from request? -- this is going to aws \n\n", spot)
+        const imgFromAws = await singlePublicFileUpload(req.file);
+        console.log("FROM AWS--in spots.js api-- \n\n", imgFromAws)
 
-        const imgFromAws = await multiplePublicFileUpload(req.files);
-        console.log("FROM AWS-- \n\n", imgFromAws)
 
+        const spotpic = await Image.create({
+            spotId: spot.id,
+            url: imgFromAws
+        })
 
         //3.
         // await Image.create(spot.id )
-        const arr = [];
+        // const arr = [];
 
-        for (let i = 0; i < imgFromAws.length; i++) {
-            let spotpic = await Image.create({
-                spotId: spot.id,
-                url: imgFromAws[i]
-                // url: req.body
-            })
-            arr.push(spotpic);
-        }
+        // for (let i = 0; i < imgFromAws.length; i++) {
+        //     let spotpic = await Image.create({
+        //         spotId: spot.id,
+        //         url: imgFromAws[i]
+        //         // url: req.body
+        //     })
+        //     arr.push(spotpic);
+        // }
 
-        return res.json(spot)
+        return res.json({
+            spot,
+            spotpic
+        })
     })
 )
 
