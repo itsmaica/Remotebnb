@@ -1,0 +1,18 @@
+#spots-main {
+  /* height: 400px; */
+  /* background-color: palevioletred; */
+  box-sizing: border-box;
+  display: grid;
+  justify-items: center;
+  /* justify-content: center; */
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  width: 90%;
+  row-gap: 30px;
+  column-gap: 30px;
+}
+
+.box {
+  background-color: paleturquoise;
+  width: 200px;
+  height: 200px;
+}

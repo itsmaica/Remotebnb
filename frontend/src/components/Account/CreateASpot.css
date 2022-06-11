@@ -4,3 +4,21 @@
     justify-content: center;
     flex-direction: column;
 }
+
+.form-container{
+    border: palevioletred solid 3px;
+    width: 70%;
+}
+
+.form-input{
+    height: 30px;
+    font-size: 25px;
+}
+
+label{
+    font-size: 25px;
+}
+
+.form-container-two{
+    background-color: palevioletred;
+}

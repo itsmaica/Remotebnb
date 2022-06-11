@@ -17,6 +17,7 @@ function EditASpot() {
     const spot = userSpots[spotId]
 
     const [isLoaded, setIsLoaded] = useState(false)
+    const [disabled, setDisabled] = useState(false);
 
 
     useEffect(() => {
@@ -25,7 +26,7 @@ function EditASpot() {
         .then(() => setIsLoaded(true))
     }, [dispatch])
 
-  
+
 
     const [name, setName] = useState(spot?.name);
     const [description, setDescription] = useState(spot?.description);
@@ -42,14 +43,15 @@ function EditASpot() {
         e.preventDefault()
         const newSpot = {
             userId, name, description, guests, beds,
-            baths, address, city, state, country, price
+            baths, address, city, state, country, price,
         }
-        console.log("WHAT IS THE FORM SENDING? \n\n", newSpot)
-        console.log("WHAT IS THE USERID THE FORM IS SENDING? \n\n", userId)
-        console.log("WHAT SPOT ID IS THE FORM SENDING", spot.id)
+        // console.log("WHAT IS THE FORM SENDING? \n\n", newSpot)
+        // console.log("WHAT IS THE USERID THE FORM IS SENDING? \n\n", userId)
+        // console.log("WHAT SPOT ID IS THE FORM SENDING", spot.id)
         dispatch(editSpotThunk(newSpot, userId, spot.id))
-            .then(() => dispatch(loadAllSpotsThunk()))
-            .then(() => dispatch(loadUserSpotsThunk(userId)))
+            .then(() => setDisabled(true))
+            // .then(() => dispatch(loadAllSpotsThunk()))
+            // .then(() => dispatch(loadUserSpotsThunk(userId)))
             .then(() => history.push(`/users/${userId}/spots`))
     }
 
@@ -58,12 +60,14 @@ function EditASpot() {
     } else {
         return(
             <>
+            <div className="container">
             <h1>Edit Your Spot</h1>
-            <div>
+            <div className="form-container-two">
                 <form onSubmit={handleSubmit} className='form'>
                 <h3>Change Your Spot Details!</h3>
                     <label> Name
                         <input
+                            className="form-input"
                             type="text"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
@@ -73,6 +77,7 @@ function EditASpot() {
 
                     <label> Description
                         <input
+                            className="form-input"
                             type="text"
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
@@ -82,6 +87,7 @@ function EditASpot() {
 
                     <label> Guests
                         <input
+                            className="form-input"
                             type="text"
                             value={guests}
                             onChange={(e) => setGuests(e.target.value)}
@@ -91,6 +97,7 @@ function EditASpot() {
 
                     <label> Beds
                         <input
+                            className="form-input"
                             type="text"
                             value={beds}
                             onChange={(e) => setBeds(e.target.value)}
@@ -100,6 +107,7 @@ function EditASpot() {
 
                     <label> Baths
                         <input
+                            className="form-input"
                             type="text"
                             value={baths}
                             onChange={(e) => setBaths(e.target.value)}
@@ -109,6 +117,7 @@ function EditASpot() {
 
                     <label> Address
                         <input
+                            className="form-input"
                             type="text"
                             value={address}
                             onChange={(e) => setAddress(e.target.value)}
@@ -118,6 +127,7 @@ function EditASpot() {
 
                     <label> City
                         <input
+                            className="form-input"
                             type="text"
                             value={city}
                             onChange={(e) => setCity(e.target.value)}
@@ -127,6 +137,7 @@ function EditASpot() {
 
                     <label> State
                         <input
+                            className="form-input"
                             type="text"
                             value={state}
                             onChange={(e) => setState(e.target.value)}
@@ -136,6 +147,7 @@ function EditASpot() {
 
                     <label> Country
                         <input
+                            className="form-input"
                             type="text"
                             value={country}
                             onChange={(e) => setCountry(e.target.value)}
@@ -145,6 +157,7 @@ function EditASpot() {
 
                     <label> Price
                         <input
+                            className="form-input"
                             type="text"
                             value={price}
                             onChange={(e) => setPrice(e.target.value)}
@@ -154,6 +167,7 @@ function EditASpot() {
 
                     <button>Submit</button>
                 </form>
+            </div>
             </div>
             </>
         )

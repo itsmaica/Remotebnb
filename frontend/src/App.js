@@ -10,8 +10,9 @@ import Spots from './components/Spots/Spots';
 import ManageSpots from './components/Account/ManageSpots';
 import CreateASpot from './components/Account/CreateASpot';
 import EditASpot from './components/Account/EditSpot';
-
-
+import Splash from './components/Splash/Splash';
+import OneSpot from './components/Spots/OneSpot';
+// import Test from './components/Test.js.bak';
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -36,19 +37,26 @@ function App() {
           </Route> */}
 
           <Route exact path='/test'>
+            <OneSpot/>
+            {/* <Test /> */}
+
+          </Route>
+
+          <Route path='/signup'>
+            <SignupFormPage />
           </Route>
 
           {/* See All Spots*/}
-          <Route exact path='/'>
+          <Route exact path='/spots'>
             <Spots />
           </Route>
 
-      
 
           {/* To Form To Edit a spot */}
           <Route exact path='/users/:userId/spots/:spotId/edit'>
             <EditASpot />
           </Route>
+
 
           {/* The Form To Create a Spot - CreateAForm Page */}
           <Route exact path='/users/:userId/spots/new'>
@@ -61,10 +69,11 @@ function App() {
             <ManageSpots />
           </Route>
 
-
-          <Route path='/signup'>
-            <SignupFormPage />
+          {/* Splash Page */}
+          <Route exact to="/">
+            <Splash />
           </Route>
+
 
 
 

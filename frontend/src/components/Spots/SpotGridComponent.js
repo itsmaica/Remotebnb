@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { loadAllImagesThunk } from "../../store/image"
 
 function SpotGridComponent({spotId}) {
-    console.log("Spot id \n\n\ ",  spotId)
+    // console.log("Spot id \n\n\ ",  spotId)
 
     const dispatch = useDispatch()
     // const images = useSelector((state) => state?.images)
@@ -15,12 +15,12 @@ function SpotGridComponent({spotId}) {
 
     return(
         <>
-            <div>
+            {/* <div>
                 <p>Images go here later</p>
                 <div>
                     {/* <img src={images[0]}/> */}
-                </div>
-            </div>
+                {/* </div>
+            </div> */}
         </>
     )
 }

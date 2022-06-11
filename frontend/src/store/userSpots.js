@@ -14,6 +14,7 @@ export const loadUserSpots = (userSpots) => ({
 export const createSpot = (spot) => ({
     type: CREATE_SPOT,
     spot
+    // payload: spot
 })
 
 export const deleteSpot = (spot) => ({
@@ -40,19 +41,53 @@ export const loadUserSpotsThunk = (userId) => async (dispatch) => {
 
 //Create a spot
 export const createSpotThunk = (spot) => async (dispatch) => {
+    const {
+        userId, name, description, guests, beds,
+        baths, address, city, state, country, images
+    } = spot;
+
+    console.log("WHAT IS BEING CREATED WITH THAT IMAGE? userSpots.js -spot-\n\n", spot)
+
+    const formData = new FormData();
+
+    formData.append("userId", userId)
+    formData.append("name", name)
+    formData.append("description", description)
+    formData.append("guests", guests)
+    formData.append("beds", beds)
+    formData.append("baths", baths)
+    formData.append("address", address)
+    formData.append("city", city)
+    formData.append("state", state)
+    formData.append("country", country)
+    formData.append("images", images)
+
+    if (images && images.length !== 0) {
+        for (let i = 0; i < images.length; i++) {
+          formData.append("images", images[i]);
+        }
+    }
+
     // console.log("CREATE SPOT THUNK \n\n")
     const response = await csrfFetch(`/api/spots/new`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(spot)
+        headers: {
+            "Content-Type": "multipart/form-data"
+        },
+        body: formData,
     });
 
+    console.log("My created spot and image --after csrfFetch-- \n\n",response)
+
     if (response.ok) {
-        const spot = await response.json();
-        dispatch(createSpot(spot));
-        return spot;
+        // const spot = await response.json();
+        // dispatch(createSpot(spot));
+        // return spot;
+        const data = await response.json();
+        console.log("What is data? if res.ok \n\n", data)
+        dispatch(createSpot(data.spot));
     }
-    return response;
+    return response
 }
 
 // Delete Thunk
@@ -101,7 +136,9 @@ const userSpotsReducer = (state=initialState, action) => {
             })
             return newState
         case CREATE_SPOT:
-            return newState = {...state.spots, [action.spot.id]: action.spot};
+            console.log("action.spot.id??", action.spot)
+            return newState = {...state.spots, [action.spot]: action.spot};
+            // return { ...state, spot: action.payload };
         case DELETE_SPOT:
             newState = {...state};
                 const id = action.spot.id
@@ -109,7 +146,7 @@ const userSpotsReducer = (state=initialState, action) => {
             return newState
         case EDIT_SPOT:
             newState = {...state}
-            newState.spot = action.update
+            newState[action.update.id] = action.update
             return newState
         default:
             return state
