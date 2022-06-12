@@ -1,17 +1,27 @@
 #rev-modal{
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    flex-direction: column;
+    flex-direction:column;
+    overflow-y: scroll;
+    width: 50h;
+    height: 70vh;
+    display: flex;
+    scroll-snap-type: y mandatory;
 }
 
 #review-c-m{
     /* background-color: plum; */
-    width: 50vw;
+    width: 100%;
+    height: 100%;
     /* height: 50vh; */
     display: flex;
-    overflow-y: scroll;
-    overflow-x: hidden;
+    /* overflow-y: scroll; */
+    /* overflow-x: hidden; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 

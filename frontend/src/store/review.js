@@ -48,7 +48,7 @@ export const getReviewThunk = (reviewId) => async(dispatch) => {
 };
 
 export const createReviewThunk = (spotId, review) => async(dispatch) => {
-    console.log("Hello from create review thunk, what is review? \n\n")
+    // console.log("Hello from create review thunk, what is review---------------------? \n\n", spotId)
     const response = await csrfFetch(`/api/reviews/${spotId}/new`, {
         method: 'POST',
         headers: { 'Content-Type':'application/json' },
@@ -71,16 +71,28 @@ export const reviewReducer = (state=initialState, action) => {
     let newState;
     switch(action.type) {
         case LOAD_SPOT_REVIEWS:
-            newState = {...state};
-            newState["spotReviews"] = action.reviews;
+            // newState = {...state};
+            // newState["spotReviews"] = action.reviews;
+            // newState = { ...state, ...action.reviews};
+
+            newState = {...state}
+            action.reviews.forEach(review => {
+                newState[review.id] = review
+            })
+
             return newState;
         case GET_REVIEW:
             newState = {...state};
             newState = {...state, ["review"]: action.review};
             return newState;
         case CREATE_REVIEW:
-            newState = {...state};
-            newState = {...state, ...action.review}
+            // newState = {...state};
+            // newState = {...state, ...action.review}
+            // newState = {...state}
+            // action.reviews.forEach(review => {
+            //     newState[review.id] = review
+            // })
+
             // newState = {...state.reviews.spotReviews, ...action.review}
 
             // newState = {...state.reviews['spotReviews'], ...action.review}
@@ -95,7 +107,9 @@ export const reviewReducer = (state=initialState, action) => {
 
             // newState = {...state, [action.payload.id]: action.payload.review}
 
-            console.log('how to get my review in here', newState)
+            newState={...state, [action.review.id]: action.review}
+
+            // console.log('how to get my review in here', newState)
             // console.log("What is happening in the reducer? --action.payload", action.review.id )
             return newState;
         default:

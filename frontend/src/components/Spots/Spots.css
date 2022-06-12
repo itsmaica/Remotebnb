@@ -21,11 +21,12 @@
   height: 100%; */
 }
 
-#s-gallery{
+#s-gallery-y{
   height: 245px;
   width: 245px;
   overflow-y: hidden;
   overflow-x: auto;
+  scroll-snap-type: x mandatory;
   background-color: palevioletred;
   border-radius: 5%;
   display: flex;
@@ -33,7 +34,7 @@
   align-items: center;
 }
 
-.g-con{
+.g-con-y{
   height: 245px;
   width: 245px;
   border-radius: 5%;
@@ -41,13 +42,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /* object-fit: scale-down; */
+  object-fit: cover;
 }
 
-.g-img{
+.g-img-y{
   object-fit: cover;
-  height:245px;
-  width: 245px;
+  /* height:245px;
+  width: 245px; */
+  /* height: 100%; */
+  /* width: 100%; */
 }
 
 .g-img:hover{

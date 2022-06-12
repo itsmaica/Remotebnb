@@ -3,15 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { createReviewThunk, LoadSpotReviewsThunk } from "../../store/review";
 import Loading from "../LoadingAndPageNotFound/Loading";
 
-
+import './ReviewForm.css'
 function ReviewForm({spotId}){
 
+    // const { spotId } = useParams()
     // console.log('What spot are you writing a review for? --spotId',spotId)
 
     const dispatch = useDispatch();
     const userId = useSelector((state) => state?.session?.user?.id)
-    const spotName = useSelector((state) => state?.reviews?.spotReviews[0]?.Spot?.name)
-    const id = useSelector((state) => state?.reviews?.spotReviews[0]?.Spot?.id)
+    const spotName = useSelector((state) => state?.reviews[0]?.Spot?.name)
+    // const id = useSelector((state) => state?.reviews[0]?.Spot?.id)
 
     // const id = useSelector((state) => state?.spot?.id)
     // console.log("what is id", id)
@@ -21,9 +22,10 @@ function ReviewForm({spotId}){
     const [review, setReview] = useState("")
     const [rating, setRating] = useState(5)
     // const [rating, setRating] = useState(5)
-    const handleSubmit = (e, spotId) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        const rev = { review, userId, spotId:id, rating }
+        const rev = { review, userId, spotId:spotId, rating }
+        // console.log('C-R-E-A-T-E --- \n\n', spotId)
         dispatch(createReviewThunk(spotId, rev))
             // .then(() => dispatch(LoadSpotReviewsThunk(spotId)))
     }
