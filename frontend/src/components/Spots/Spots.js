@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { useHistory } from "react-router-dom";
 import { loadAllSpotsThunk } from "../../store/spot";
-import SplashSpot from "./SplashSpot";
-import SpotGridComponent from "./SplashSpot";
+// import SplashSpot from "./SplashSpot";
+// import SpotGridComponent from "./SplashSpot";
 import Loading from "../../components/LoadingAndPageNotFound/Loading"
+import { useHistory } from "react-router-dom";
 
 import "./Spots.css"
 
+
 function Spots() {
     const dispatch = useDispatch();
-    // const history = useHistory();
+    const history = useHistory();
 
     const [isLoaded, setIsLoaded] = useState(false);
 
@@ -28,6 +29,10 @@ function Spots() {
             .then(() => setIsLoaded(true));
     }, [dispatch])
 
+    const goToOnePage = (e, spotId) => {
+        history.push(`/spots/${spotId}`)
+    }
+
 
     if (!isLoaded) {
         return <Loading />
@@ -40,18 +45,17 @@ function Spots() {
                     <h1>SPOTS</h1>
                     <div id='spots-main'>
                         { spots?.map((spot) => (
-                            <>
-                                <div key={spot.id} className='box'>
+                                <div key={spot?.id} className='box'>
                                         <div className='s-card'>
                                             <div id='s-gallery'>
                                                 { spot?.Images?.reverse().map((image) => (
-                                                    <>
-                                                        <div className='g-con' key={image?.id}>
-                                                            {/* {console.log(image?.id)} */}
-
-                                                            <img className='g-img'src={image?.url}/>
+                                                        <div
+                                                            className='g-con' key={image?.id}>
+                                                            <img
+                                                                className='g-img'src={image?.url}
+                                                                onClick={(e) => goToOnePage(e, spot?.id)}
+                                                            />
                                                         </div>
-                                                    </>
                                                 ))}
                                             </div>
 
@@ -65,14 +69,12 @@ function Spots() {
                                                     {/* <p>{spot?.Reviews?.review?.rating}</p> */}
                                                 </div>
                                                 <div>
-                                                    <p>{spot.price}</p>
+                                                    <p>{spot.price} night</p>
                                                 </div>
                                             </div>
                                         </div>
                                 </div>
-                            </>
                         ))}
-
                     </div>
                 </div>
             </>

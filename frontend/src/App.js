@@ -15,6 +15,9 @@ import OneSpot from './components/Spots/OneSpot';
 import Loading from './components/LoadingAndPageNotFound/Loading';
 // import Test from './components/Test.js.bak';
 import SplashSpot from './components/Spots/SplashSpot';
+// import Reviews from './components/Reviews/Reviews';
+
+
 
 function App() {
   const dispatch = useDispatch();
@@ -28,20 +31,20 @@ function App() {
     <>
 
       <Navigation isLoaded={isLoaded} />
-      {/* <button onClick={() => setShowModal(true)}>Modal</button>
+      <button onClick={() => setShowModal(true)}>Modal</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <h1>Hello I am a Modal</h1>
         </Modal>
-      )} */}
+      )}
       {isLoaded && (
         <Switch>
           {/* <Route path="/login" >
             <LoginFormPage />
           </Route> */}
 
-          <Route exact path='/text'>
-            <Splash />
+          <Route exact path='/test'>
+            {/* <Splash /> */}
           </Route>
 
           <Route exact path='/Maica'>

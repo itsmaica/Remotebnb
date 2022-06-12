@@ -1,7 +1,7 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
 
-const { Spot, Image, Review } = require("../../db/models");
+const { Review, User } = require("../../db/models");
 
 const router = express.Router();
 
@@ -14,12 +14,16 @@ router.get(
     })
 )
 
-//Get Reviews for One Spot
+
+
+//Get One Review
 router.get(
     '/:reviewId',
     asyncHandler(async(req,res) => {
         const { reviewId } = req.params;
-        const oneReview = await Review.findByPk(reviewId);
+        const oneReview = await Review.findByPk(reviewId, {
+            include: User
+        });
         return res.json(oneReview);
     })
 );

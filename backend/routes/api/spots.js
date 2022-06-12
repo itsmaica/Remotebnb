@@ -5,158 +5,159 @@ const asyncHandler = require("express-async-handler");
 
 //Might upload to images on a different form altogether!
 const {
-    // multipleMulterUpload,
-    // multiplePublicFileUpload,
-    singleMulterUpload,
-    singlePublicFileUpload
-} = require ("../../awsS3.js")
+  // multipleMulterUpload,
+  // multiplePublicFileUpload,
+  singleMulterUpload,
+  singlePublicFileUpload
+} = require("../../awsS3.js");
 
 //Need below for error validation later on
 const { handleValidationErrors } = require("../../utils/validation");
 // const { setTokenCookie, restoreUser } = require("../../utils/auth");
-const { Spot, Image, Review } = require("../../db/models");
+const { Spot, Image, Review, User } = require("../../db/models");
 const { check } = require("express-validator");
-
 
 // const Op = Sequelize.Op
 
 const router = express.Router();
 
-// need to write validations for spots
-// const validateSpot = [
-//     check("")
-// ]
+const validateSPot = [
+  check("name")
+    .notEmpty({ checkFalsey: true })
+    .withMessage("Spot name cannot be blank"),
+  check("description")
+    .notEmpty({ checkFalsey: true })
+    // .isLength({ min: 10})
+    // .withMessage('Please enter a description of your spot that is longer than 10 words name cannot be blank'),
+    .withMessage(
+      "Please enter a description of your spot name cannot be blank."
+    ),
+  check("guests")
+    .notEmpty()
+    .isInt()
+    .withMessage("Please provide number of guests."),
+  check("beds")
+    .notEmpty()
+    .isInt()
+    .withMessage("Please provide number of beds."),
+  check("guests")
+    .notEmpty({ checkFalsey: true })
+    .isInt()
+    .withMessage("Please provide number of guests."),
+  check("baths")
+    .notEmpty({ checkFalsey: true })
+    .isInt()
+    .withMessage("Please provide number of bath rooms."),
+  check("address")
+    .notEmpty({ checkFalsey: true })
+    .withMessage("Please address."),
+  check("city")
+    .notEmpty({ checkFalsey: true })
+    .withMessage("Please provide a city."),
+  check("state")
+    .notEmpty({ checkFalsey: true })
+    .withMessage("Please provide a state."),
+  check("country")
+    .notEmpty({ checkFalsey: true })
+    .withMessage("Please provide a country."),
+  check("price")
+    .notEmpty({ checkFalsey: true })
+    .withMessage("Please provide a price for your spot.")
+];
 
 //Get all the spots
 router.get(
-    '/',
-    asyncHandler(async (req,res) => {
-        const spots = await Spot.findAll({
-            include: [Image, Review]
-        })
-        return res.json(spots);
-    })
-    );
+  "/",
+  asyncHandler(async (req, res) => {
+    const spots = await Spot.findAll({
+      include: [Image, Review]
+    });
+    return res.json(spots);
+  })
+);
 
-    //Get One Spot
-    router.get(
-        '/:spotId',
-        asyncHandler(async(req,res) => {
-            const { spotId } = req.params;
-            const oneSpot = await Spot.findByPk(spotId, {
-                include: [Image, Review]
-            });
+//Get One Spot
+router.get(
+  "/:spotId",
+  asyncHandler(async (req, res) => {
+    // console.log("ONE SPOT ROUTE -- spots.api \n\n")
+    const { spotId } = req.params;
+    const oneSpot = await Spot.findByPk(spotId, {
+      include: [Image, Review, User]
+    });
 
-            return res.json(oneSpot);
-        })
-        );
+    return res.json(oneSpot);
+  })
+);
 
-        // Get One User's Spots
-        // router.get(
-            //     '/:userId',
-            //     asyncHandler(async(req,res) => {
-                //         const { userId } = req.params;
-                //         const userSpots = await Spot.findAll({
-                    //             where: { userId : { [Op.eq]: userId} }
-                    //         })
-                    //     })
-                    // )
-
-const validateSPot = [
-    check('name')
-        .notEmpty({ checkFalsey: true })
-        .withMessage('Spot name cannot be blank'),
-    check('description')
-        .notEmpty({ checkFalsey: true })
-        // .isLength({ min: 10})
-        // .withMessage('Please enter a description of your spot that is longer than 10 words name cannot be blank'),
-        .withMessage('Please enter a description of your spot name cannot be blank.'),
-    check('guests')
-        .notEmpty()
-        .isInt()
-        .withMessage('Please provide number of guests.'),
-    check('beds')
-        .notEmpty()
-        .isInt()
-        .withMessage('Please provide number of beds.'),
-    check('guests')
-        .notEmpty({ checkFalsey: true })
-        .isInt()
-        .withMessage('Please provide number of guests.'),
-    check('baths')
-        .notEmpty({ checkFalsey: true })
-        .isInt()
-        .withMessage('Please provide number of bath rooms.'),
-    check('address')
-        .notEmpty({ checkFalsey: true })
-        .withMessage('Please address.'),
-    check('city')
-        .notEmpty({ checkFalsey: true })
-        .withMessage('Please provide a city.'),
-    check('state')
-        .notEmpty({ checkFalsey: true })
-        .withMessage('Please provide a state.'),
-    check('country')
-        .notEmpty({ checkFalsey: true })
-        .withMessage('Please provide a country.'),
-    check('price')
-        .notEmpty({ checkFalsey: true })
-        .withMessage('Please provide a price for your spot.'),
-]
+//Get Reviews for One Spot
+router.get(
+  "/:spotId/reviews",
+  asyncHandler(async (req, res) => {
+    const { spotId } = req.params;
+    const reviews = await Review.findAll({
+      include: [User, Spot],
+      where: { spotId: spotId },
+      // include: Spot
+    });
+    return res.json(reviews);
+  })
+);
 
 //Create A Spot - MUST VALIDATE CREATION
 router.post(
-    '/new',
-    singleMulterUpload("image"),
-    validateSPot,
-    asyncHandler(async(req, res) => {
-        console.log("HELLO REQ.BODY -from spots.js api--\n\n",req.body)
-        const spot = await Spot.create({
-            userId: req.body.userId,
-            name: req.body.name,
-            description: req.body.description,
-            guests: req.body.guests,
-            beds: req.body.beds,
-            baths: req.body.baths,
-            address: req.body.address,
-            city: req.body.city,
-            state: req.body.state,
-            country: req.body.country,
-            price: req.body.price,
-        })
+  "/new",
+  singleMulterUpload("image"),
+  validateSPot,
+  asyncHandler(async (req, res) => {
+    console.log("HELLO REQ.BODY -from spots.js api--\n\n", req.body);
+    const spot = await Spot.create({
+      userId: req.body.userId,
+      name: req.body.name,
+      description: req.body.description,
+      guests: req.body.guests,
+      beds: req.body.beds,
+      baths: req.body.baths,
+      address: req.body.address,
+      city: req.body.city,
+      state: req.body.state,
+      country: req.body.country,
+      price: req.body.price
+    });
 
-        console.log("What is req.file??? \n\n", req.file)
-        //2.
-        // not accepting the return?
-        console.log("What is req.file from request? -- this is going to aws \n\n", spot)
-        const imgFromAws = await singlePublicFileUpload(req.file);
-        console.log("FROM AWS--in spots.js api-- \n\n", imgFromAws)
+    console.log("What is req.file??? \n\n", req.file);
+    //2.
+    // not accepting the return?
+    console.log(
+      "What is req.file from request? -- this is going to aws \n\n",
+      spot
+    );
+    const imgFromAws = await singlePublicFileUpload(req.file);
+    console.log("FROM AWS--in spots.js api-- \n\n", imgFromAws);
 
+    const spotpic = await Image.create({
+      spotId: spot.id,
+      url: imgFromAws
+    });
 
-        const spotpic = await Image.create({
-            spotId: spot.id,
-            url: imgFromAws
-        })
+    //3.
+    // await Image.create(spot.id )
+    // const arr = [];
 
-        //3.
-        // await Image.create(spot.id )
-        // const arr = [];
+    // for (let i = 0; i < imgFromAws.length; i++) {
+    //     let spotpic = await Image.create({
+    //         spotId: spot.id,
+    //         url: imgFromAws[i]
+    //         // url: req.body
+    //     })
+    //     arr.push(spotpic);
+    // }
 
-        // for (let i = 0; i < imgFromAws.length; i++) {
-        //     let spotpic = await Image.create({
-        //         spotId: spot.id,
-        //         url: imgFromAws[i]
-        //         // url: req.body
-        //     })
-        //     arr.push(spotpic);
-        // }
-
-        return res.json({
-            spot,
-            spotpic
-        })
-    })
-)
-
+    return res.json({
+      spot,
+      spotpic
+    });
+  })
+);
 
 module.exports = router;
