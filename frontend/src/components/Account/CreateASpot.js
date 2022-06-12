@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { createSpotThunk, loadUserSpots } from "../../store/userSpots";
 import {  useHistory,  } from "react-router-dom";
 
+// import {createImagesThunk} from "../../store/image"
 import "./CreateASpot.css"
 
 
@@ -11,7 +12,7 @@ function CreateASpot() {
 
     const userId = useSelector((state) => state?.session?.user?.id)
 
-    console.log("Can I grab the session user? \n\n", userId)
+    // console.log("Can I grab the session user? \n\n", userId)
     // console.log("What is user id? create a spot \n\n", userId)
 
     const history = useHistory();
@@ -22,36 +23,46 @@ function CreateASpot() {
 
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
-    const [guests, setGuests] = useState("2");
-    const [beds, setBeds] = useState("2");
-    const [baths, setBaths] = useState("1");
+    const [guests, setGuests] = useState(1);
+    const [beds, setBeds] = useState(1);
+    const [baths, setBaths] = useState(1);
     const [address, setAddress] = useState("");
     const [city, setCity] = useState("");
     const [state, setState] = useState("")
     const [country, setCountry] = useState("United States");
-    const [price, setPrice] = useState(0);
+    const [price, setPrice] = useState(1);
     const [disabled, setDisabled] = useState(false)
+    const [image, setImage] = useState(null);
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         const spot = {
             userId, name, description, guests, beds,
-            baths, address, city, state, country, price
+            baths, address, city, state, country, price, image
         }
-        console.log("What is the thunk getting?", );
-        dispatch(createSpotThunk(spot))
-            // .then(() => dispatch(loadUserSpots(userId)))
-            .then(() => setDisabled(true))
-        history.push(`/users/${userId}/spots`)
+        console.log("What is the thunk getting? from handleSubmit CreateSpot.js", spot.image);
 
+        dispatch(createSpotThunk(spot))
+        // .then(() => dispatch(createImagesThunk(spot)))
+        .then(() => setDisabled(true))
+        history.push(`/users/${userId}/spots`)
     }
+
+    const updateFile = (e) => {
+        // const file = e.target.files[0];
+        const file = e.target.file;
+        if (file) setImage(file);
+      };
 
     useEffect(() => {
         setIsLoaded(true)
     },[isLoaded])
 
 
+    if (!isLoaded) {
+        return <h1>Loading...</h1>
+    } else {
     return(
         <>
         <div className="container">
@@ -160,6 +171,18 @@ function CreateASpot() {
                         />
                     </label>
 
+                    <label>
+                        Upload a Picture
+                    <input type="file" onChange={updateFile} />
+                    </label>
+                    {/* <label>
+                    Multiple Upload
+                    <input
+                    type="file"
+                    multiple
+                    onChange={updateFiles} />
+                    </label> */}
+
                     <button
                         disabled={disabled}
                         // onClick={() => setDisabled(true)}
@@ -169,6 +192,6 @@ function CreateASpot() {
         </div>
         </>
     )
+  }
 }
-
 export default CreateASpot

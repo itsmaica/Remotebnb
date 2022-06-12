@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import * as sessionActions from '../../store/session';
 
@@ -56,7 +56,7 @@ function ProfileButton({ user }) {
             <ul className="profile-dropdown">
               <li>{user.username}</li>
               <li>{user.email}</li>
-              <li><NavLink to={`users/${userId}/spots`}>Manage Spots</NavLink></li>
+              <li><Link to={`/users/${userId}/spots`}>Manage Spots</Link></li>
               {/* <li><button onClick={toManageSpots}>Manage Spots</button></li> */}
               <li>
                 <button onClick={logout}>Log Out</button>

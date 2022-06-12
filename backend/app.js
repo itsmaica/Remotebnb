@@ -1,6 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
-// const cors = require("cors");
+const cors = require("cors");
 const csurf = require("csurf");
 const helmet = require("helmet");
 const cookieParser = require("cookie-parser");
@@ -19,25 +19,25 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // Security Middleware
-if (!isProduction) {
-  // enable cors only in development
-  app.use(cors());
-}
+// if (!isProduction) {
+//   // enable cors only in development
+//   app.use(cors());
+// }
 // helmet helps set a variety of headers to better secure your app
 app.use(helmet({
   contentSecurityPolicy: false
 }));
 
 //Set the _csrf token and create req.csrfToken method
-app.use(
-  csurf({
-    cookie: {
-      secure: isProduction,
-      sameSite: isProduction && "Lax",
-      httpOnly: true,
-    },
-  })
-);
+// app.use(
+//   csurf({
+//     cookie: {
+//       secure: isProduction,
+//       sameSite: isProduction && "Lax",
+//       httpOnly: true,
+//     },
+//   })
+// );
 
 app.use(routes); // Connect all the routes
 
