@@ -1,7 +1,7 @@
 import { csrfFetch } from "./csrf";
 
 const LOAD_ALL_SPOTS = 'spots/loadAllSpots'
-// const GET_ONE_SPOT = 'spots/getOneSpot'
+const GET_ONE_SPOT = 'spots/getOneSpot'
 // const CREATE_SPOT = 'spots/createSpot'
 
 
@@ -12,10 +12,10 @@ export const loadAllSpots = (spots) => ({
     spots
 });
 
-// export const getOneSpot = (oneSpot) => ({
-//     type: GET_ONE_SPOT,
-//     spot
-// })
+export const getOneSpot = (spot) => ({
+    type: GET_ONE_SPOT,
+    spot
+})
 
 // export const createSpot = (spot) => ({
 //     type: CREATE_SPOT,
@@ -39,15 +39,17 @@ export const loadAllSpotsThunk = () => async (dispatch) => {
 };
 
 //One Spot
-// export const getOneSpotThunk = (spotId) => async (dispatch) => {
-//     const response = await csrfFetch(`/api/spots/${spotId}`)
-//     if (response.ok) {
-//         const spot = await response.json();
-//         dispatch(getOneSpot(spot));
-//         return spot;
-//     }
-//     return response;
-// }
+export const getOneSpotThunk = (spotId) => async (dispatch) => {
+    // console.log("SPOT THUNK WHAT IS SPOTID", spotId)
+    const response = await csrfFetch(`/api/spots/${spotId}`)
+    // console.log("Hello from OneSpot Thunk")
+    if (response.ok) {
+        const spot = await response.json();
+        dispatch(getOneSpot(spot));
+        return spot;
+    }
+    return response;
+}
 
 // //Create a spot
 // export const createSpotThunk = (spot) => async (dispatch) => {
@@ -78,6 +80,14 @@ const spotReducer = ( state=initialState, action ) => {
             newState = {...state};
             newState["spots"] = action.spots;
             return newState;
+        case GET_ONE_SPOT:
+            newState = {...state}
+            // console.log("What is newState", newState);
+            // console.log("What is the action.payload? --- an object of details \n\n", action.spot)
+            // newState["spot"] = action.spot
+            newState["spot"] = action.spot
+
+            return newState
         // case CREATE_SPOT:
         //     return newState = {...state.spots, [action.spot.id]: action.spot};
         default:

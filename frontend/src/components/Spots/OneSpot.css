@@ -1,90 +1,125 @@
+#o-container{
+    width: 65%;
+    border: orange solid 5px;
+}
+
 .title{
-    height: 100px;
-    width: 100vw;
+    /* height: 100px; */
+    width: 100%;
     border: green solid 1px;
     display: flex;
+    align-items: center;
     justify-content: flex-start;
+    flex-direction: column;
+}
+
+#o-title{
+    width: 100%;
+}
+
+#num-r-spot-location{
+    /* height: 30px; */
+    width: 100%;
+    background-color: yellow;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+#num-r-spot-location > div {
+    padding-right: 1rem;
 }
 
 .spot-gallery{
     /* background-color: aquamarine; */
     border: pink solid 1px;
-    width: 100vw;
-    height: 600px;
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 20px;
+    overflow: hidden;
 
+}
+
+.pic{
+    /* height: 100%;
+    width: 100%; */
+    object-fit: cover;
+}
+
+.pic > img {
+    height: 100%;
+    width: 100%;
 }
 
 .house-pics{
     background-color: palegreen;
-    height: 450px;
-    width: 90%;
+    /* border-radius: 5%; */
+    height: 80%;
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr, 1fr;
     justify-items: center;
     justify-content: space-evenly;
+    column-gap: .5%;
+    row-gap: 1%;
     align-items: stretch;
     align-content: center;
-    grid-auto-rows: auto;
+    /* grid-auto-rows: auto; */
     grid-template-areas:
         "p1 p1 p2 p3"
         "p1 p1 p4 p5";
 }
 
-
 #p1 {
-    height: 420px;
-    width: 420px;
+    /* height: 420px; */
+    height: 100%;
+    width: 100%;
     background-color: rgb(255, 255, 255);
     grid-area: p1;
     justify-self: center;
     align-self: center;
-
 }
 
 #p2 {
-    height: 200px;
-    width: 230px;
+    /* height: 200px;
+    width: 230px; */
+    height: 100%;
+    width: 100%;
     background-color:white;
     grid-area: p2;
     justify-self: center;
     align-self: center;
-
-
 }
 
 #p3 {
-    height: 200px;
-    width: 230px;
+    height: 100%;
+    width: 100%;
     background-color:white;
     grid-area: p3;
     justify-self: center;
     align-self: center;
-
-
 }
 
 #p4 {
-    height: 200px;
-    width: 230px;
+    height: 100%;
+    width: 100%;
     background-color:white;
     grid-area: p4;
     justify-self: center;
     align-self: center;
-
-
 }
 
 #p5 {
-    height: 200px;
-    width: 230px;
+    height: 100%;
+    width: 100%;
     background-color:white;
     grid-area: p5;
     justify-self: center;
     align-self: center;
-
 }
 
 #user-div{
@@ -92,8 +127,24 @@
     align-items: center;
     justify-content: center;
     background-color: skyblue;
-    width: 100vw;
-    height: 150px;
+    width: 100%;
+    /* height: 150px; */
+    flex-direction: column;
+}
+
+#u-home-by-user{
+    background-color: peachpuff;
+    width: 90%;
+    height: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#s-info{
+    display: flex;
+    justify-content: flex-start;
+    width: 90%;
 }
 
 #user-pic{
@@ -104,6 +155,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+    object-fit: cover;
 }
 
 #user{
@@ -132,29 +185,70 @@
 .reviews-container{
     background-color: palevioletred;
     width: 100%;
-    height: 400px;
+    /* height: 400px; */
     display: grid;
+    grid-template-rows: 1fr, 1fr;
     grid-template-columns: repeat(2, 1fr);
     justify-items: center;
     justify-content: space-evenly;
     align-items: stretch;
     align-content: center;
-    grid-auto-rows: auto;
-    grid-template-areas:
+    /* overflow-y: hidden; */
+    /* grid-auto-rows: auto; */
+    /* grid-template-areas:
         "r1 r2"
-        "r3 r4";
-
+        "r3 r4"; */
 }
 
+#review-c{
+    background-color: peachpuff;
+    width: 100%;
+    height: 80%;
+}
+
+#pic-rev{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+/* #pic-rev > div {
+    padding-right: 1rem;
+} */
+
+#r-name{
+    padding-left: 1rem;
+}
+
+
+#rev-text{
+    word-break: break-all;
+}
+
+
+#rev {
+    height: 100%;
+    width: 100%;
+}
+/*
 #r1{
+    height: 100%;
+    width: 100%;
     grid-area: r1;
 }
 #r2{
+    height: 100%;
+    width: 100%;
     grid-area: r2;
 }
 #r3{
+    height: 100%;
+    width: 100%;
     grid-area: r3;
 }
 #r4{
+    height: 100%;
+    width: 100%;
     grid-area: r4;
-}
+} */
