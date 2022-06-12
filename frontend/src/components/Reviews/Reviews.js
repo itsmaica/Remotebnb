@@ -10,7 +10,7 @@ import "./Reviews.css"
 // getOneSpotThunk
 function Reviews({spotId}){
     // console.log("spotId from the modal",spotId)
-    const reviews = useSelector((state) => state?.reviews?.spotReviews)
+    const reviews = useSelector((state) => state?.reviews)
     // console.log('what is review?', reviews)
     // console.log("need profile pic", userPic)
     // const userName = useSelector((state) => state?.reviews?.review?.User?.firstName)
@@ -41,7 +41,7 @@ function Reviews({spotId}){
         return(
             <>
             <div id='rev-modal'>
-                { reviews.map(((review) => (
+                { Object.values(reviews).map(((review) => (
                     <>
 
                     <div id='review-c-m'>
@@ -56,7 +56,7 @@ function Reviews({spotId}){
 
                             <div>
                                 <div>
-                                    <p>{review.review}</p>
+                                    <p>{review?.review}</p>
                                 </div>
                             </div>
                         </div>
