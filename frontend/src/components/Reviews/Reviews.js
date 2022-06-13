@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { getReviewThunk, LoadSpotReviewsThunk } from "../../store/review";
+import { getOneSpotThunk } from "../../store/spot";
 import Loading from "../LoadingAndPageNotFound/Loading";
 import ReviewForm from "./ReviewForm";
 
@@ -12,7 +13,11 @@ function Reviews({spotId}){
     const bat = useSelector((state) => state?.reviews)
     const reviews = Object.values(bat)
     const currReviews = reviews.filter(rev => rev.spotId === spotId)
-    console.log('currReviews is a result from a reviews.filter ===> \n\n', currReviews)
+    // console.log('currReviews is a result from a reviews.filter ===> \n\n', currReviews)
+
+
+    const user = useSelector((state) => state?.session?.user?.profilePic)
+    console.log("Hello me", user)
 
     // const test = revs.spotId === spotId
     // console.log("TESTING 1,2,3 ----> \n\n",test)
@@ -39,6 +44,7 @@ function Reviews({spotId}){
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(LoadSpotReviewsThunk(spotId))
+        .then(() => dispatch(getOneSpotThunk(spotId)))
         .then(() => setIsLoaded(true))
     }, [dispatch])
 
