@@ -83,9 +83,13 @@ router.get(
     // console.log("ONE SPOT ROUTE -- spots.api \n\n")
     const { spotId } = req.params;
     const oneSpot = await Spot.findByPk(spotId, {
-      include: [Image, Review, User]
+      include: [
+        { model: Image},
+        {model: User},
+        {model: Review,
+          include: User}
+      ]
     });
-
     return res.json(oneSpot);
   })
 );
