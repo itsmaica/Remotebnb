@@ -12,12 +12,12 @@ function OneSpot(){
     const dispatch = useDispatch()
 
     const { spotId } = useParams()
-    console.log("What is spotId? --OneSpot.js", spotId)
+    // console.log("What is spotId? --OneSpot.js", spotId)
     // console.log("Need the spotId", spotId)
 
     const spot = useSelector((state) => state?.allSpots?.spot)
-    const reviews = useSelector((state) => state?.reviews)
-    console.log("where are the reviews?", reviews)
+    const reviews = useSelector((state) => state?.allSpots?.spot?.Reviews)
+    // console.log("where are the reviews?--- why other spot included \n\n", reviews)
 
     //how to get user FirstName
     // console.log("User Details =-- \n\n", spot?.User?.firstName)
@@ -36,7 +36,7 @@ function OneSpot(){
     // }
 
     useEffect(() => {
-    console.log("What is spotId from the useEffect that will dispatch-- \n\n", spotId)
+    // console.log("What is spotId from the useEffect that will dispatch-- \n\n", spotId)
         dispatch(getOneSpotThunk(spotId))
             .then(() => dispatch(LoadSpotReviewsThunk(spotId)))
             .then(() => setIsLoaded(true))
@@ -58,7 +58,9 @@ function OneSpot(){
                 <h1>{spot?.name}</h1>
             </div>
             <div id='num-r-spot-location'>
-                <div><p>{spot?.Reviews.length} Reviews</p></div>
+                <div><p>Number of Reviews</p></div>
+                {/* <div><p>{spot?.Reviews.length} Reviews</p></div> */}
+
                 <div>
                     <p>{spot?.city }, {spot?.state}, {spot?.country}</p>
                 </div>

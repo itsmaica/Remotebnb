@@ -71,46 +71,17 @@ export const reviewReducer = (state=initialState, action) => {
     let newState;
     switch(action.type) {
         case LOAD_SPOT_REVIEWS:
-            // newState = {...state};
-            // newState["spotReviews"] = action.reviews;
-            // newState = { ...state, ...action.reviews};
-
             newState = {...state}
             action.reviews.forEach(review => {
                 newState[review.id] = review
             })
-
             return newState;
         case GET_REVIEW:
             newState = {...state};
             newState = {...state, ["review"]: action.review};
             return newState;
         case CREATE_REVIEW:
-            // newState = {...state};
-            // newState = {...state, ...action.review}
-            // newState = {...state}
-            // action.reviews.forEach(review => {
-            //     newState[review.id] = review
-            // })
-
-            // newState = {...state.reviews.spotReviews, ...action.review}
-
-            // newState = {...state.reviews['spotReviews'], ...action.review}
-
-            // newState = {...state.reviews, ...action.review}
-            // newState = {...state.reviews.spotReviews}
-
-
-
-            // newState = {...state['spotReviews'],...action.review}
-            // newState.spotReviews.splice(...action.review)
-
-            // newState = {...state, [action.payload.id]: action.payload.review}
-
             newState={...state, [action.review.id]: action.review}
-
-            // console.log('how to get my review in here', newState)
-            // console.log("What is happening in the reducer? --action.payload", action.review.id )
             return newState;
         default:
             return state;

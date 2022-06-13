@@ -6,11 +6,20 @@ import ReviewForm from "./ReviewForm";
 
 import "./Reviews.css"
 
-
 // getOneSpotThunk
 function Reviews({spotId}){
     // console.log("spotId from the modal",spotId)
-    const reviews = useSelector((state) => state?.reviews)
+    const bat = useSelector((state) => state?.reviews)
+    const reviews = Object.values(bat)
+    const currReviews = reviews.filter(rev => rev.spotId === spotId)
+    console.log('currReviews is a result from a reviews.filter ===> \n\n', currReviews)
+
+    // const test = revs.spotId === spotId
+    // console.log("TESTING 1,2,3 ----> \n\n",test)
+
+    // const rev = useSelector((state) => state?.allSpots?.spot?.Reviews)
+
+    // console.log("Hello from reviews modal -- what is rev", rev)
     // console.log('what is review?', reviews)
     // console.log("need profile pic", userPic)
     // const userName = useSelector((state) => state?.reviews?.review?.User?.firstName)
@@ -41,9 +50,9 @@ function Reviews({spotId}){
         return(
             <>
             <div id='rev-modal'>
-                { Object.values(reviews).map(((review) => (
-                    <>
+                { currReviews.map(((review) => (
 
+                    <>
                     <div id='review-c-m'>
 
                         <div id='rev-box'>
