@@ -1,7 +1,7 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
 
-const { Review, User } = require("../../db/models");
+const { Review, User, Spot } = require("../../db/models");
 
 const router = express.Router();
 
@@ -9,7 +9,9 @@ const router = express.Router();
 router.get(
     '/',
     asyncHandler(async(req,res) => {
-        const reviews = await Review.findAll();
+        const reviews = await Review.findAll({
+            include: [Spot, User]
+        });
         return res.json(reviews)
     })
 )
@@ -37,7 +39,10 @@ router.post(
             userId: req.body.userId,
             spotId: req.body.spotId,
             review: req.body.review,
-            rating: req.body.rating
+            rating: req.body.rating,
+
+        }, {include: User,
+            where: { userId : req.body.userId}
         })
         // console.log("Review", review)
         return res.json(review);

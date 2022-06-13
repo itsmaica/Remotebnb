@@ -54,6 +54,7 @@ export const createReviewThunk = (spotId, review) => async(dispatch) => {
         headers: { 'Content-Type':'application/json' },
         body: JSON.stringify(review)
     })
+    console.log("What is response? from create review Thunk -- \n\n", response)
     // const { review, spotId } = review;
     if (response.ok) {
         const review = await response.json();
