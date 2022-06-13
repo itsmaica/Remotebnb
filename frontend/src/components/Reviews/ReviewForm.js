@@ -27,7 +27,7 @@ function ReviewForm({spotId}){
         const rev = { review, userId, spotId:spotId, rating }
         // console.log('C-R-E-A-T-E --- \n\n', spotId)
         dispatch(createReviewThunk(spotId, rev))
-            // .then(() => dispatch(LoadSpotReviewsThunk(spotId)))
+            .then(() => dispatch(LoadSpotReviewsThunk(spotId)))
     }
 
     // if (!isLoaded) {

@@ -1,6 +1,6 @@
 #spots-main {
   /* height: 400px; */
-  border: green solid 5px;
+  /* border: green solid 5px; */
   /* background-color: palevioletred; */
   box-sizing: border-box;
   display: grid;
@@ -46,7 +46,7 @@
 }
 
 .g-img-y{
-  object-fit: cover;
+  object-fit: fill;
   /* height:245px;
   width: 245px; */
   /* height: 100%; */
