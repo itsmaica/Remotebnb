@@ -45,7 +45,7 @@ function ManageSpots() {
     // }
 
     const goToOnePage = (spotId) => {
-        history.push(`/test`);
+        history.push(`/spots/${spotId}`);
     }
 
     if (!isLoaded) {
@@ -76,7 +76,7 @@ function ManageSpots() {
                             <div id='pic-name'>
                                 <div
                                 id='spot-pic'
-                                onClick={(e) => {goToOnePage()}}
+                                onClick={(e) => {goToOnePage(spot?.id)}}
                                 >PIC</div>
                                 <div>{spot?.name}</div>
                             </div>
