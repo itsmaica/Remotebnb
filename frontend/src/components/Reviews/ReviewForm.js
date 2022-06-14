@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createReviewThunk, LoadSpotReviewsThunk } from "../../store/review";
+import { createReviewThunk, loadSpotReviewsThunk } from "../../store/review";
 import Loading from "../LoadingAndPageNotFound/Loading";
 
 import './ReviewForm.css'
@@ -27,7 +27,8 @@ function ReviewForm({spotId}){
         const rev = { review, userId, spotId:spotId, rating }
         // console.log('C-R-E-A-T-E --- \n\n', spotId)
         dispatch(createReviewThunk(spotId, rev))
-            .then(() => dispatch(LoadSpotReviewsThunk(spotId)))
+            .then(() => dispatch(loadSpotReviewsThunk(spotId)))
+        setReview("");
     }
 
     // if (!isLoaded) {

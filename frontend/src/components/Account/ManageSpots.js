@@ -27,7 +27,7 @@ function ManageSpots() {
     }, [dispatch])
 
     const deleteSpot = (e, userId, spotId) => {
-        console.log("What is spotId for DELETE \n\n")
+        // console.log("What is spotId for DELETE \n\n")
         e.preventDefault();
         dispatch(deleteSpotThunk(userId, spotId))
             .then(() => dispatch((loadUserSpotsThunk(userId))))
