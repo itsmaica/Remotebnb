@@ -32,10 +32,12 @@ const singlePublicFileUpload = async (file) => {
   return result.Location;
 };
 
+console.log("Are we in awsS3.js? \n\n")
 const multiplePublicFileUpload = async (files) => {
-  // console.log("WHAT IS FILES? from awsS3.js \n\n", files)
+  console.log("WHAT IS FILES? from awsS3.js \n\n", files)
   return await Promise.all(
     files.map((file) => {
+      console.log("FILE aws -- \n\n", file);
       return singlePublicFileUpload(file);
     })
   );

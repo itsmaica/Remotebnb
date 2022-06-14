@@ -6,9 +6,10 @@ import { NavLink, useHistory } from "react-router-dom";
 import { deleteSpotThunk } from "../../store/userSpots";
 import { loadAllSpotsThunk } from "../../store/spot";
 import { loadUserSpotsThunk } from "../../store/userSpots";
-import { loadAllImagesThunk } from "../../store/image";
+// import { loadAllImagesThunk } from "../../store/image";
 import './ManageSpots.css'
-
+// import {Loading} from "../../components/LoadingAndPageNotFound/Loading"
+import Loading from "../LoadingAndPageNotFound/Loading.js"
 function ManageSpots() {
 
 
@@ -18,12 +19,15 @@ function ManageSpots() {
     const userSpots = useSelector((state) => state?.userSpots)
 
     const [isLoaded, setLoaded] = useState(false);
+    const [spotsLoaded, setSpotsLoaded] = useState(false);
 
-    useEffect( () => {
+
+    useEffect(() => {
         dispatch(loadAllSpotsThunk(userId))
-        .then(() => dispatch(loadAllImagesThunk()))
+        // .then(() => dispatch(loadAllImagesThunk()))
         .then(() => dispatch((loadUserSpotsThunk(userId))))
         .then(() => setLoaded(true))
+        .then(() => setSpotsLoaded(true))
     }, [dispatch])
 
     const deleteSpot = (e, userId, spotId) => {
@@ -49,7 +53,7 @@ function ManageSpots() {
     }
 
     if (!isLoaded) {
-        return <h1>Loading...</h1>
+        return <p>hello</p>
     } else {
     return(
             <>
@@ -58,7 +62,7 @@ function ManageSpots() {
                 <h2>{Object.values(userSpots).length} SPOTS</h2>
                 <NavLink exact to={`/users/${userId}/spots/new`} id='create'>Create a Spot</NavLink>
             </div>
-            { userSpots && (Object.values(userSpots).map((spot) => (
+            { userSpots ? (Object.values(userSpots).map((spot) => (
                 //<h1>{spot.id}</h1>
                 // console.log(spot.name)
                 <>
@@ -99,7 +103,7 @@ function ManageSpots() {
                 </div>
                 </>
                 )
-            ))}
+            )): <Loading />}
         </>
         )
     }
