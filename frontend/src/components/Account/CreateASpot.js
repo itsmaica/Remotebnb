@@ -5,6 +5,7 @@ import {  useHistory,  } from "react-router-dom";
 
 // import {createImagesThunk} from "../../store/image"
 import "./CreateASpot.css"
+import Loading from "../LoadingAndPageNotFound/Loading";
 
 
 function CreateASpot() {
@@ -31,28 +32,32 @@ function CreateASpot() {
     const [state, setState] = useState("")
     const [country, setCountry] = useState("United States");
     const [price, setPrice] = useState(1);
-    const [disabled, setDisabled] = useState(false)
-    const [image, setImage] = useState(null);
+    const [disabled, setDisabled] = useState(false);
+    const [images, setImages] = useState([]);
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         const spot = {
             userId, name, description, guests, beds,
-            baths, address, city, state, country, price, image
+            baths, address, city, state, country, price, images
         }
-        console.log("What is the thunk getting? from handleSubmit CreateSpot.js", spot.image);
+        console.log("What is the thunk getting? from handleSubmit CreateSpot.js", spot.images);
 
         dispatch(createSpotThunk(spot))
-        // .then(() => dispatch(createImagesThunk(spot)))
+        // .then(() => dispatch(loadUserSpots(userId)))
         .then(() => setDisabled(true))
         history.push(`/users/${userId}/spots`)
     }
 
-    const updateFile = (e) => {
-        // const file = e.target.files[0];
-        const file = e.target.file;
-        if (file) setImage(file);
+    const updateFiles = (e) => {
+        const file = e.target.files[0];
+        // const file = e.target.file;
+        const picArr = Object.values(e.target.files)
+        if (picArr.length > 0) setImages(picArr)
+        // console.log("What is file----CreateSpot.js \n\n?", Object.values(e.target.files))
+        // if (file) setImages(file);
       };
 
     useEffect(() => {
@@ -61,7 +66,7 @@ function CreateASpot() {
 
 
     if (!isLoaded) {
-        return <h1>Loading...</h1>
+        return <Loading />
     } else {
     return(
         <>
@@ -171,17 +176,17 @@ function CreateASpot() {
                         />
                     </label>
 
-                    <label>
-                        Upload a Picture
-                    <input type="file" onChange={updateFile} />
-                    </label>
                     {/* <label>
+                        Upload a Picture
+                    <input type="file" onChange={updateFiles} />
+                    </label> */}
+                    <label>
                     Multiple Upload
                     <input
                     type="file"
                     multiple
                     onChange={updateFiles} />
-                    </label> */}
+                    </label>
 
                     <button
                         disabled={disabled}

@@ -42,16 +42,24 @@ function Reviews({ spotId }) {
   //need to get the text from review
   // console.log("LOL THIS IS A REVIEW \n\n",reviewText)
 
+  // let reviewText;
+
+  // currReviews(review => {
+  //   let reviewText = review.text
+  // })
+
   const [rating, setRating] = useState(5);
   const [reviewId, setReviewId] = useState();
   const prevText = currReviews.filter((rev) => rev.id === reviewId);
+
+  const bats = prevText[0]?.review
   // console.log("Need the current Id to grab the current review text \n\n", reviewId)
   // const [rev, setRev] = useState(prevText[0]?.review);
-  const [updatedReview, setUpdatedReview] = useState(prevText[0]?.userId);
+  const [updatedReview, setUpdatedReview] = useState(bats);
 
   // console.log("This is the current review---\n\n", prevText[0])
 
-  // console.log("This is the review text ---- \n\n", prevText[0]?.review)
+  console.log("This is the review text ---- \n\n", prevText[0]?.review)
 
   const [isLoaded, setIsLoaded] = useState(false);
   const [edit, setEdit] = useState(false);
@@ -174,7 +182,7 @@ function Reviews({ spotId }) {
                               <input
                                 className="form-input"
                                 type="text"
-                                placeholder={review.review}
+                                // placeholder={review.review}
                                 value={updatedReview}
                                 onChange={(e) =>
                                   setUpdatedReview(e.target.value)

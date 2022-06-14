@@ -32,7 +32,7 @@ export const loadUserSpotsThunk = (userId) => async (dispatch) => {
     const response = await csrfFetch(`/api/users/${userId}/spots`);
     if(response.ok) {
         const userSpots = await response.json();
-        // console.log("Hello from userSpots Thunk! \n\n", userSpots)
+        console.log("Hello from userSpots Thunk! \n\n", userSpots)
         dispatch(loadUserSpots(userSpots));
         return userSpots
     };
@@ -43,34 +43,42 @@ export const loadUserSpotsThunk = (userId) => async (dispatch) => {
 export const createSpotThunk = (spot) => async (dispatch) => {
     const {
         userId, name, description, guests, beds,
-        baths, address, city, state, country, image
+        baths, address, city, state, country, images
     } = spot;
 
-    // console.log("WHAT IS BEING CREATED WITH THAT IMAGE? userSpots.js -spot-\n\n", spot)
+    // console.log("--------userSpots.js -spot-\n\n", images)
 
     const formData = new FormData();
+    // console.log("THIS IS FROMDATA 1 ---__---_---> \n\n", formData)
+
 
     formData.append("userId", userId)
     formData.append("name", name)
     formData.append("description", description)
+    // console.log("THIS IS FROMDATA 2 ---__---_---> \n\n", formData)
+
     formData.append("guests", guests)
     formData.append("beds", beds)
     formData.append("baths", baths)
     formData.append("address", address)
     formData.append("city", city)
     formData.append("state", state)
+    // console.log("THIS IS FROMDATA 3 ---__---_---> ", formData)
+
     formData.append("country", country)
-    formData.append("image", image)
+    // formData.append("images", images)
 
-    // if (images && images.length !== 0) {
-    //     for (let i = 0; i < images.length; i++) {
-    //       formData.append("images", images[i]);
-    //     }
-    // }
+    if (images && images.length !== 0) {
+        for (let i = 0; i < images.length; i++) {
+          formData.append("images", images[i]);
+        // console.log("THIS IS FROMDATA 4 see i---__---_--->", formData, `${i}`)
 
-    if (image) formData.append("image", image);
+        }
+        // console.log("BEFORE RESPONSE --")
+    }
 
-    // console.log("CREATE SPOT THUNK \n\n")
+    // if (image) formData.append("image", image);
+
     const response = await csrfFetch(`/api/spots/new`, {
         method: 'POST',
         headers: {
@@ -79,12 +87,15 @@ export const createSpotThunk = (spot) => async (dispatch) => {
         body: formData,
     });
 
-    // console.log("My created spot and image --after csrfFetch-- \n\n",response)
+    // console.log("Response from THUNK \n\n",response)
+
+    // console.log("AFTER RESPONSE -- \n\n")
 
     if (response.ok) {
         // const spot = await response.json();
         // dispatch(createSpot(spot));
         // return spot;
+
         const data = await response.json();
         // console.log("What is data? if res.ok \n\n", data)
         dispatch(createSpot(data.spot));
@@ -133,14 +144,19 @@ const userSpotsReducer = (state=initialState, action) => {
     switch(action.type){
         case LOAD_USER_SPOTS:
             newState = {...state}
+            console.log("What is action.userSpots", action.userSpots)
             action.userSpots.forEach(userSpot=>{
               newState[userSpot.id] = userSpot
             })
             return newState
         case CREATE_SPOT:
-            // console.log("action.spot.id??", action.spot)
-            return newState = {...state.spots, [action.spot.id]: action.spot};
+            newState={...state}
+            // console.log("THIS IS NEW STATE ---- \n\n", newState)
+            // console.log("actions.spot \n\n", action.spot)
+            newState[`${action.spot.id}`] = action.spot
+            // return newState = {...state.spots, [action.spot.id]: action.spot};
             // return { ...state, spot: action.payload };
+            return newState
         case DELETE_SPOT:
             newState = {...state};
                 const id = action.spot.id
