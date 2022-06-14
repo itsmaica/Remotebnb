@@ -53,7 +53,7 @@ function ManageSpots() {
     }
 
     if (!isLoaded) {
-        return <p>hello</p>
+        return <Loading />
     } else {
     return(
             <>

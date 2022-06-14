@@ -5,6 +5,7 @@ import {  useHistory,  } from "react-router-dom";
 
 // import {createImagesThunk} from "../../store/image"
 import "./CreateASpot.css"
+import Loading from "../LoadingAndPageNotFound/Loading";
 
 
 function CreateASpot() {
@@ -65,7 +66,7 @@ function CreateASpot() {
 
 
     if (!isLoaded) {
-        return <h1>Loading...</h1>
+        return <Loading />
     } else {
     return(
         <>
