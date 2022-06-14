@@ -46,7 +46,7 @@ export const createSpotThunk = (spot) => async (dispatch) => {
         baths, address, city, state, country, image
     } = spot;
 
-    console.log("WHAT IS BEING CREATED WITH THAT IMAGE? userSpots.js -spot-\n\n", spot)
+    // console.log("WHAT IS BEING CREATED WITH THAT IMAGE? userSpots.js -spot-\n\n", spot)
 
     const formData = new FormData();
 
@@ -79,14 +79,14 @@ export const createSpotThunk = (spot) => async (dispatch) => {
         body: formData,
     });
 
-    console.log("My created spot and image --after csrfFetch-- \n\n",response)
+    // console.log("My created spot and image --after csrfFetch-- \n\n",response)
 
     if (response.ok) {
         // const spot = await response.json();
         // dispatch(createSpot(spot));
         // return spot;
         const data = await response.json();
-        console.log("What is data? if res.ok \n\n", data)
+        // console.log("What is data? if res.ok \n\n", data)
         dispatch(createSpot(data.spot));
     }
     return response
@@ -102,21 +102,21 @@ export const deleteSpotThunk = (userId, spotId) => async (dispatch) => {
     if (response.ok) {
         const spot = await response.json();
         dispatch(deleteSpot(spot))
-        return response;
+        return spot;
     }
     return response
 };
 
 //Edit Thunk
 export const editSpotThunk = (newSpot, userId, spotId) => async (dispatch) => {
-    console.log("HELLO FROM THE EDIT THUNK! \n\n", newSpot, userId, spotId)
+    // console.log("HELLO FROM THE EDIT THUNK! \n\n", newSpot, userId, spotId)
     // might need to change url
     const response = await csrfFetch(`/api/users/${userId}/spots/${spotId}/edit`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify(newSpot)
     })
-    console.log("WHAT IS THE RESPONSE", response)
+    // console.log("WHAT IS THE RESPONSE", response)
 
     if (response.ok) {
         const update = await response.json()
@@ -138,7 +138,7 @@ const userSpotsReducer = (state=initialState, action) => {
             })
             return newState
         case CREATE_SPOT:
-            console.log("action.spot.id??", action.spot)
+            // console.log("action.spot.id??", action.spot)
             return newState = {...state.spots, [action.spot.id]: action.spot};
             // return { ...state, spot: action.payload };
         case DELETE_SPOT:
@@ -149,7 +149,7 @@ const userSpotsReducer = (state=initialState, action) => {
         case EDIT_SPOT:
             newState = {...state}
             newState[action.update.id] = action.update
-            return newState
+            return newState;
         default:
             return state
     }

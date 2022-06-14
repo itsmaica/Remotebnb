@@ -16,8 +16,6 @@ router.get(
     })
 )
 
-
-
 //Get One Review
 router.get(
     '/:reviewId',
@@ -52,15 +50,17 @@ router.post(
 
 //Update A Review
 router.put(
-    '/:reviewId/',
+    '/:reviewId/edit',
     asyncHandler(async(req,res) => {
         console.log("BODY \n\n", req.body)
         // console.log("Hello from the put router!!!\n\n")
-        // const { reviewId } = req.params;
+        const { reviewId } = req.params;
         // console.log("What is {reviewId }", reviewId)
         // const { userId } = req.params
 
-        const id = req.params.reviewId
+
+
+        const id = reviewId
         console.log("Need Id", id)
 
         // const id = req.body.id
@@ -95,7 +95,7 @@ router.put(
 
 // Delete Review
 router.delete(
-    '/:reviewId',
+    '/:reviewId/delete',
     asyncHandler(async(req,res) => {
         const { reviewId } = req.params
         const id = reviewId
