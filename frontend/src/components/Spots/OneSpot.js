@@ -69,7 +69,7 @@ function OneSpot(){
                             <h1>{spot?.name}</h1>
                         </div>
                         <div id='num-r-spot-location'>
-                            <div><p>Number of Reviews</p></div>
+                            <div><p>{currRev.length} Reviews</p></div>
                             {/* <div><p>{spot?.Reviews.length} Reviews</p></div> */}
 
                             <div>
@@ -128,8 +128,8 @@ function OneSpot(){
                         {currRev.length < 4 && (
                             // console.log("Test")
                             <>
-                            <div>
-                            <button onClick={() => setShowModal(true)}>Write Your Review</button>
+                            <div className="review-button-div">
+                            {/* <button onClick={() => setShowModal(true)}>Write Your Review</button> */}
                             {/* This should be a form */}
                             {showModal && (
                             <>
@@ -146,7 +146,7 @@ function OneSpot(){
                     <div>
                         {currRev.length >= 4 && (
                             <>
-                             <button onClick={() => setShowModal(true)}>See All Reviews</button>
+                            <div className="review-button-div">
                              {showModal && (
                                  <>
                              <Modal onClose={() => setShowModal(false)}>
@@ -154,6 +154,7 @@ function OneSpot(){
                              </Modal>
                                  </>
                              )}
+                            </div>
                             </>
                         )}
                     </div>
@@ -163,16 +164,24 @@ function OneSpot(){
                                 <div key={review.id} id='review-c'>
 
                                     <div id='pic-rev'>
-                                        <div id="user-pic">
-                                            <img id='user' src={review?.User?.profilePic}/>
+                                        <div className="pic-padding">
+                                            <div id="user-pic">
+                                                <img id='user' src={review?.User?.profilePic}/>
+                                            </div>
                                         </div>
-                                        <div id='r-name'><p>{review?.User?.firstName}</p></div>
+                                        <div id='r-name'>
+                                            <p>{review?.User?.firstName}</p>
+                                            {/* <p>{review?.createdAt}</p> */}
+                                        </div>
                                     </div>
-                                    <div id='rev-text'>
-                                        <div>
+                                    <div id='rev-text-n'>
+                                        <div id='rev-t'>
                                         {`${review?.review}`.substring(0,150)}
                                             {review?.review?.length >= 150 && (
-                                                <button onClick={() => setShowModal(true)}>..show more</button>
+                                                <>
+                                                {/* <span></span> */}
+                                                <button  className="showMore" onClick={() => setShowModal(true)}>..show more ></button>
+                                                </>
                                             )}
                                             {showModal && (
                                                 <Modal onClose={() => setShowModal(false)}>
@@ -186,6 +195,12 @@ function OneSpot(){
                         )))}
 
                     </div>
+                    {currRev.length < 1 && (
+                        <button className="see-all-b" onClick={() => setShowModal(true)}>Write Your Review</button>
+                     )}
+                     {currRev.length > 2 && (
+                         <button className="see-all-b" onClick={() => setShowModal(true)}>Show All {currRev.length} Reviews</button>
+                     )}
                 </div>
                 </div>
                 </>
