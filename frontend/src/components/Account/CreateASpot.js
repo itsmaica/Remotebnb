@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createSpotThunk, loadUserSpots } from "../../store/userSpots";
 import {  useHistory,  } from "react-router-dom";
+import {Modal} from "../../context/Modal"
 
 // import {createImagesThunk} from "../../store/image"
 import "./CreateASpot.css"
 import Loading from "../LoadingAndPageNotFound/Loading";
 
 
-function CreateASpot() {
+function CreateASpot({ setShowModal, setIsLoaded }) {
     // const { userId } = useParams();
 
     const userId = useSelector((state) => state?.session?.user?.id)
@@ -20,8 +21,8 @@ function CreateASpot() {
     const dispatch = useDispatch();
     // console.log("What is userId -----?\n\n", userId)
 
-    const [isLoaded, setIsLoaded] = useState(false)
-
+    // const [isLoaded, setIsLoaded] = useState(true)
+    // const [fillOut, setFillOut] = useState(true);
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [guests, setGuests] = useState(1);
@@ -32,23 +33,45 @@ function CreateASpot() {
     const [state, setState] = useState("")
     const [country, setCountry] = useState("United States");
     const [price, setPrice] = useState(1);
-    const [disabled, setDisabled] = useState(false);
+    const [disable, setDisable] = useState(false);
     const [images, setImages] = useState([]);
 
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         const spot = {
             userId, name, description, guests, beds,
             baths, address, city, state, country, price, images
         }
-        console.log("What is the thunk getting? from handleSubmit CreateSpot.js", spot.images);
+        // console.log("What is the thunk getting? from handleSubmit CreateSpot.js", spot.images);
+        // .then(()=> <Loading />)
+        // .then(()=>setIsLoaded(false))
+        await setIsLoaded(false)
 
-        dispatch(createSpotThunk(spot))
+        // .then(()=> dispatch(createSpotThunk(spot)))
+        await dispatch(createSpotThunk(spot))
+
+        await setIsLoaded(true)
+
+        await setShowModal(false)
+
+        // .then(()=>setIsLoaded(true))
+        // await setShowModal(false)
+
         // .then(() => dispatch(loadUserSpots(userId)))
-        .then(() => setDisabled(true))
-        history.push(`/users/${userId}/spots`)
+        // .then(()=> <Loading />)
+        // .then(() => setFillOut(true))
+        // .then(() => setDisable(true))
+        // .then(() => setIsLoaded(false))
+        // .then(() => setShowModal(false))
+        // console.log("What is disabled",disable)
+        // console.log("WHat is happening to setIsLoaded?", isLoaded)
+        // .then(()=> setSpotsLoaded(true))
+        // history.push(`/users/${userId}/spots`)
+        // const timer = setTimeout(() => {
+        //     console.log('This will run after 1 second!')
+        //   }, 1000);
+        //   return () => clearTimeout(timer);
     }
 
     const updateFiles = (e) => {
@@ -60,16 +83,13 @@ function CreateASpot() {
         // if (file) setImages(file);
       };
 
-    useEffect(() => {
-        setIsLoaded(true)
-    },[isLoaded])
-
-
-    if (!isLoaded) {
-        return <Loading />
-    } else {
+    // if (!isLoaded) {
+    //     // console.log("What is fillout after submit", fillOut)
+    //     return <Loading />
+    // } else {
     return(
         <>
+
         <div className="container">
 
             <h1>Create A New Spot</h1>
@@ -176,20 +196,18 @@ function CreateASpot() {
                         />
                     </label>
 
-                    {/* <label>
-                        Upload a Picture
-                    <input type="file" onChange={updateFiles} />
-                    </label> */}
                     <label>
                     Multiple Upload
                     <input
                     type="file"
                     multiple
+                    accept="image/*, .png .jpg .jpeg"
+                    // onClick={()=>console.log('hello?')}
                     onChange={updateFiles} />
                     </label>
 
                     <button
-                        disabled={disabled}
+                        disabled={disable}
                         // onClick={() => setDisabled(true)}
                         >Submit</button>
                 </form>
@@ -197,6 +215,6 @@ function CreateASpot() {
         </div>
         </>
     )
-  }
+
 }
 export default CreateASpot

@@ -171,7 +171,7 @@ function OneSpot(){
                                         </div>
                                         <div id='r-name'>
                                             <p>{review?.User?.firstName}</p>
-                                            {/* <p>{review?.createdAt}</p> */}
+                                            <p>{review?.createdAt}</p>
                                         </div>
                                     </div>
                                     <div id='rev-text-n'>
