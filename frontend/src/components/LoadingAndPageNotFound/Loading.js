@@ -13,7 +13,7 @@ function Loading(){
         return(
             <>
                 <div id='bg'>
-                    <img src={loading} />
+                    <img src={loading} alt='gif'/>
                 </div>
             </>
         )

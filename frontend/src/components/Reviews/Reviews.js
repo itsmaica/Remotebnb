@@ -115,7 +115,7 @@ function Reviews({ spotId }) {
                   <div id="pic-rev-u">
                     <div id="pic-padding">
                       <div id="user-pic">
-                        <img id="user" src={review?.User?.profilePic} />
+                        <img id="user" src={review?.User?.profilePic} alt='user'/>
                       </div>
                     </div>
                     <div id="r-name">

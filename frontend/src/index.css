@@ -17,3 +17,9 @@
     font-family: 'Manrope', sans-serif;
     ont-family: 'Oleo Script', cursive;
 }
+
+
+#l-s.fa-solid.fa-house-chimney-user:before{
+    height: 50px;
+    width: 50px;
+}

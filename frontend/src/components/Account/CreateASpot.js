@@ -21,21 +21,21 @@ function CreateASpot({ setShowModal, setIsLoaded }) {
 
   // const [isLoaded, setIsLoaded] = useState(true)
   // const [fillOut, setFillOut] = useState(true);
-  const [name, setName] = useState("Give your spot a name..");
-  const [description, setDescription] = useState(
-    "Share a description about your spot and why people would enjoy staying here"
-  );
-  const [guests, setGuests] = useState(1);
-  const [beds, setBeds] = useState(1);
-  const [baths, setBaths] = useState(1);
-  const [address, setAddress] = useState("123 Here St.");
-  const [city, setCity] = useState("Your City");
-  const [state, setState] = useState("Your State");
+  const [name, setName] = useState();
+  const [description, setDescription] = useState();
+  const [guests, setGuests] = useState();
+  const [beds, setBeds] = useState();
+  const [baths, setBaths] = useState();
+  const [address, setAddress] = useState();
+  const [city, setCity] = useState();
+  const [state, setState] = useState();
   const [country, setCountry] = useState("United States");
-  const [price, setPrice] = useState(1.0);
+  const [price, setPrice] = useState(60.0);
   // const [disable, setDisable] = useState(false);
   const [images, setImages] = useState([]);
   const [errors, setErrors] = useState([]);
+
+  // const [guestE, setGuestE] = useState(1)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -86,30 +86,41 @@ function CreateASpot({ setShowModal, setIsLoaded }) {
 
   console.log("WHat is images", images.length);
 
+
+
+
   useEffect(() => {
+    setErrors([])
     const err = [];
-    if (!name.length || name.length >= 150)
+    if (!name || name.length >= 150)
       err.push("The name of your spot cannot be longer than 150 characters.");
     if (!description || description.length <= 20)
       err.push("Please enter a description that is longer than 20 words");
-    if (!guests || typeof guests !== "number")
+    if (guests === 0 )
       err.push("Spot must be able to host at least 1 guest.");
-    if (!beds || typeof beds !== "number")
+    if (beds === 0)
       err.push("Spot must have at least 1 bed.");
-    if (!baths || typeof baths !== "number")
+    // if (typeof beds !== "number")
+    //   err.push("* Spot must have at least 1 bed.");
+    if (baths === 0)
       err.push("Spot must have at least 1 bathroom.");
+    // if (typeof baths !== "number")
+    //   err.push("* Spot must have at least 1 bathroom.");
     if (!address)
       err.push("Please provide an address. This will not be publicly shared.");
-    if (!city.length) err.push("Please provide a city.");
-    if (!state.length) err.push("Please provide a state");
-    if (!country.length)
+    if (!city) err.push("Please provide a city.");
+    if (!state) err.push("Please provide a state");
+    if (!country)
       err.push(
         "Remotebnb is currently operating within the United States only."
       );
-    if (!price || typeof price !== "number")
-      err.push("Please provide a nightly price for your spot.");
+    if (price <= 0)
+      err.push("Please provide a nightly price for your spot. The minimum is $60.00");
     if (!images.length) err.push("Please upload 5 images of your spots");
     setErrors(err);
+
+    if (images.length < 5) err.push("Please upload 5 images of your spots");
+    // console.log("What is error's not empty?", errors)
   }, [
     name,
     description,
@@ -169,161 +180,198 @@ function CreateASpot({ setShowModal, setIsLoaded }) {
   // } else {
   return (
     <>
-      <div className="container">
-        <h1>Create A New Spot</h1>
-        <div className="form-container">
-          <form onSubmit={handleSubmit} className="form">
-            <ul>
-              {/* {errors.length ? (errors.map((error, idx) => (
-                <li key={idx}>{error}</li>
-              ))): null} */}
-              {errors && (
-                <>
+      <div id="c-spot-modal">
+        <div id="orange">
+          <div id="p-head">
+            <h1>Create A New Spot</h1>
+          </div>
+          <div className="form-container">
+            <form onSubmit={handleSubmit} className="form-c">
+              <ul>
                   {errors.map((error, idx) => (
-                    <li key={idx}>{error}</li>
-                  ))}
-                </>
-              )}
-            </ul>
-            <h3>Form</h3>
-            <label>
-              {" "}
-              Name
-              <input
-                className="form-input"
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                // required
-              />
-            </label>
+                      <li className="c-error" key={idx}>{error}</li>
+                    ))}
+              </ul>
+              {/* <h3>Form</h3> */}
 
-            <label>
-              {" "}
-              Description
-              <input
-                className="form-input"
-                type="text"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                // required
-              />
-            </label>
+              <div className="c-input">
+                <div>
+                <label >
+                  {" "}
+                  Name
+                  <input
+                    className="form-input"
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    // required
+                  />
+                </label>
+                </div>
+              </div>
 
-            <label>
-              {" "}
-              Guests
-              <input
-                className="form-input"
-                type="text"
-                value={guests}
-                onChange={(e) => setGuests(e.target.value)}
-                // required
-              />
-            </label>
+              <div className="c-input">
+                <div>
+                <label>
+                  {" "}
+                  Description
+                  <input
+                    className="form-input"
+                    type="text"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                    // required
+                  />
+                </label>
+                </div>
+              </div>
 
-            <label>
-              {" "}
-              Beds
-              <input
-                className="form-input"
-                type="text"
-                value={beds}
-                onChange={(e) => setBeds(e.target.value)}
-                // required
-              />
-            </label>
+              <div className="c-input">
+                <label>
+                  {" "}
+                  Guests
+                  <input
+                    className="form-input"
+                    type="number"
+                    value={guests}
+                    onChange={(e) => setGuests(e.target.value)}
+                    min="1" max="99999999"
+                    // required
+                  />
+                </label>
+              </div>
 
-            <label>
-              {" "}
-              Baths
-              <input
-                className="form-input"
-                type="text"
-                value={baths}
-                onChange={(e) => setBaths(e.target.value)}
-                // required
-              />
-            </label>
+              <div className="c-input">
+                <label>
+                  {" "}
+                  Beds
+                  <input
+                    className="form-input"
+                    type="number"
+                    value={beds}
+                    onChange={(e) => setBeds(e.target.value)}
+                    min="1" max="99999999"
+                    // required
+                  />
+                </label>
+              </div>
 
-            <label>
-              {" "}
-              Address
-              <input
-                className="form-input"
-                type="text"
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-                // required
-              />
-            </label>
+              <div className="c-input">
+                <label>
+                  {" "}
+                  Baths
+                  <input
+                    className="form-input"
+                    type="number"
+                    min="1" max="99999999"
+                    value={baths}
+                    onChange={(e) => setBaths(e.target.value)}
+                    // required
+                  />
+                </label>
+              </div>
 
-            <label>
-              {" "}
-              City
-              <input
-                className="form-input"
-                type="text"
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
-                // required
-              />
-            </label>
+              <div className="c-input">
+                <label>
+                  {" "}
+                  Address
+                  <input
+                    className="form-input"
+                    type="text"
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                    // required
+                  />
+                </label>
+              </div>
 
-            <label>
-              {" "}
-              State
-              <input
-                className="form-input"
-                type="text"
-                value={state}
-                onChange={(e) => setState(e.target.value)}
-                // required
-              />
-            </label>
+              <div className="c-input">
+                <label>
+                  {" "}
+                  City
+                  <input
+                    className="form-input"
+                    type="text"
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                    // required
+                  />
+                </label>
+              </div>
 
-            <label>
-              {" "}
-              Country
-              <input
-                className="form-input"
-                type="text"
-                value={country}
-                onChange={(e) => setCountry(e.target.value)}
-                // required
-              />
-            </label>
+              <div className="c-input">
+                <label>
+                  {" "}
+                  State
+                  <input
+                    className="form-input"
+                    type="text"
+                    value={state}
+                    onChange={(e) => setState(e.target.value)}
+                    // required
+                  />
+                </label>
+              </div>
 
-            <label>
-              {" "}
-              Price
-              <input
-                className="form-input"
-                type="text"
-                value={price}
-                onChange={(e) => setPrice(e.target.value)}
-                // required
-              />
-            </label>
+              <div className="c-input">
+                <label>
+                  {" "}
+                  Country
+                  <input
+                    disabled={true}
+                    className="form-input"
+                    type="text"
+                    value={country}
+                    onChange={(e) => setCountry(e.target.value)}
+                    // required
+                  />
+                </label>
+              </div>
 
-            <label>
-              Please Upload 5 Images
-              <input
-                type="file"
-                multiple
-                accept="image/*, .png .jpg .jpeg"
-                // onClick={()=>console.log('hello?')}
-                onChange={updateFiles}
-              />
-            </label>
+              <div className="c-input">
+                <label>
+                  {" "}
+                  Price
+                  <input
+                    className="form-input"
+                    type="number"
+                    min="60.00" max="9999999999.00"
+                    value={price}
+                    onChange={(e) => setPrice(e.target.value)}
+                    // required
+                  />
+                </label>
+              </div>
 
-            <button
-              disabled={!!errors.length}
-              // onClick={() => setDisabled(true)}
-            >
-              Submit
-            </button>
-          </form>
+              <div className="c-input">
+                <label>
+                  Please Upload 5 Images
+                  <input
+                    id="file-input"
+                    className="form-input"
+                    type="file"
+                    multiple
+                    accept="image/*, .png .jpg .jpeg"
+                    // onClick={()=>console.log('hello?')}
+                    onChange={updateFiles}
+                    required
+                  />
+                </label>
+              </div>
+
+              <div className="c-input" id='c-sub'>
+                <button
+                  id='c-sub-b'
+                  // disabled={!name || !description || !guests || !beds || !baths || !address || !city || !state || !price || !images}
+                  disabled={!!errors.length}
+
+                  // onClick={() => setDisabled(true)}
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </>

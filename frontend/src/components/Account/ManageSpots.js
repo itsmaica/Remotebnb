@@ -53,6 +53,7 @@ function ManageSpots() {
   //     spotPicDiv.onclick = goToOnePage()
   // }
 
+
   const goToOnePage = (spotId) => {
     history.push(`/spots/${spotId}`);
   };
@@ -107,8 +108,11 @@ function ManageSpots() {
                         goToOnePage(spot?.id);
                       }}
                     >
-                      PIC
+                      <i id ='l-s' class="fa-solid fa-house-chimney-user"></i>
+                      {/* <i id='spot-pic' class="fa-solid fa-house-chimney-heart"></i> */}
+                      {/* <i class="fa-solid fa-house-chimney-heart"></i> */}
                     </div>
+                    <div></div>
                     <div>{spot?.name}</div>
                   </div>
                   <div>
