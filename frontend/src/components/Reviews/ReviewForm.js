@@ -24,12 +24,12 @@ function ReviewForm({ spotId, setForm }) {
   const [errors,setErrors] = useState([]);
   // const [rating, setRating] = useState(5)
 
-  // useEffect(()=>{
-  //   setErrors([]);
-  //   const err = [];
-  //   if(!review.length || review.length < 50) err.push("A review cannot be blank and must be at least 50 chars long.");
-  //   setErrors(err)
-  // }, [review, isLoaded])
+  useEffect(()=>{
+    setErrors([]);
+    const err = [];
+    if(!review.length || review.length < 50) err.push("A review cannot be blank and must be at least 50 chars long.");
+    setErrors(err)
+  }, [review, isLoaded])
 
   const handleSubmit = (e) => {
     e.preventDefault();

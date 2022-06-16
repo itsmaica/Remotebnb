@@ -4,7 +4,7 @@
     align-items: center;
     flex-direction:column;
     overflow-y: scroll;
-    width: 50vw;
+    width: 80vw;
     height: 70vh;
     display: flex;
     scroll-snap-type: y mandatory;
