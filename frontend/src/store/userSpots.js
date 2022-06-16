@@ -43,7 +43,7 @@ export const loadUserSpotsThunk = (userId) => async (dispatch) => {
 export const createSpotThunk = (spot) => async (dispatch) => {
     const {
         userId, name, description, guests, beds,
-        baths, address, city, state, country, images
+        baths, address, city, state, country, price, images
     } = spot;
 
     // console.log("--------userSpots.js -spot-\n\n", images)
@@ -66,6 +66,8 @@ export const createSpotThunk = (spot) => async (dispatch) => {
     // console.log("THIS IS FROMDATA 3 ---__---_---> ", formData)
 
     formData.append("country", country)
+    formData.append("price", price)
+
     // formData.append("images", images)
 
     if (images && images.length !== 0) {
@@ -99,8 +101,9 @@ export const createSpotThunk = (spot) => async (dispatch) => {
         const data = await response.json();
         // console.log("What is data? if res.ok \n\n", data)
         dispatch(createSpot(data.spot));
+        return response;
     }
-    return response
+    return response;
 }
 
 // Delete Thunk

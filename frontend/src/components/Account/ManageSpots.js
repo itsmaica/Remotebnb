@@ -7,12 +7,15 @@ import { deleteSpotThunk } from "../../store/userSpots";
 import { loadAllSpotsThunk } from "../../store/spot";
 import { loadUserSpotsThunk } from "../../store/userSpots";
 import Loading from "../LoadingAndPageNotFound/Loading.js";
+import Building from "../LoadingAndPageNotFound/Building";
 import "./ManageSpots.css";
 import { Modal } from "../../context/Modal";
 
 // import { loadAllImagesThunk } from "../../store/image";
 // import {Loading} from "../../components/LoadingAndPageNotFound/Loading"
+
 import CreateASpot from "../Account/CreateASpot.js";
+
 function ManageSpots() {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -61,7 +64,8 @@ function ManageSpots() {
     <>
       {!isLoaded && (
         <Modal>
-          <Loading className="take-over" />
+          {/* <Loading className="take-over" /> */}
+          <Building />
         </Modal>
       )}
       <h1>Manage Spots</h1>

@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { Modal } from "../../context/Modal";
 import { loadSpotReviewsThunk } from "../../store/review";
 import { getOneSpotThunk } from "../../store/spot";
+import Building from "../LoadingAndPageNotFound/Building";
 import Loading from "../LoadingAndPageNotFound/Loading";
 import ReviewForm from "../Reviews/ReviewForm";
 import Reviews from "../Reviews/Reviews";

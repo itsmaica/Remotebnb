@@ -14,44 +14,44 @@ module.exports = {
         references: { model: "Users" }
       },
       name: {
-        type: Sequelize.STRING,
-        // allowNull: false,
+        type: Sequelize.STRING(150),
+        // allowNull: false
       },
       description: {
         type: Sequelize.TEXT,
-        // allowNull:false,
+        // allowNull:false
       },
       guests: {
         type: Sequelize.INTEGER,
-        // allowNull: false,
+        // allowNull: false
       },
       beds: {
         type: Sequelize.INTEGER,
-        // allowNull: false,
+        // allowNull: false
       },
       baths: {
         type: Sequelize.INTEGER,
-        // allowNull:false,
+        // allowNull:false
       },
       address: {
-        type: Sequelize.STRING,
-        // allowNull: false,
+        type: Sequelize.STRING(150),
+        // allowNull: false
       },
       city: {
-        type: Sequelize.STRING,
-        // allowNull: false,
+        type: Sequelize.STRING(150),
+        // allowNull: false
       },
       state: {
-        type: Sequelize.STRING,
-        // allowNull: false,
+        type: Sequelize.STRING(100),
+        // allowNull: false
       },
       country: {
-        type: Sequelize.STRING,
-        // allowNull: false,
+        type: Sequelize.STRING(100),
+        // allowNull: false
       },
       price: {
-        type: Sequelize.DECIMAL,
-        // allowNull: false,
+        type: Sequelize.DECIMAL(10,2),
+        // allowNull: false
       },
       createdAt: {
         allowNull: false,
