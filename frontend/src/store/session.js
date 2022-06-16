@@ -26,7 +26,7 @@ export const restoreUser = () => async dispatch => {
   const response = await csrfFetch("/api/session");
   const data = await response.json();
   dispatch(setUser(data.user));
-  console.log("Hiii from session reducer, restoreUser \n\n",data.user)
+  // console.log("Hiii from session reducer, restoreUser \n\n",data.user)
   return response;
 };
 
@@ -79,7 +79,7 @@ function reducer(state = initialState, action) {
     case SET_USER:
       // newState = Object.assign({}, state, { user: action.payload });
       // return newState;
-      console.log("SESSION REDUCER -- action.payload \n\n", action.payload)
+      // console.log("SESSION REDUCER -- action.payload \n\n", action.payload)
       return { user: action.payload }
     case REMOVE_USER:
       newState = Object.assign({}, state, { user: null });

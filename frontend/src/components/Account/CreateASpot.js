@@ -116,11 +116,11 @@ function CreateASpot({ setShowModal, setIsLoaded }) {
       );
     if (price <= 0)
       err.push("Please provide a nightly price for your spot. The minimum is $60.00");
-    if (!images.length) err.push("Please upload 5 images of your spots");
+    if (!images.length || images.length < 5) err.push("Please upload 5 images of your spots");
     setErrors(err);
 
-    if (images.length < 5) err.push("Please upload 5 images of your spots");
-    // console.log("What is error's not empty?", errors)
+    // if (images.length < 5) err.push("Please upload 5 images of your spots");
+    // // console.log("What is error's not empty?", errors)
   }, [
     name,
     description,

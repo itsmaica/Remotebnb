@@ -147,7 +147,7 @@ const userSpotsReducer = (state=initialState, action) => {
     switch(action.type){
         case LOAD_USER_SPOTS:
             newState = {...state}
-            console.log("What is action.userSpots", action.userSpots)
+            // console.log("What is action.userSpots", action.userSpots)
             action.userSpots.forEach(userSpot=>{
               newState[userSpot.id] = userSpot
             })

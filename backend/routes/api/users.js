@@ -93,7 +93,7 @@ router.get(
   '/:userId',
   asyncHandler(async(req,res) => {
     // const userId = req.params.userId
-    console.log("What are in the req.params", req.params)
+    // console.log("What are in the req.params", req.params)
     // const user = await User.findByPk()
     res.send(" :D ")
   })
@@ -153,7 +153,7 @@ router.put(
       const newPrice = req.body.price
 
       const spot = await Spot.findByPk(id)
-      console.log("what is spot?? \n\n", spot)
+      // console.log("what is spot?? \n\n", spot)
 
       const {
           name, description, guests, beds,
