@@ -122,7 +122,7 @@ router.post(
       city: req.body.city,
       state: req.body.state,
       country: req.body.country,
-      price: req.body.price
+      price: req.body.price,
     });
 
     // console.log("What is req.file??? \n\n", req.files);
@@ -153,8 +153,13 @@ router.post(
         arr.push(spotpic);
     }
     // console.log("Arr---- \n\n", arr)
+
+    // const thisSpot = await Spot.findByPk(spot.id, {
+    //   include: Image
+    // })
     return res.json({
-      spot,
+      spot
+      // thisSpot
       // arr
     });
   })

@@ -53,6 +53,7 @@ function Spots() {
                                                             <img
                                                                 className='g-img-y'src={image?.url}
                                                                 onClick={(e) => goToOnePage(e, spot?.id)}
+                                                                alt='spot pic'
                                                             />
                                                         </div>
                                                 ))}
