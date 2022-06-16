@@ -78,3 +78,11 @@
 #pic-padding{
     /* width: 25%; */
 }
+
+
+.e-error{
+    color: red;
+    border: red solid 1px;
+    width: 85%;
+    border-radius: 6px;
+}

@@ -4,7 +4,7 @@
     align-items: center;
     flex-direction: column;
     /* background-color: paleturquoise; */
-    width: 30rem;
+    width: 45rem;
     height: 10rem;
     border: black solid 2px;
     border-radius: 15px;
@@ -21,10 +21,32 @@
 }
 
 .review-input-m{
-    width: 28rem;
+    width: 40rem;
     height: 6rem;
     resize: none;
     border: none;
     outline: none;
     /* background-color: black; */
 }
+
+#r-bat{
+    /* background-color: orange; */
+    width: 40rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#r-sub{
+    /* padding-bottom: 1rem; */
+    background-color: black;
+    border: none;
+    color: white;
+    border-radius: 6px;
+    width: 5rem;
+    height: 1.5rem;
+}
+
+/* #r-sub::disabled{
+    background-color: rgb(253, 186, 186);
+} */

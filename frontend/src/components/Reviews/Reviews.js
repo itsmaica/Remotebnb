@@ -52,21 +52,29 @@ function Reviews({ spotId }) {
   const [reviewId, setReviewId] = useState();
   const prevText = currReviews.filter((rev) => rev.id === reviewId);
 
-  const bats = prevText[0]?.review
+  const bats = prevText[0]?.review;
   // console.log("Need the current Id to grab the current review text \n\n", reviewId)
   // const [rev, setRev] = useState(prevText[0]?.review);
-  const [updatedReview, setUpdatedReview] = useState(bats);
+  const [updatedReview, setUpdatedReview] = useState(prevText[0]?.review);
 
   // console.log("This is the current review---\n\n", prevText[0])
 
-  console.log("This is the review text ---- \n\n", prevText[0]?.review)
+  console.log("This is the review text ---- \n\n", prevText[0]?.review);
 
   const [isLoaded, setIsLoaded] = useState(false);
   const [edit, setEdit] = useState(false);
   // const [addReview, setAddReview] = useState(false);
   const [form, setForm] = useState(false);
+  const [errors, setErrors] = useState([]);
 
   // useEffect(() => { setRev(rev)}, [prevText[0]?.review]);
+  useEffect(() => {
+    setErrors([]);
+    const err = [];
+    if (!updatedReview || updatedReview.length < 50)
+      err.push("A review cannot be blank and must be at least 50 chars long.");
+    setErrors(err);
+  }, [updatedReview, isLoaded]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -89,12 +97,13 @@ function Reviews({ spotId }) {
     e.preventDefault();
 
     // e.stopPropagation();
-    dispatch(deleteReviewThunk(reviewId))
+    dispatch(deleteReviewThunk(reviewId));
     // .then(
     //   dispatch(loadSpotReviewsThunk(spotId))
     // ).then(setEdit(false))
-
   };
+
+
 
   useEffect(() => {
     dispatch(loadSpotReviewsThunk(spotId))
@@ -115,7 +124,11 @@ function Reviews({ spotId }) {
                   <div id="pic-rev-u">
                     <div id="pic-padding">
                       <div id="user-pic">
-                        <img id="user" src={review?.User?.profilePic} alt='user'/>
+                        <img
+                          id="user"
+                          src={review?.User?.profilePic}
+                          alt="user"
+                        />
                       </div>
                     </div>
                     <div id="r-name">
@@ -139,8 +152,10 @@ function Reviews({ spotId }) {
                               </div>
                               <div>
                                 <button
-                                    onClick={(e) => deleteReview(e, review.id)}
-                                >DELETE</button>
+                                  onClick={(e) => deleteReview(e, review.id)}
+                                >
+                                  DELETE
+                                </button>
                               </div>
                             </div>
                           )}
@@ -178,16 +193,21 @@ function Reviews({ spotId }) {
                         <>
                           <div>
                             <form onSubmit={handleSubmit}>
+                              {errors.map((error, idx) => (
+                                <li className="e-error" key={idx}>
+                                  {error}
+                                </li>
+                              ))}
                               <label />
                               <input
                                 className="form-input"
                                 type="text"
-                                // placeholder={review.review}
+                                placeholder={review.review}
                                 value={updatedReview}
                                 onChange={(e) =>
                                   setUpdatedReview(e.target.value)
                                 }
-                                required
+                                // required
                               />
                               <button>Submit</button>
                               <button onClick={() => setEdit(false)}>
@@ -204,12 +224,14 @@ function Reviews({ spotId }) {
           ))}
           <div id="add-review-box">
             {!form && (
-              <button className="add-your-rev" onClick={() => setForm(true)}>Add Your Review</button>
+              <button className="add-your-rev" onClick={() => setForm(true)}>
+                Add Your Review
+              </button>
             )}
             {form && (
               <>
                 <div>
-                  < ReviewForm spotId={spotId} setForm={setForm} />
+                  <ReviewForm spotId={spotId} setForm={setForm} />
                 </div>
                 <div>
                   <button onClick={() => setForm(false)}>Cancel</button>
