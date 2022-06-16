@@ -8,6 +8,8 @@ const { User, Spot, Review, Image, Sequelize } = require("../../db/models");
 
 const router = express.Router();
 
+// const {validateSpotForm} = require("../api/spots")
+
 const validateSignup = [
   check('email')
     .exists({ checkFalsy: true })
@@ -26,6 +28,47 @@ const validateSignup = [
     .isLength({ min: 6 })
     .withMessage('Password must be 6 characters or more.'),
   handleValidationErrors,
+];
+
+
+
+const validateSpotFormEdit = [
+  check("name")
+    .notEmpty({ checkFalsey: true })
+    .isLength({ max: 150})
+    .withMessage("The name of your spot cannot be longer than 150 characters."),
+  check("description")
+    .notEmpty({ checkFalsey: true })
+    .isLength({ min: 20})
+    .withMessage('Please enter a description that is longer than 20 words'),
+  check("guests")
+    .notEmpty({ checkFalsey: true })
+    .isInt({ min:1})
+    .withMessage("Spot must be able to host at least 1 guest."),
+  check("beds")
+    .notEmpty({ checkFalsey: true })
+    .isInt({ min: 1 })
+    .withMessage("Spot must have at least 1 bed."),
+  check("baths")
+    .notEmpty({ checkFalsey: true })
+    .isInt({ min: 1})
+    .withMessage("Spot must have at least 1 bathroom."),
+  check("address")
+    .notEmpty({ checkFalsey: true })
+    .withMessage("Please provide an address. This will not be publicly shared."),
+  check("city")
+    .notEmpty({ checkFalsey: true })
+    .withMessage("Please provide a city."),
+  check("state")
+    .notEmpty({ checkFalsey: true })
+    .withMessage("Please provide a state."),
+  check("country")
+    .notEmpty({ checkFalsey: true })
+    .withMessage("Remotebnb is currently operating within the United States only."),
+  check("price")
+    .notEmpty({ checkFalsey: true })
+    .withMessage("Please provide a nightly price for your spot."),
+    handleValidationErrors,
 ];
 
 const Op = Sequelize.Op
@@ -89,8 +132,11 @@ router.delete(
   })
 )
 
+
+
 router.put(
   '/:userId/spots/:spotId/edit',
+  validateSpotFormEdit,
   asyncHandler(async(req,res) => {
     // console.log("HELLO????? ------",req.body)
       const { spotId } = req.params

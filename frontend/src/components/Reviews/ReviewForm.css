@@ -1,4 +1,30 @@
 .rev-form-c{
-    background-color: red;
-    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* background-color: paleturquoise; */
+    width: 30rem;
+    height: 10rem;
+    border: black solid 2px;
+    border-radius: 15px;
+}
+
+.rev-form{
+    /* border: black solid 2px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+}
+
+.review-input-m{
+    width: 28rem;
+    height: 6rem;
+    resize: none;
+    border: none;
+    outline: none;
+    /* background-color: black; */
 }

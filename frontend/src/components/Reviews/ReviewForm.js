@@ -3,58 +3,60 @@ import { useDispatch, useSelector } from "react-redux";
 import { createReviewThunk, loadSpotReviewsThunk } from "../../store/review";
 import Loading from "../LoadingAndPageNotFound/Loading";
 
-import './ReviewForm.css'
-function ReviewForm({spotId}){
+import "./ReviewForm.css";
+function ReviewForm({ spotId, setForm }) {
+  // const { spotId } = useParams()
+  // console.log('What spot are you writing a review for? --spotId',spotId)
 
-    // const { spotId } = useParams()
-    // console.log('What spot are you writing a review for? --spotId',spotId)
+  const dispatch = useDispatch();
+  const userId = useSelector((state) => state?.session?.user?.id);
+  const spotName = useSelector((state) => state?.reviews[0]?.Spot?.name);
+  // const id = useSelector((state) => state?.reviews[0]?.Spot?.id)
 
-    const dispatch = useDispatch();
-    const userId = useSelector((state) => state?.session?.user?.id)
-    const spotName = useSelector((state) => state?.reviews[0]?.Spot?.name)
-    // const id = useSelector((state) => state?.reviews[0]?.Spot?.id)
+  // const id = useSelector((state) => state?.spot?.id)
+  // console.log("what is id", id)
+  // console.log("what is the current spot name?", spotName)
 
-    // const id = useSelector((state) => state?.spot?.id)
-    // console.log("what is id", id)
-    // console.log("what is the current spot name?", spotName)
+  // const [form, setForm] = useState(true);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [review, setReview] = useState("");
+  const [rating, setRating] = useState(5);
+  // const [rating, setRating] = useState(5)
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const rev = { review, userId, spotId: spotId, rating };
+    // console.log('C-R-E-A-T-E --- \n\n', spotId)
+    dispatch(createReviewThunk(spotId, rev))
+      .then(() => dispatch(loadSpotReviewsThunk(spotId)))
+      .then(() => setReview(""))
+      .then(() => setForm(false));
+  };
 
-    const [isLoaded, setIsLoaded] = useState(false)
-    const [review, setReview] = useState("")
-    const [rating, setRating] = useState(5)
-    // const [rating, setRating] = useState(5)
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const rev = { review, userId, spotId:spotId, rating }
-        // console.log('C-R-E-A-T-E --- \n\n', spotId)
-        dispatch(createReviewThunk(spotId, rev))
-            .then(() => dispatch(loadSpotReviewsThunk(spotId)))
-        setReview("");
-    }
+  // if (!isLoaded) {
+  //     return <Loading />
+  // } else {
 
-    // if (!isLoaded) {
-    //     return <Loading />
-    // } else {
-
-        return(
-            <>
-            <h1>Write Your Review</h1>
-            <div className="rev-form-c">
-                <form onSubmit={handleSubmit} className="rev-form">
-                    <label> Review
-                        <input
-                            type="text"
-                            placeholder={`How was your stay at the ${spotName}`}
-                            value={review}
-                            onChange={(e) => setReview(e.target.value)}
-                            required
-                        />
-                     </label>
-                    <button>Submit</button>
-                </form>
-            </div>
-            </>
-        )
-    //}
+  return (
+    <>
+      <h1>Write Your Review</h1>
+      <div className="rev-form-c">
+        <form onSubmit={handleSubmit} className="rev-form">
+          <label>
+            <textarea
+              className="review-input-m"
+              type="text"
+              placeholder={`Tell us about your stay...`}
+              value={review}
+              onChange={(e) => setReview(e.target.value)}
+              required
+            />
+          </label>
+          <button>Submit</button>
+        </form>
+      </div>
+    </>
+  );
+  //}
 }
 
 export default ReviewForm;

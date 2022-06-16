@@ -19,7 +19,7 @@ function Reviews({ spotId }) {
   const currReviews = reviews.filter((rev) => rev.spotId === spotId);
   // console.log('currReviews is a result from a reviews.filter ===> \n\n', currReviews)
 
-  const user = useSelector((state) => state?.session?.user?.profilePic);
+  // const user = useSelector((state) => state?.session?.user?.profilePic);
   // console.log("Hello me", user)
 
   const userId = useSelector((state) => state?.session?.user?.id);
@@ -115,7 +115,7 @@ function Reviews({ spotId }) {
                   <div id="pic-rev-u">
                     <div id="pic-padding">
                       <div id="user-pic">
-                        <img id="user" src={review?.User?.profilePic} />
+                        <img id="user" src={review?.User?.profilePic} alt='user'/>
                       </div>
                     </div>
                     <div id="r-name">
@@ -204,12 +204,12 @@ function Reviews({ spotId }) {
           ))}
           <div id="add-review-box">
             {!form && (
-              <button onClick={() => setForm(true)}>Add Your Review</button>
+              <button className="add-your-rev" onClick={() => setForm(true)}>Add Your Review</button>
             )}
             {form && (
               <>
                 <div>
-                  <ReviewForm spotId={spotId} />
+                  < ReviewForm spotId={spotId} setForm={setForm} />
                 </div>
                 <div>
                   <button onClick={() => setForm(false)}>Cancel</button>

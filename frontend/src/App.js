@@ -12,9 +12,10 @@ import CreateASpot from './components/Account/CreateASpot';
 import EditASpot from './components/Account/EditSpot';
 import Splash from './components/Splash/Splash';
 import OneSpot from './components/Spots/OneSpot';
-import Loading from './components/LoadingAndPageNotFound/Loading';
+// import Loading from './components/LoadingAndPageNotFound/Loading';
 // import Test from './components/Test.js.bak';
 import SplashSpot from './components/Spots/SplashSpot';
+import Building from './components/LoadingAndPageNotFound/Building';
 // import Reviews from './components/Reviews/Reviews';
 
 
@@ -45,6 +46,7 @@ function App() {
 
           <Route exact path='/test'>
             {/* <Splash /> */}
+            <Building />
           </Route>
 
           <Route exact path='/Maica'>

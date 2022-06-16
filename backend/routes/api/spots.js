@@ -21,36 +21,30 @@ const { check } = require("express-validator");
 
 const router = express.Router();
 
-const validateSPot = [
+const validateSpotForm = [
   check("name")
     .notEmpty({ checkFalsey: true })
-    .withMessage("Spot name cannot be blank"),
+    .isLength({ max: 150})
+    .withMessage("The name of your spot cannot be longer than 150 characters."),
   check("description")
     .notEmpty({ checkFalsey: true })
-    // .isLength({ min: 10})
-    // .withMessage('Please enter a description of your spot that is longer than 10 words name cannot be blank'),
-    .withMessage(
-      "Please enter a description of your spot name cannot be blank."
-    ),
-  check("guests")
-    .notEmpty()
-    .isInt()
-    .withMessage("Please provide number of guests."),
-  check("beds")
-    .notEmpty()
-    .isInt()
-    .withMessage("Please provide number of beds."),
+    .isLength({ min: 20})
+    .withMessage('Please enter a description that is longer than 20 words'),
   check("guests")
     .notEmpty({ checkFalsey: true })
-    .isInt()
-    .withMessage("Please provide number of guests."),
+    .isInt({ min:1})
+    .withMessage("Spot must be able to host at least 1 guest."),
+  check("beds")
+    .notEmpty({ checkFalsey: true })
+    .isInt({ min: 1 })
+    .withMessage("Spot must have at least 1 bed."),
   check("baths")
     .notEmpty({ checkFalsey: true })
-    .isInt()
-    .withMessage("Please provide number of bath rooms."),
+    .isInt({ min: 1})
+    .withMessage("Spot must have at least 1 bathroom."),
   check("address")
     .notEmpty({ checkFalsey: true })
-    .withMessage("Please address."),
+    .withMessage("Please provide an address. This will not be publicly shared."),
   check("city")
     .notEmpty({ checkFalsey: true })
     .withMessage("Please provide a city."),
@@ -59,10 +53,11 @@ const validateSPot = [
     .withMessage("Please provide a state."),
   check("country")
     .notEmpty({ checkFalsey: true })
-    .withMessage("Please provide a country."),
+    .withMessage("Remotebnb is currently operating within the United States only."),
   check("price")
     .notEmpty({ checkFalsey: true })
-    .withMessage("Please provide a price for your spot.")
+    .withMessage("Please provide a nightly price for your spot."),
+    handleValidationErrors,
 ];
 
 //Get all the spots
@@ -112,9 +107,9 @@ router.get(
 router.post(
   "/new",
   multipleMulterUpload("images"),
-  validateSPot,
+  validateSpotForm,
   asyncHandler(async (req, res) => {
-    console.log("HELLO REQ-from spots.js api--\n\n", req);
+    // console.log("HELLO REQ-from spots.js api--\n\n", req.body);
 
     const spot = await Spot.create({
       userId: req.body.userId,
@@ -127,18 +122,18 @@ router.post(
       city: req.body.city,
       state: req.body.state,
       country: req.body.country,
-      price: req.body.price
+      price: req.body.price,
     });
 
-    console.log("What is req.file??? \n\n", req.files);
+    // console.log("What is req.file??? \n\n", req.files);
     //2.
     // not accepting the return?
-    console.log(
-      "What is req.file from request? -- this is going to aws \n\n",
-      spot
-    );
+    // console.log(
+    //   "What is req.file from request? -- this is going to aws \n\n",
+    //   spot
+    // );
     const imgFromAws = await multiplePublicFileUpload(req.files);
-    console.log("FROM AWS--in spots.js api-- \n\n", imgFromAws);
+    // console.log("FROM AWS--in spots.js api-- \n\n", imgFromAws);
 
     // const spotpic = await Image.create({
     //   spotId: spot.id,
@@ -157,9 +152,14 @@ router.post(
         })
         arr.push(spotpic);
     }
-    console.log("Arr---- \n\n", arr)
+    // console.log("Arr---- \n\n", arr)
+
+    // const thisSpot = await Spot.findByPk(spot.id, {
+    //   include: Image
+    // })
     return res.json({
-      spot,
+      spot
+      // thisSpot
       // arr
     });
   })

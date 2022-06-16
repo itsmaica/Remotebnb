@@ -8,12 +8,13 @@
     height: 70vh;
     display: flex;
     scroll-snap-type: y mandatory;
+    /* border-radius:; */
 }
 
 #review-c-m{
     padding-top: 1rem;
     padding-bottom: 2rem;
-    background-color: plum;
+    /* background-color: plum; */
     width: 95%;
     height: 100%;
     /* height: 50vh; */

@@ -1,18 +1,108 @@
-.form {
+#c-spot-modal{
+    padding: 0;
+    margin: 0;
+    box-sizing: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow-y: scroll;
+    width: 70vw;
+    height: 90vh;
+    scroll-snap-type: y mandatory;
+    border-radius: 10px;
+}
+
+.c-error{
+    font-weight: bolder;
+    color: red;
+    border: rgb(255, 0, 0) solid 1px;
+    margin-top: 1rem;
+    border-radius: 6px;
+    padding-left: 0.5rem;
+    /* width: 9rem; */
+}
+#p-head{
+    /* margin-top: 1rem; */
+    /* background-color: aqua; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form-c {
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: column;
+    border: black solid 2px;
+    border-radius: 10px;
+    margin-bottom: 1rem;
 }
 
 .form-container{
-    border: palevioletred solid 3px;
-    width: 70%;
+    /* border: palevioletred solid 3px; */
+    /* width: 100%; */
+}
+
+.c-input{
+    /* background-color: yellow; */
+    width: 100%;
+    margin-top: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5re;
+    /* margin-bottom: 1rem; */
+    margin-left: 1rem;
+}
+
+#orange{
+    /* display: flex; */
+    /* background-color: orange; */
+    width: 90%;
+    height: 100%;
+    /* border: black solid 1px;
+    border-radius: 6px; */
+}
+
+#file-input{
+    /* background-color: green; */
+    width: 60%;
+}
+#c-sub{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#c-sub-b{
+    background-color: white;
+    border: black solid 1px;
+    width: 7rem;
+    height: 2rem;
+    color: black;
+    border-radius: 8px;
+    font-weight: bolder;
+    /* margin-bottom: 1rem; */
+}
+
+#c-sub-b:disabled{
+    background-color: rgb(253, 190, 190);
+    color: white;
 }
 
 .form-input{
+    width: 82%;
     height: 30px;
     font-size: 25px;
+    border-top: none;
+    border-left: none;
+    border-right:none;
+    margin-left: 1rem;
+}
+.form-input:focus{
+    outline: none
 }
 
 label{
@@ -20,5 +110,14 @@ label{
 }
 
 .form-container-two{
-    background-color: palevioletred;
+    /* background-color: palevioletred; */
+}
+
+
+.take-over{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
 }
