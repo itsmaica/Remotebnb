@@ -60,7 +60,7 @@ function CreateASpot({ setShowModal, setIsLoaded }) {
     // .then(()=>setIsLoaded(false))
     await setIsLoaded(false);
 
-    dispatch(createSpotThunk(spot))
+    await dispatch(createSpotThunk(spot))
       .then(() => setIsLoaded(true))
       .then(() => setShowModal(false));
 
