@@ -3,14 +3,14 @@ function ReviewEdit(){
         <>
             <div>
                 <form >
-                    <label />
+                    <label /> Hello
                     <input
                     className="form-input"
                     type="text"
                     placeholder={review.review}
                     value={editReview}
                     onChange={(e) => setEditReview(e.target.value)}
-                    required
+                    // required
                     />
                 </form>
                 <button>Submit</button>
