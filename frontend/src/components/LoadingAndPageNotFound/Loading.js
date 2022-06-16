@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 
 import loading from "../../images/loading.gif";
 
@@ -14,14 +14,9 @@ function Loading(){
             <>
                 <div id='bg'>
                     <img src={loading} />
-
                 </div>
-
-
-
             </>
         )
-
 }
 
 export default Loading;
