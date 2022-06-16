@@ -43,7 +43,9 @@ const validateSpotFormEdit = [
     .withMessage('Please enter a description that is longer than 20 words'),
   check("guests")
     .notEmpty({ checkFalsey: true })
-    .isInt({ min:1})
+    .withMessage("Spot must be able to host at least 1 guest."),
+  check("guests")
+    .isInt({ min: 1 })
     .withMessage("Spot must be able to host at least 1 guest."),
   check("beds")
     .notEmpty({ checkFalsey: true })
