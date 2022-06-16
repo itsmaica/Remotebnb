@@ -43,7 +43,9 @@ const validateSpotFormEdit = [
     .withMessage('Please enter a description that is longer than 20 words'),
   check("guests")
     .notEmpty({ checkFalsey: true })
-    .isInt({ min:1})
+    .withMessage("Spot must be able to host at least 1 guest."),
+  check("guests")
+    .isInt({ min: 1 })
     .withMessage("Spot must be able to host at least 1 guest."),
   check("beds")
     .notEmpty({ checkFalsey: true })
@@ -93,7 +95,7 @@ router.get(
   '/:userId',
   asyncHandler(async(req,res) => {
     // const userId = req.params.userId
-    console.log("What are in the req.params", req.params)
+    // console.log("What are in the req.params", req.params)
     // const user = await User.findByPk()
     res.send(" :D ")
   })
@@ -153,7 +155,7 @@ router.put(
       const newPrice = req.body.price
 
       const spot = await Spot.findByPk(id)
-      console.log("what is spot?? \n\n", spot)
+      // console.log("what is spot?? \n\n", spot)
 
       const {
           name, description, guests, beds,

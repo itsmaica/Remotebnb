@@ -37,6 +37,53 @@ function CreateASpot({ setShowModal, setIsLoaded }) {
 
   // const [guestE, setGuestE] = useState(1)
 
+
+  useEffect(() => {
+    setErrors([]);
+    const err = [];
+    if (!name || name.length >= 150)
+      err.push("The name of your spot cannot be longer than 150 characters.");
+    if (!description || description.length <= 20)
+      err.push("Please enter a description that is longer than 20 words");
+    if (guests === 0) err.push("Spot must be able to host at least 1 guest.");
+    if (beds === 0) err.push("Spot must have at least 1 bed.");
+    // if (typeof beds !== "number")
+    //   err.push("* Spot must have at least 1 bed.");
+    if (baths === 0) err.push("Spot must have at least 1 bathroom.");
+    // if (typeof baths !== "number")
+    //   err.push("* Spot must have at least 1 bathroom.");
+    if (!address)
+      err.push("Please provide an address. This will not be publicly shared.");
+    if (!city) err.push("Please provide a city.");
+    if (!state) err.push("Please provide a state");
+    if (!country)
+      err.push(
+        "Remotebnb is currently operating within the United States only."
+      );
+    if (price <= 0)
+      err.push(
+        "Please provide a nightly price for your spot. The minimum is $60.00"
+      );
+    if (!images.length || images.length < 5)
+      err.push("Please upload 5 images of your spots");
+    setErrors(err);
+
+    // if (images.length < 5) err.push("Please upload 5 images of your spots");
+    // // console.log("What is error's not empty?", errors)
+  }, [
+    name,
+    description,
+    guests,
+    beds,
+    baths,
+    address,
+    city,
+    state,
+    country,
+    price,
+    images
+  ]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -60,7 +107,7 @@ function CreateASpot({ setShowModal, setIsLoaded }) {
     // .then(()=>setIsLoaded(false))
     await setIsLoaded(false);
 
-    dispatch(createSpotThunk(spot))
+    await dispatch(createSpotThunk(spot))
       .then(() => setIsLoaded(true))
       .then(() => setShowModal(false));
 
@@ -86,54 +133,6 @@ function CreateASpot({ setShowModal, setIsLoaded }) {
 
   console.log("WHat is images", images.length);
 
-
-
-
-  useEffect(() => {
-    setErrors([])
-    const err = [];
-    if (!name || name.length >= 150)
-      err.push("The name of your spot cannot be longer than 150 characters.");
-    if (!description || description.length <= 20)
-      err.push("Please enter a description that is longer than 20 words");
-    if (guests === 0 )
-      err.push("Spot must be able to host at least 1 guest.");
-    if (beds === 0)
-      err.push("Spot must have at least 1 bed.");
-    // if (typeof beds !== "number")
-    //   err.push("* Spot must have at least 1 bed.");
-    if (baths === 0)
-      err.push("Spot must have at least 1 bathroom.");
-    // if (typeof baths !== "number")
-    //   err.push("* Spot must have at least 1 bathroom.");
-    if (!address)
-      err.push("Please provide an address. This will not be publicly shared.");
-    if (!city) err.push("Please provide a city.");
-    if (!state) err.push("Please provide a state");
-    if (!country)
-      err.push(
-        "Remotebnb is currently operating within the United States only."
-      );
-    if (price <= 0)
-      err.push("Please provide a nightly price for your spot. The minimum is $60.00");
-    if (!images.length) err.push("Please upload 5 images of your spots");
-    setErrors(err);
-
-    if (images.length < 5) err.push("Please upload 5 images of your spots");
-    // console.log("What is error's not empty?", errors)
-  }, [
-    name,
-    description,
-    guests,
-    beds,
-    baths,
-    address,
-    city,
-    state,
-    country,
-    price,
-    images
-  ]);
 
   // console.log("What happens after correction to errors?", errors)
 
@@ -187,42 +186,46 @@ function CreateASpot({ setShowModal, setIsLoaded }) {
           </div>
           <div className="form-container">
             <form onSubmit={handleSubmit} className="form-c">
+              <div>
               <ul>
-                  {errors.map((error, idx) => (
-                      <li className="c-error" key={idx}>{error}</li>
-                    ))}
+                {errors.map((error, idx) => (
+                  <li className="c-error" key={idx}>
+                    {error}
+                  </li>
+                ))}
               </ul>
+              </div>
               {/* <h3>Form</h3> */}
 
               <div className="c-input">
                 <div>
-                <label >
-                  {" "}
-                  Name
-                  <input
-                    className="form-input"
-                    type="text"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    // required
-                  />
-                </label>
+                  <label>
+                    {" "}
+                    Name
+                    <input
+                      className="form-input"
+                      type="text"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      // required
+                    />
+                  </label>
                 </div>
               </div>
 
               <div className="c-input">
                 <div>
-                <label>
-                  {" "}
-                  Description
-                  <input
-                    className="form-input"
-                    type="text"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                    // required
-                  />
-                </label>
+                  <label>
+                    {" "}
+                    Description
+                    <input
+                      className="form-input"
+                      type="text"
+                      value={description}
+                      onChange={(e) => setDescription(e.target.value)}
+                      // required
+                    />
+                  </label>
                 </div>
               </div>
 
@@ -235,8 +238,9 @@ function CreateASpot({ setShowModal, setIsLoaded }) {
                     type="number"
                     value={guests}
                     onChange={(e) => setGuests(e.target.value)}
-                    min="1" max="99999999"
-                    // required
+                    min="1"
+                    max="99999999"
+                    required
                   />
                 </label>
               </div>
@@ -250,8 +254,9 @@ function CreateASpot({ setShowModal, setIsLoaded }) {
                     type="number"
                     value={beds}
                     onChange={(e) => setBeds(e.target.value)}
-                    min="1" max="99999999"
-                    // required
+                    min="1"
+                    max="99999999"
+                    required
                   />
                 </label>
               </div>
@@ -263,7 +268,8 @@ function CreateASpot({ setShowModal, setIsLoaded }) {
                   <input
                     className="form-input"
                     type="number"
-                    min="1" max="99999999"
+                    min="1"
+                    max="99999999"
                     value={baths}
                     onChange={(e) => setBaths(e.target.value)}
                     // required
@@ -335,7 +341,8 @@ function CreateASpot({ setShowModal, setIsLoaded }) {
                   <input
                     className="form-input"
                     type="number"
-                    min="60.00" max="9999999999.00"
+                    min="60.00"
+                    max="9999999999.00"
                     value={price}
                     onChange={(e) => setPrice(e.target.value)}
                     // required
@@ -359,9 +366,9 @@ function CreateASpot({ setShowModal, setIsLoaded }) {
                 </label>
               </div>
 
-              <div className="c-input" id='c-sub'>
+              <div className="c-input" id="c-sub">
                 <button
-                  id='c-sub-b'
+                  id="c-sub-b"
                   // disabled={!name || !description || !guests || !beds || !baths || !address || !city || !state || !price || !images}
                   disabled={!!errors.length}
 

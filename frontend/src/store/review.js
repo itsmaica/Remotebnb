@@ -66,7 +66,7 @@ export const createReviewThunk = (spotId, review) => async (dispatch) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(review)
   });
-  console.log("What is response? from create review Thunk -- \n\n", response);
+  // console.log("What is response? from create review Thunk -- \n\n", response);
   // const { review, spotId } = review;
   if (response.ok) {
     const review = await response.json();
@@ -77,17 +77,17 @@ export const createReviewThunk = (spotId, review) => async (dispatch) => {
 };
 
 export const editReviewThunk = (reviewId, updatedRev) => async (dispatch) => {
-  console.log("What is reviewId? -- thunk", reviewId);
+  // console.log("What is reviewId? -- thunk", reviewId);
   const response = await csrfFetch(`/api/reviews/${reviewId}/edit`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(updatedRev)
   });
 
-  console.log("Hello from Update Review Thunk", response);
+  // console.log("Hello from Update Review Thunk", response);
   if (response.ok) {
     const update = await response.json();
-    console.log("What is update \n\n", update);
+    // console.log("What is update \n\n", update);
     dispatch(updateReview(update));
     return response;
   }

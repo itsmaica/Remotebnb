@@ -32,7 +32,7 @@
 #spot-pic{
     height: 50px;
     width: 50px;
-    background-color: aqua;
+    /* background-color: aqua; */
     display: flex;
     justify-content: center;
     align-items: center;

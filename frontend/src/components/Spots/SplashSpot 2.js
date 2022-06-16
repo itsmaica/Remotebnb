@@ -6,7 +6,7 @@ import { loadAllImagesThunk } from "../../store/image"
 import "./SplashSpot.css"
 
 function SplashSpot({spotId}) {
-    console.log("Spot id \n\n\ ",  spotId)
+    // console.log("Spot id \n\n\ ",  spotId)
 
     const [isLoaded, setIsLoaded] = useState(false)
 
