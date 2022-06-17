@@ -1,8 +1,28 @@
 #the-user{
-    background-color: palevioletred;
+    background-color: white;
     height: 3rem;
-    width: 5.5rem;
+    width: 6rem;
     border-radius: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content:space-around;
+    border: #EEEEEE solid 1px;
+}
+
+#stay{
+    /* position: absolute; */
+}
+
+/* #button-and-menu{
+    position: sticky;
+} */
+
+#the-user:hover{
+    box-shadow: 4px 4px 4px #dad8d8;
+}
+
+#the-user:active{
+    box-shadow: 4px 4px 4px #dad8d8;
 }
 
 
@@ -15,4 +35,72 @@
 #prof-p > .fa-user-circle {
     height: 100%;
     width: 100%;
+}
+
+#birdy{
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+}
+
+#hamb{
+    padding-left: 0.5rem;
+}
+
+.user-menu{
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    /* padding-top: 4rem; */
+    margin-top: 0.9rem;
+    height: 100px;
+    width: 10rem;
+    border-radius: 1rem;
+    box-shadow: 5px -5px 10px 1px #dad8d8;
+    /* margin-right: 500px; */
+    /* padding-right: 500px; */
+}
+
+/* .profile-dropdown{
+    list-style-type: none;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+} */
+
+/* .profile-dropdown > li{
+    text-decoration: none;
+    color: black;
+} */
+
+#manage-spots{
+    text-decoration: none;
+    color: black;
+}
+
+
+#logout{
+    background-color: white;
+    border: none;
+    width: 100%;
+    height: 100%;
+}
+
+#logout:hover{
+    cursor: pointer;
+    background-color: #EEEEEE;
+}
+
+.men-u{
+    width: 100%;
+    /* background-color: green; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
+}
+
+.men-u:hover{
+    background-color: #EEEEEE;
 }

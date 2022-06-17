@@ -1,14 +1,15 @@
 import React from 'react';
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import airbnblogo from "../../images/airbnblogo.png"
-
+import DemoProfileButton from "./DemoProfileButton"
 import './Navigation.css';
 
+
 function Navigation({ isLoaded }){
-  const history = useHistory();
+  // const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
 
   console.log("Who is the sessionUser in nav", sessionUser)
@@ -20,8 +21,11 @@ function Navigation({ isLoaded }){
   } else {
     sessionLinks = (
       <>
+        {/* <ProfileButton user={sessionUser} /> */}
+
         <LoginFormModal />
-        <NavLink to="/signup">Sign Up</NavLink>
+        {/* <NavLink to="/signup">Sign Up</NavLink> */}
+        <DemoProfileButton />
       </>
     );
   }
@@ -29,6 +33,7 @@ function Navigation({ isLoaded }){
 
   return (
     <>
+    {/* <LoginFormModal /> */}
       <div className='navi'>
         <div className='navi-box-child'>
 
