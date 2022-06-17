@@ -21,6 +21,8 @@ function OneSpot() {
   const reviews = useSelector((state) => state?.reviews);
   const bats = Object.values(reviews);
   const currRev = bats.filter((rev) => rev.spotId === spot?.id);
+  const session = useSelector((state) => state?.session?.user)
+  console.log("session", session)
   //
   // console.log('My current reviews ===> \n\n', currRev)
   // const reviews = useSelector((state) => state?.allSpots?.spot?.Reviews)
@@ -203,7 +205,7 @@ function OneSpot() {
                     </>
                   ))}
                 </div>
-                {currRev.length < 1 && (
+                {session && currRev.length < 1 && (
                   <button
                     className="see-all-b"
                     onClick={() => setShowModal(true)}
