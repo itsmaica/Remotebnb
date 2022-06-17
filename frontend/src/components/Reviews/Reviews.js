@@ -75,7 +75,8 @@ function Reviews({ spotId }) {
     setErrors([]);
     const err = [];
     if (!updatedReview || updatedReview.length < 50)
-      err.push("A review cannot be blank and must be at least 50 chars long.");
+      err.push("A review must be at least 50 chars long");
+
     setErrors(err);
   }, [updatedReview, isLoaded]);
 
@@ -210,7 +211,6 @@ function Reviews({ spotId }) {
                                 onChange={(e) =>
                                   setUpdatedReview(e.target.value)
                                 }
-                                // required
                               />
                               <button>Submit</button>
                               <button onClick={() => setEdit(false)}>

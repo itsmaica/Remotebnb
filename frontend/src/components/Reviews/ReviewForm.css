@@ -4,11 +4,13 @@
     align-items: center;
     flex-direction: column;
     /* background-color: paleturquoise; */
-    width: 45rem;
-    height: 10rem;
+    width: 100%;
+    min-height: 10rem;
     border: black solid 2px;
     border-radius: 15px;
 }
+
+
 
 .rev-form{
     /* border: black solid 2px; */
@@ -21,7 +23,7 @@
 }
 
 .review-input-m{
-    width: 40rem;
+    width: 55rem;
     height: 6rem;
     resize: none;
     border: none;
