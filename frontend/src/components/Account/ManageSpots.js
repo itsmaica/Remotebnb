@@ -119,10 +119,12 @@ function ManageSpots() {
                     <button
                       id={`edit-${spot?.id}`}
                       onClick={(e) => toEdit(e, userId, spot?.id)}
+                      className="low"
                     >
                       EDIT
                     </button>
                     <button
+                      className="lo"
                       id={`delete-${spot?.id}`}
                       onClick={(e) => deleteSpot(e, userId, spot?.id)}
                     >
