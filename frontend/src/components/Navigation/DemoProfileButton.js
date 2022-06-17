@@ -7,7 +7,7 @@ import LoginFormModal from '../LoginFormModal';
 // import defaultbird from "../../images/defaultbird.png";
 import "./ProfileButton.css";
 // import LoginFormModal from "../LoginFormModal";
-// import { Modal } from '../..context/Modal'
+// import { Modal } from '../../context/Modal'
 function ProfileButton() {
 //   const history = useHistory();
 
@@ -67,7 +67,7 @@ function ProfileButton() {
                 </NavLink>
               </div>
               <div className="men-u">
-                <LoginFormModal />
+
               </div>
               {/* <a href="#"><LoginFormModal /></a> */}
           </div>
