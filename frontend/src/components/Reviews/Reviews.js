@@ -17,6 +17,7 @@ function Reviews({ spotId }) {
   const bat = useSelector((state) => state?.reviews);
   const reviews = Object.values(bat);
   const currReviews = reviews.filter((rev) => rev.spotId === spotId);
+
   // console.log('currReviews is a result from a reviews.filter ===> \n\n', currReviews)
 
   // const user = useSelector((state) => state?.session?.user?.profilePic);
@@ -228,7 +229,7 @@ function Reviews({ spotId }) {
             </>
           ))}
           <div id="add-review-box">
-            {!form && (
+            {!form && userId && (
               <button className="add-your-rev" onClick={() => setForm(true)}>
                 Add Your Review
               </button>
