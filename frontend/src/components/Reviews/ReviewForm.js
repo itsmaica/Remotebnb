@@ -21,15 +21,17 @@ function ReviewForm({ spotId, setForm }) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [review, setReview] = useState("");
   const [rating, setRating] = useState(5);
-  const [errors,setErrors] = useState([]);
+  const [errors, setErrors] = useState([]);
   // const [rating, setRating] = useState(5)
 
-  useEffect(()=>{
+  useEffect(() => {
     setErrors([]);
     const err = [];
-    if(!review.length || review.length < 50) err.push("A review cannot be blank and must be at least 50 chars long.");
-    setErrors(err)
-  }, [review, isLoaded])
+    if (review.length && review.length < 50)
+      err.push("A review cannot be blank and must be at least 50 chars long.")
+    if (review.length > 500) err.push("A review cannot be more than 500 chars long.")
+    setErrors(err);
+  }, [review, isLoaded]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -38,7 +40,7 @@ function ReviewForm({ spotId, setForm }) {
     dispatch(createReviewThunk(spotId, rev))
       .then(() => dispatch(loadSpotReviewsThunk(spotId)))
       .then(() => setReview(""))
-      .then(()=> setIsLoaded(true))
+      .then(() => setIsLoaded(true))
       .then(() => setForm(false));
   };
 
@@ -51,11 +53,13 @@ function ReviewForm({ spotId, setForm }) {
       <h1>Write Your Review</h1>
       <div className="rev-form-c">
         <form onSubmit={handleSubmit} className="rev-form">
-        {errors.map((error, idx) => (
-                  <li className="c-error" key={idx}>
-                    {error}
-                  </li>
-                ))}
+          <div id='e-rev-c'>
+            {errors.map((error, idx) => (
+              <li className="c-error" key={idx}>
+                {error}
+              </li>
+            ))}
+          </div>
           <label>
             <textarea
               className="review-input-m"
@@ -66,11 +70,10 @@ function ReviewForm({ spotId, setForm }) {
               // required
             />
           </label>
-          <div id='r-bat'>
-            <button
-            id='r-sub'
-            disabled={!!errors.length}
-            >Submit</button>
+          <div id="r-bat">
+            <button id="r-sub" disabled={!!errors.length}>
+              Submit
+            </button>
           </div>
         </form>
       </div>

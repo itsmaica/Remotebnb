@@ -75,7 +75,8 @@ function Reviews({ spotId }) {
     setErrors([]);
     const err = [];
     if (!updatedReview || updatedReview.length < 50)
-      err.push("A review cannot be blank and must be at least 50 chars long.");
+      err.push("A review must be at least 50 chars long");
+
     setErrors(err);
   }, [updatedReview, isLoaded]);
 
@@ -149,12 +150,14 @@ function Reviews({ spotId }) {
                                     setReviewId(review.id);
                                   }}
                                   id={`review-num-${review.id}`}
+                                  className="lo"
                                 >
                                   EDIT
                                 </button>
                               </div>
                               <div>
                                 <button
+                                  className="lo"
                                   onClick={(e) => deleteReview(e, review.id)}
                                 >
                                   DELETE
@@ -210,10 +213,9 @@ function Reviews({ spotId }) {
                                 onChange={(e) =>
                                   setUpdatedReview(e.target.value)
                                 }
-                                // required
                               />
-                              <button>Submit</button>
-                              <button onClick={() => setEdit(false)}>
+                              <button id='sb-e-rev'>Submit</button>
+                              <button id='cxl-rev'onClick={() => setEdit(false)}>
                                 Cancel
                               </button>
                             </form>
@@ -237,7 +239,7 @@ function Reviews({ spotId }) {
                   <ReviewForm spotId={spotId} setForm={setForm} />
                 </div>
                 <div>
-                  <button onClick={() => setForm(false)}>Cancel</button>
+                  <button className="lo" onClick={() => setForm(false)}>Cancel</button>
                 </div>
               </>
             )}
