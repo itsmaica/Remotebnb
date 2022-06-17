@@ -11,6 +11,25 @@
     /* border-radius:; */
 }
 
+#sb-e-rev{
+    background-color: white;
+    border: black solid 2px;
+    border-radius: 5px;
+}
+
+#cxl-rev{
+    background-color: black;
+    border: black solid 2px;
+    border-radius: 5px;
+    color: white;
+}
+
+.lo{
+    background-color: white;
+    border: black solid 2px;
+    border-radius: 5px;
+}
+
 #review-c-m{
     padding-top: 1rem;
     padding-bottom: 2rem;

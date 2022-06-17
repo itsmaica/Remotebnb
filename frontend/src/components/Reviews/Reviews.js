@@ -150,12 +150,14 @@ function Reviews({ spotId }) {
                                     setReviewId(review.id);
                                   }}
                                   id={`review-num-${review.id}`}
+                                  className="lo"
                                 >
                                   EDIT
                                 </button>
                               </div>
                               <div>
                                 <button
+                                  className="lo"
                                   onClick={(e) => deleteReview(e, review.id)}
                                 >
                                   DELETE
@@ -212,8 +214,8 @@ function Reviews({ spotId }) {
                                   setUpdatedReview(e.target.value)
                                 }
                               />
-                              <button>Submit</button>
-                              <button onClick={() => setEdit(false)}>
+                              <button id='sb-e-rev'>Submit</button>
+                              <button id='cxl-rev'onClick={() => setEdit(false)}>
                                 Cancel
                               </button>
                             </form>
@@ -237,7 +239,7 @@ function Reviews({ spotId }) {
                   <ReviewForm spotId={spotId} setForm={setForm} />
                 </div>
                 <div>
-                  <button onClick={() => setForm(false)}>Cancel</button>
+                  <button className="lo" onClick={() => setForm(false)}>Cancel</button>
                 </div>
               </>
             )}
