@@ -55,12 +55,15 @@ function Reviews({ spotId }) {
   const bats = prevText[0]?.review;
   // console.log("Need the current Id to grab the current review text \n\n", reviewId)
   // const [rev, setRev] = useState(prevText[0]?.review);
-  const [updatedReview, setUpdatedReview] = useState(prevText[0]?.review);
+  // const [updatedReview, setUpdatedReview] = useState(prevText[0]?.review);
+  const [updatedReview, setUpdatedReview] = useState("");
+
 
   // console.log("This is the current review---\n\n", prevText[0])
 
   console.log("This is the review text ---- \n\n", prevText[0]?.review);
 
+  console.log("THIS IS UPDATED REVIEW \n\n", updatedReview)
   const [isLoaded, setIsLoaded] = useState(false);
   const [edit, setEdit] = useState(false);
   // const [addReview, setAddReview] = useState(false);

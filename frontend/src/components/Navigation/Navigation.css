@@ -5,14 +5,21 @@
 
 .navi{
   width: 100vw;
-  height: 100px;
+  height: 4rem;
   border: green solid 1px;
   display: flex;
   align-items: center;
-  justify-items: flex-start;
+  justify-content: center;
   flex-direction: row;
 }
 
+.navi-box-child{
+  height: 100%;
+  width: 75%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
 .navbox{
   padding-left: 80%;
@@ -20,6 +27,11 @@
   width: 200px;
   display: flex;
   align-items: center;
-  justify-items: flex-start;
+  /* justify-items: flex-start; */
   flex-direction: row;
+}
+
+#test{
+  background-color: olivedrab;
+  /* width: 300px; */
 }
