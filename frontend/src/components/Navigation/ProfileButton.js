@@ -16,6 +16,7 @@ function ProfileButton({ user }) {
   // console.log("Hi Maica from Profile Button", sessionUser)
 
   const userId = user.id
+  console.log("Hello I am the user in the button", user)
   // console.log("Hello from profile button", user.id)
 
   // const toManageSpots = (e, userId) => {
@@ -49,8 +50,12 @@ function ProfileButton({ user }) {
   return (
     <>
       <div>
-          <button onClick={openMenu}>
-            <i className="fas fa-user-circle" />
+          <button id="the-user" onClick={openMenu}>
+            {/* <p>{user.email}</p> */}
+            <div id='prof-p'>
+              {/* <img src={user?.profilePic}/> */}
+              <i className="fas fa-user-circle" />
+            </div>
           </button>
           {showMenu && (
             <ul className="profile-dropdown">

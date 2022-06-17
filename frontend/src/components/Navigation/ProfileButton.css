@@ -1,0 +1,18 @@
+#the-user{
+    background-color: palevioletred;
+    height: 3rem;
+    width: 5.5rem;
+    border-radius: 2rem;
+}
+
+
+#prof-p{
+    height: 10rem;
+    width: 10rem;
+    border-radius: 5rem;
+}
+
+#prof-p > .fa-user-circle {
+    height: 100%;
+    width: 100%;
+}
