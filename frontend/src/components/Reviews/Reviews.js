@@ -17,6 +17,7 @@ function Reviews({ spotId }) {
   const bat = useSelector((state) => state?.reviews);
   const reviews = Object.values(bat);
   const currReviews = reviews.filter((rev) => rev.spotId === spotId);
+
   // console.log('currReviews is a result from a reviews.filter ===> \n\n', currReviews)
 
   // const user = useSelector((state) => state?.session?.user?.profilePic);
@@ -55,12 +56,15 @@ function Reviews({ spotId }) {
   const bats = prevText[0]?.review;
   // console.log("Need the current Id to grab the current review text \n\n", reviewId)
   // const [rev, setRev] = useState(prevText[0]?.review);
-  const [updatedReview, setUpdatedReview] = useState(prevText[0]?.review);
+  // const [updatedReview, setUpdatedReview] = useState(prevText[0]?.review);
+  const [updatedReview, setUpdatedReview] = useState("");
+
 
   // console.log("This is the current review---\n\n", prevText[0])
 
   console.log("This is the review text ---- \n\n", prevText[0]?.review);
 
+  console.log("THIS IS UPDATED REVIEW \n\n", updatedReview)
   const [isLoaded, setIsLoaded] = useState(false);
   const [edit, setEdit] = useState(false);
   // const [addReview, setAddReview] = useState(false);
@@ -72,7 +76,8 @@ function Reviews({ spotId }) {
     setErrors([]);
     const err = [];
     if (!updatedReview || updatedReview.length < 50)
-      err.push("A review cannot be blank and must be at least 50 chars long.");
+      err.push("A review must be at least 50 chars long");
+
     setErrors(err);
   }, [updatedReview, isLoaded]);
 
@@ -146,12 +151,14 @@ function Reviews({ spotId }) {
                                     setReviewId(review.id);
                                   }}
                                   id={`review-num-${review.id}`}
+                                  className="lo"
                                 >
                                   EDIT
                                 </button>
                               </div>
                               <div>
                                 <button
+                                  className="lo"
                                   onClick={(e) => deleteReview(e, review.id)}
                                 >
                                   DELETE
@@ -207,10 +214,9 @@ function Reviews({ spotId }) {
                                 onChange={(e) =>
                                   setUpdatedReview(e.target.value)
                                 }
-                                // required
                               />
-                              <button>Submit</button>
-                              <button onClick={() => setEdit(false)}>
+                              <button id='sb-e-rev'>Submit</button>
+                              <button id='cxl-rev'onClick={() => setEdit(false)}>
                                 Cancel
                               </button>
                             </form>
@@ -223,7 +229,7 @@ function Reviews({ spotId }) {
             </>
           ))}
           <div id="add-review-box">
-            {!form && (
+            {!form && userId && (
               <button className="add-your-rev" onClick={() => setForm(true)}>
                 Add Your Review
               </button>
@@ -234,7 +240,7 @@ function Reviews({ spotId }) {
                   <ReviewForm spotId={spotId} setForm={setForm} />
                 </div>
                 <div>
-                  <button onClick={() => setForm(false)}>Cancel</button>
+                  <button className="lo" onClick={() => setForm(false)}>Cancel</button>
                 </div>
               </>
             )}

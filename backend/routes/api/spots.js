@@ -29,7 +29,8 @@ const validateSpotForm = [
   check("description")
     .notEmpty({ checkFalsey: true })
     .isLength({ min: 20})
-    .withMessage('Please enter a description that is longer than 20 words'),
+    .isLength({ max: 500})
+    .withMessage('Please enter a description that is longer than 20 chars and less than 500 chars'),
   check("guests")
     .notEmpty({ checkFalsey: true })
     .isInt({ min:1})

@@ -5,21 +5,58 @@
 
 .navi{
   width: 100vw;
-  height: 100px;
-  border: green solid 1px;
+  height: 5rem;
+  /* border: green solid 1px; */
   display: flex;
   align-items: center;
-  justify-items: flex-start;
+  justify-content: center;
   flex-direction: row;
 }
 
-
-.navbox{
-  padding-left: 80%;
-  position: absolute;
-  width: 200px;
+.navi-box-child{
+  height: 100%;
+  width: 75%;
   display: flex;
   align-items: center;
-  justify-items: flex-start;
+  justify-content: space-between;
+}
+
+.nav-box{
+  /* background-color: olivedrab; */
+  /* padding-left: 80%; */
+  /* position: absolute; */
+  /* width: 200px; */
+  display: flex;
+  align-items: center;
+  /* justify-items: flex-start; */
+  justify-content: center;
   flex-direction: row;
+  width: 10rem;
+  height: auto;
+}
+
+
+#test{
+  /* background-color: olivedrab; */
+  /* width: 300px; */
+}
+
+#a-logo{
+  padding-top: 4%;
+  height: 2.5rem;
+  width: 2.5rem;
+}
+
+#remotebnb{
+  font-family: 'Montserrat', sans-serif;
+  color: #fa5c63 ;
+  text-decoration: none;
+  padding-bottom: 3%;
+  padding-left: 0.5rem;
+}
+
+.line4{
+  width: 100vw;
+  background-color: #EEEEEE;
+  height: 1px;
 }
