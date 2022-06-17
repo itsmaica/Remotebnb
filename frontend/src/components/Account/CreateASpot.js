@@ -41,10 +41,12 @@ function CreateASpot({ setShowModal, setIsLoaded }) {
   useEffect(() => {
     setErrors([]);
     const err = [];
-    if (!name || name.length >= 150)
+    if (!name || name?.length >= 150)
       err.push("The name of your spot cannot be longer than 150 characters.");
-    if (!description || description.length <= 20)
+    if (description?.length <= 20)
       err.push("Please enter a description that is longer than 20 words");
+    if (description?.length > 500)
+      err.push("Please enter a description that is less than 500 words")
     if (guests === 0) err.push("Spot must be able to host at least 1 guest.");
     if (beds === 0) err.push("Spot must have at least 1 bed.");
     // if (typeof beds !== "number")
@@ -364,6 +366,11 @@ function CreateASpot({ setShowModal, setIsLoaded }) {
                     required
                   />
                 </label>
+                <p>To select multiple images at once:</p>
+                  <ul>
+                    <li> For Mac: Press and hold the Command key, then click the items (they don't need to be next to each other).</li>
+                    <li> For PC: Hold down the control key (Ctrl), and then click the items (they don't need to be next each).</li>
+                  </ul>
               </div>
 
               <div className="c-input" id="c-sub">
