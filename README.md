@@ -13,29 +13,29 @@ Check out [Remotebnb](https://remotebnb.herokuapp.com/)
 
 ## Technologies Used
 
-<!-- <img src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E" height=40/><img src="https://camo.githubusercontent.com/a1b2dac5667822ee0d98ae6d799da61987fd1658dfeb4d2ca6e3c99b1535ebd8/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f707974686f6e2d3336373041303f7374796c653d666f722d7468652d6261646765266c6f676f3d707974686f6e266c6f676f436f6c6f723d666664643534" height=40/><img src="https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white" height=40 /><img src="https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white" height=40/><img src="https://camo.githubusercontent.com/ab4c3c731a174a63df861f7b118d6c8a6c52040a021a552628db877bd518fe84/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f72656163742d2532333230323332612e7376673f7374796c653d666f722d7468652d6261646765266c6f676f3d7265616374266c6f676f436f6c6f723d253233363144414642" height=40/><img src="https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white" height=40/><img src="https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white" height=40/><img src="https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white" height=40/><img src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white" height=40/> <img src="https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white" height=40/> -->
-
-* JavaScript
-* Sequelize
-* HTML5
-* CSS3
-* AWS
+<img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E" /><img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" /><img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" /><img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" /><img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" /><img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" /><img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" /><img src="https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white" /><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" /><img src="https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white" />
 
 ## Getting started
 1. Clone this repository:
 
-   ```
+   `
    https://github.com/itsmaica/Remotebnb.git
-   ```
+   `
+2. Install denpendencies into the Backed and the Frontend by making a terminal for each one and then run the following:
 
-2. Install dependencies with npm install
+   * `npm install`
 
 3. Create a **.env** file using the **.envexample** provided 
 
-4. Setup your PostgreSQL user, password and database and make sure it matches your **.env** file
+4. Set up your database with information from your .env and then run the following to create your database, migrate, and seed: 
+ 
+   * `npx dotenv sequelize db:create`
+   * `npx dotenv sequelize db:migrate` 
+   * `npx dotenv sequelize db:seed:all`
 
-5. migrate your database, seed your database, and run your app
+5. Start the app for both backend and frontend using:
 
+   * `npm start`
 
 6. Now you can use the Demo User or Create an account
 
@@ -64,5 +64,31 @@ Logged-in Users can
 * Update their booking at a spot
 * Read all of their bookings
 * Delete/Cancel their booking
+
+# Deploy to Heroku 
+
+1. Create a new application in your Heroku account 
+
+2. Inside *Resources* add on "Heroku Postgres"
+
+3. Install Heroku CLI
+
+4. Log into Heroku on your terminal
+
+6 Add Heroku as a remote to your project's git repository with the following command and replace with the name of the application you created in the Heroku dashboard.
+
+   * `heroku git:remote -a <name-of-Heroku-app>`
+
+7. Update the "Reveal Config Vars" section
+
+8. Push to Heroku with: 
+
+   `git push heroku main`
+   
+9. Set up prodction database 
+
+   * `heroku run npm run sequelize db:migrate` 
+   * `heroku run npm run sequelize db:seed:all`
+
 
 
