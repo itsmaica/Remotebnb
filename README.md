@@ -40,7 +40,7 @@ Check out [Remotebnb](https://remotebnb.herokuapp.com/)
 6. Now you can use the Demo User or Create an account
 
 ## Amazon Web Services S3
-* For setting up your AWS refer to this [guide](https://github.com/appacademy/Module-6-Resources/blob/main/group_project_resources/s3-for-uploads-with-flask.md)
+* For setting up your AWS refer to this [guide](https://github.com/jdrichardsappacad/aws-s3-pern-demo)
 
 ***
 
