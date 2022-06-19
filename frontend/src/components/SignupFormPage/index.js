@@ -68,7 +68,9 @@ function SignupFormPage({ setShowModal }) {
     if (data) {
       setErrors(data);
     }
+    // history.push(`/spots`)
     history.push(`/spots`)
+
 
   };
 
