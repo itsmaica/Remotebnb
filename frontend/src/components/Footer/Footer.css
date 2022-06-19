@@ -1,0 +1,96 @@
+.about-container{
+    position: absolute;
+    /* background-color: pink; */
+    width: 98%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    /* flex-direction: column; */
+    height: 30vh;
+}
+
+.test{
+    width: 100vw;
+    height: 35vh;
+    position: relative;
+    bottom: 0;
+    z-index: -10;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+   object-fit: cover;
+}
+
+.filler-div{
+    background-color: #0b393e;
+    width: 100%;
+    height: 35vh;
+}
+
+#foot{
+   height:100%;
+   width: 100%;
+   display: block;
+   /* flex-grow: inherit; */
+   /* object-fit: scale-down; */
+}
+
+.created-by{
+    /* position: absolute; */
+    /* bottom: -1; */
+    color: white;
+}
+
+.icon-box{
+    height: 8rem;
+    width: 8rem;
+}
+
+.about{
+    height: 100%;
+    /* background-color: green; */
+    /* width: 20vw; */
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.about-icons{
+    height: 100%;
+    width: 100%;
+}
+
+.icons-bot{
+    width: 95%;
+    /* background-color: wheat; */
+    display: flex;
+    justify-content: space-around;
+}
+
+.technologies{
+    margin-left: 7%;
+    /* background-color: aqua; */
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+.lang{
+    width: 95%;
+    height: 8rem;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: auto;
+    align-self: center;
+    align-items: center;
+    justify-self: center;
+    justify-content: center;
+}
+
+#tech-title{
+    color: white
+}
