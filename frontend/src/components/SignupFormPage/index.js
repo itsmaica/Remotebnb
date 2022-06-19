@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import "./SignupForm.css";
 import Loading from "../LoadingAndPageNotFound/Loading"
 
-
 function SignupFormPage({ setShowModal }) {
   const dispatch = useDispatch();
+  const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -63,11 +63,13 @@ function SignupFormPage({ setShowModal }) {
     const data = await dispatch(
       sessionActions.login({ credential, password })
       )
-      // .then(() => setIsLoaded(true));
+      // .then(() => );
 
     if (data) {
       setErrors(data);
     }
+    history.push(`/spots`)
+
   };
 
 
