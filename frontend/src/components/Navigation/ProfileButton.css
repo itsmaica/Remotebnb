@@ -53,12 +53,16 @@
     background-color: rgb(255, 255, 255);
     /* padding-top: 4rem; */
     margin-top: 0.9rem;
-    height: 100px;
+    height: 85px;
     width: 10rem;
     border-radius: 1rem;
     box-shadow: 5px -5px 10px 1px #dad8d8;
     /* margin-right: 500px; */
     /* padding-right: 500px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 /* .profile-dropdown{
@@ -94,6 +98,7 @@
 }
 
 .men-u{
+    /* border-radius: 1rem; */
     width: 100%;
     /* background-color: green; */
     display: flex;
