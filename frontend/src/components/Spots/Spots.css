@@ -23,8 +23,8 @@
 }
 
 #s-gallery-y{
-  height: 245px;
-  width: 245px;
+  height: 305px;
+  width: 305px;
   overflow-y: hidden;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
@@ -36,8 +36,8 @@
 }
 
 .g-con-y{
-  height: 245px;
-  width: 245px;
+  /* height: 305px;
+  width: 305px; */
   border-radius: 5%;
   background-color: green;
   display: flex;
@@ -47,11 +47,11 @@
 }
 
 .g-img-y{
-  object-fit: fill;
-  /* height:245px;
-  width: 245px; */
-  /* height: 100%; */
-  /* width: 100%; */
+  object-fit: scale-down;
+  /* height:305px;
+  width: 305px; */
+  /* height: 100%;
+  width: 100%; */
 }
 
 .g-img-y{
@@ -74,7 +74,7 @@
 
 .s-bottom{
   /* same as gallery */
-  width: 245px;
+  width: 305px;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;

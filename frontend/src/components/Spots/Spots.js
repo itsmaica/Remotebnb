@@ -42,6 +42,7 @@ function Spots() {
             {spots?.map((spot) => (
               <div key={spot?.id} className="box">
                 <div className="s-card">
+
                   <div id="s-gallery-y">
                     {spot?.Images?.reverse().map((image) => (
                       <div className="g-con-y" key={image?.id}>
@@ -67,7 +68,7 @@ function Spots() {
                       {/* <p>{spot?.Reviews?.review?.rating}</p> */}
                     </div>
                     <div>
-                      <p>${spot.price} night</p>
+                      <p>${Math.round(spot.price)} night</p>
                     </div>
                   </div>
                 </div>
