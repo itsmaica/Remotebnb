@@ -6,7 +6,7 @@ import { loadSpotReviewsThunk } from "../../store/review";
 import { getOneSpotThunk } from "../../store/spot";
 // import Building from "../LoadingAndPageNotFound/Building";
 import Loading from "../LoadingAndPageNotFound/Loading";
-import ReviewForm from "../Reviews/ReviewForm";
+// import ReviewForm from "../Reviews/ReviewForm";
 import Reviews from "../Reviews/Reviews";
 import "./OneSpot.css";
 
@@ -20,7 +20,7 @@ function OneSpot() {
   const spot = useSelector((state) => state?.allSpots?.spot);
 
   const reviews = useSelector((state) => state?.reviews?.reviews);
-  console.log("These are the reviews", reviews);
+  // console.log("These are the reviews", reviews);
 
   // const bats = Object.values(reviews);
   // const currRev = bats.filter((rev) => rev.spotId === spot?.id);
@@ -57,7 +57,7 @@ function OneSpot() {
     dispatch(getOneSpotThunk(spotId))
       .then(() => dispatch(loadSpotReviewsThunk(spotId)))
       .then(() => setIsLoaded(true));
-  }, [dispatch]);
+  }, [dispatch, spotId]);
 
   if (!isLoaded) {
     return <Loading />;
@@ -130,7 +130,7 @@ function OneSpot() {
                   <div className="amenities">
                     <div className="ams">
                       <div className="font-am">
-                        <i class="fa-solid fa-medal"></i>
+                        <i className="fa-solid fa-medal"></i>
                       </div>
 
                       <div className="font-am-explination">
@@ -144,7 +144,7 @@ function OneSpot() {
 
                     <div className="ams">
                       <div className="font-am">
-                        <i class="fa-solid fa-location-dot"></i>
+                        <i className="fa-solid fa-location-dot"></i>
                       </div>
 
                       <div className="font-am-explination">
@@ -158,7 +158,7 @@ function OneSpot() {
 
                     <div className="ams">
                       <div className="font-am">
-                        <i class="fa-solid fa-wifi"></i>
+                        <i className="fa-solid fa-wifi"></i>
                       </div>
 
                       <div className="font-am-explination">

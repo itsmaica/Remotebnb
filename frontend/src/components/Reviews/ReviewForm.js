@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createReviewThunk, loadSpotReviewsThunk } from "../../store/review";
-import Loading from "../LoadingAndPageNotFound/Loading";
+// import Loading from "../LoadingAndPageNotFound/Loading";
 
 import "./ReviewForm.css";
 function ReviewForm({ spotId, setForm }) {

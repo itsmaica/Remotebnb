@@ -114,7 +114,7 @@ function Reviews({ spotId }) {
     dispatch(loadSpotReviewsThunk(spotId))
       .then(() => dispatch(getOneSpotThunk(spotId)))
       .then(() => setIsLoaded(true));
-  }, [dispatch]);
+  }, [dispatch, spotId]);
 
   if (!isLoaded) {
     return <Loading />;

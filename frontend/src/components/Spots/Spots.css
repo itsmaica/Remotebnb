@@ -28,7 +28,7 @@
   overflow-y: hidden;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  background-color: palevioletred;
+  /* background-color: palevioletred; */
   border-radius: 5%;
   display: flex;
   justify-content: center;
@@ -39,7 +39,7 @@
   /* height: 305px;
   width: 305px; */
   border-radius: 5%;
-  background-color: green;
+  /* background-color: green; */
   display: flex;
   align-items: center;
   justify-content: center;

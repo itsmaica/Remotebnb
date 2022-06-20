@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import "./SignupForm.css";
-import Loading from "../LoadingAndPageNotFound/Loading"
+// import Loading from "../LoadingAndPageNotFound/Loading"
 
 function SignupFormPage({ setShowModal }) {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ function SignupFormPage({ setShowModal }) {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
-  const [isLoaded, setIsLoaded] = useState(false);
+  // const [isLoaded, setIsLoaded] = useState(false);
 
 
   if (sessionUser) return <Redirect to="/spots" />;
@@ -49,11 +49,11 @@ function SignupFormPage({ setShowModal }) {
     ]);
   };
 
-  const closeModal = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setShowModal(false);
-  };
+  // const closeModal = (e) => {
+  //   e.preventDefault();
+  //   e.stopPropagation();
+  //   setShowModal(false);
+  // };
 
   const demoUser = async (e) => {
     e.preventDefault();

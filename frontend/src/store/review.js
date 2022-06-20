@@ -78,7 +78,7 @@ export const createReviewThunk = (spotId, review) => async (dispatch) => {
 
 export const editReviewThunk = (reviewId, updatedRev) => async (dispatch) => {
   // console.log("What is reviewId? -- thunk", reviewId);
-  console.log("Hello from edit review thunk")
+  // console.log("Hello from edit review thunk")
   const response = await csrfFetch(`/api/reviews/${reviewId}/edit`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
