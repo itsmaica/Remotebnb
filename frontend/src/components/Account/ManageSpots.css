@@ -1,15 +1,44 @@
 .spots-num-and-button{
-    width: 100vw;
+    width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
+    /* background-color: blue; */
+}
+
+.center-spots-num-and-button{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 75%;
+}
+
+.manage-spots-title{
+    /* background-color: orange; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.spots-heading{
+    /* background-color: antiquewhite; */
+    width: 75%;
 }
 
 .heading-list{
     display: flex;
     align-items: center;
     justify-content: space-around;
-    width: 100vw;
+    width: 100%;
+    font-weight: bolder;
+    font-size: large;
+    border: black solid 3px;
+    margin-bottom: 3rem;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;
+    /* border-bottom-style: black solid 3px; */
 }
 
 .low{
@@ -21,6 +50,7 @@
 
 .low:hover{
     cursor: pointer;
+    border: black solid 1px;
     background-color: white;
     color: black;
     font-weight: bold;
@@ -29,10 +59,20 @@
 #user-spots{
     border: black solid 1px;
     width: 95vw;
-    /* height: 100px; */
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    grid-template-rows: auto;
+    justify-items: center;
     align-items: center;
-    justify-content: space-around;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;
+    margin-bottom: 4rem;
+}
+
+.center-spot-slots{
+    /* background-color: olivedrab; */
+    /* width: 85%; */
 }
 
 #pic-name {
@@ -40,7 +80,22 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100px;
+    width: 100%;
+}
+
+.center-spot-name{
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+}
+
+#spot-name{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 #spot-pic{
@@ -57,7 +112,20 @@
 }
 
 #spot-slots{
-    width: 300px;
+    /* background-color: blueviolet; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.edit-and-delete{
+    /* background-color: red; */
+    width: 45%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 #create{
@@ -76,5 +144,17 @@
 #create:hover{
     cursor: pointer;
     /* background-color:; */
+}
+
+.lo-delete-manage-spots{
+    background-color: white;
+    border: black solid 1px;
+    border-radius: 5px;
+    color: black;
+}
+
+.lo-delete-manage-spots:hover{
+    cursor: pointer;
+    background-color: red;
 
 }
