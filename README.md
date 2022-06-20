@@ -18,6 +18,13 @@ Check out [Remotebnb](https://remotebnb.herokuapp.com/)
 ## Splash Page
 ![splash](https://user-images.githubusercontent.com/66566925/174560214-c0601b18-8cbe-4ce4-895c-8bf8b196eeb5.gif)
 
+## Spots
+![spots](https://user-images.githubusercontent.com/66566925/174561250-05f8e96e-eb7e-4741-9167-e3a6eaf2f7d0.gif)
+
+## One spot page and reviews
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/66566925/174562986-bf32d1d3-29f3-4da1-a4a7-0762f259c31e.gif)
+
+
 ## Getting started
 1. Clone this repository:
 
