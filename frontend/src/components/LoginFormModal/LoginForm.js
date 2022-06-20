@@ -6,14 +6,17 @@ import Loading from "../LoadingAndPageNotFound/Loading";
 import SignupFormPage from "../SignupFormPage/index";
 
 import airbnblogo from "../../images/airbnblogo.png";
+import { useHistory } from "react-router-dom";
 
 function LoginForm({ setShowModal }) {
+  const history=useHistory();
   const dispatch = useDispatch();
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const [signUp, setSignup] = useState(false);
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,14 +26,14 @@ function LoginForm({ setShowModal }) {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
       }
-    );
+    ).then(()=>history.push(`/spots`))
   };
 
-  const closeModal = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setShowModal(false);
-  };
+  // const closeModal = (e) => {
+  //   e.preventDefault();
+  //   e.stopPropagation();
+  //   setShowModal(false);
+  // };
 
 
 

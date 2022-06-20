@@ -6,7 +6,7 @@ import "./LoginFormModal.css"
 
 function LoginFormModal() {
   const [showModal, setShowModal] = useState(false);
-  console.log(" SHOW MODAL \n\n", showModal)
+  // console.log(" SHOW MODAL \n\n", showModal)
 
   // useEffect(() => {
   //   setShowModal(false)

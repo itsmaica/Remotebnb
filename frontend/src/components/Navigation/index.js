@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import airbnblogo from "../../images/airbnblogo.png"
-import DemoProfileButton from "./DemoProfileButton"
+// import DemoProfileButton from "./DemoProfileButton"
 import './Navigation.css';
 
 

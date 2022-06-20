@@ -18,7 +18,7 @@ function ReviewEdit({ reviewId, setEdit, spotId }) {
   useEffect(() => {
     dispatch(loadSpotReviewsThunk(spotId))
     // dispatch(getReviewThunk(reviewId))
-  }, [dispatch]);
+  }, [dispatch, spotId]);
 
   const reviewArray = useSelector((state) => state?.reviews?.reviews)
   // console.log("new angle", reviewArray)
@@ -49,7 +49,7 @@ function ReviewEdit({ reviewId, setEdit, spotId }) {
       spotId: spotId,
       rating
     };
-    console.log("What is the thunk getting? \n\n", review);
+    // console.log("What is the thunk getting? \n\n", review);
     dispatch(editReviewThunk(reviewId, review))
       .then(() => dispatch(loadSpotReviewsThunk(spotId)))
       .then(() => dispatch(getReviewThunk(reviewId)))
