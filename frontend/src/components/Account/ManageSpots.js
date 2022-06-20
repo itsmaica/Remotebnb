@@ -2,11 +2,11 @@
 // import { useEffect } from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { deleteSpotThunk } from "../../store/userSpots";
-import { loadAllSpotsThunk } from "../../store/spot";
+// import { loadAllSpotsThunk } from "../../store/spot";
 import { loadUserSpotsThunk } from "../../store/userSpots";
-import Loading from "../LoadingAndPageNotFound/Loading.js";
+// import Loading from "../LoadingAndPageNotFound/Loading.js";
 import Building from "../LoadingAndPageNotFound/Building";
 import "./ManageSpots.css";
 import { Modal } from "../../context/Modal";
@@ -33,7 +33,7 @@ function ManageSpots() {
     dispatch(loadUserSpotsThunk(userId))
       .then(() => setIsLoaded(true))
       .then(() => setSpotsLoaded(true));
-  }, [dispatch]);
+  }, [dispatch, userId]);
 
   const deleteSpot = (e, userId, spotId) => {
     // console.log("What is spotId for DELETE \n\n")

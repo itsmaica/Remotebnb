@@ -48,6 +48,7 @@
 }
 
 .user-menu{
+    z-index: 1;
     position: absolute;
     background-color: rgb(255, 255, 255);
     /* padding-top: 4rem; */

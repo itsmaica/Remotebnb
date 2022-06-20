@@ -5,7 +5,7 @@ import SignupFormPage from './components/SignupFormPage';
 // import LoginFormPage from "./components/LoginFormPage";
 import * as sessionActions from './store/session';
 import Navigation from './components/Navigation';
-import { Modal } from './context/Modal';
+// import { Modal } from './context/Modal';
 import Spots from './components/Spots/Spots';
 import ManageSpots from './components/Account/ManageSpots';
 import CreateASpot from './components/Account/CreateASpot';
@@ -16,6 +16,7 @@ import OneSpot from './components/Spots/OneSpot';
 // import Test from './components/Test.js.bak';
 import SplashSpot from './components/Spots/SplashSpot';
 import Building from './components/LoadingAndPageNotFound/Building';
+// import { getReviewThunk } from './store/review';
 // import Reviews from './components/Reviews/Reviews';
 
 
@@ -27,6 +28,8 @@ function App() {
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
+
+
 
   return (
     <>

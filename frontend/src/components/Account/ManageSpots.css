@@ -19,6 +19,13 @@
     border-radius: 5px;
 }
 
+.low:hover{
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+}
+
 #user-spots{
     border: black solid 1px;
     width: 95vw;
@@ -62,4 +69,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 1rem;
+    border: none;
+}
+
+#create:hover{
+    cursor: pointer;
+    /* background-color:; */
+
 }

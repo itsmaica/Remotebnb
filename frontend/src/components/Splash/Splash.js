@@ -9,7 +9,7 @@ function Splash() {
     <>
       <div className="pic-try-hosting">
         <div id="splash-house">
-          <img id="nynomad" src={nydigitalnomad} />
+          <img id="nynomad" src={nydigitalnomad} alt="remote worker"/>
         </div>
         <div id="splash-host">
           <h1>Welcome To Remotebnb</h1>
@@ -27,7 +27,7 @@ function Splash() {
 
       <div className="try-host">
         <div id="modern">
-          <img id="mod" src={modern} />
+          <img id="mod" src={modern} alt="a house"/>
         </div>
         <div id="host-ad">
           <div>
@@ -54,6 +54,7 @@ function Splash() {
                 <img
                   className="s-r-pic"
                   src="https://remotebnb.s3.us-west-1.amazonaws.com/blue.png"
+                  alt="a house"
                 />
               </div>
               <div className="name-and-pic">
@@ -61,6 +62,7 @@ function Splash() {
                   <img
                     className="s-user-profile"
                     src="https://remotebnb.s3.us-west-1.amazonaws.com/Patrick_Levis.webp"
+                    alt="user"
                   />
                 </div>
                 <div className="name-cont">
@@ -81,11 +83,13 @@ function Splash() {
                 <img
                   className="s-r-pic"
                   src="https://remotebnb.s3.us-west-1.amazonaws.com/soholoft.png"
+                  alt="a house"
                 />
               </div>
               <div className="name-and-pic">
                 <div className="splash-user">
                   <img
+                    alt="user"
                     className="s-user-profile"
                     src="https://remotebnb.s3.us-west-1.amazonaws.com/Screen+Shot+2022-06-19+at+2.46.13+AM.png"
                   />
@@ -108,6 +112,7 @@ function Splash() {
                 <img
                   className="s-r-pic"
                   src="https://remotebnb.s3.us-west-1.amazonaws.com/hawaiicabin.png"
+                  alt="a house"
                 />
               </div>
               <div className="name-and-pic">
@@ -115,6 +120,7 @@ function Splash() {
                   <img
                     className="s-user-profile"
                     src="https://remotebnb.s3.us-west-1.amazonaws.com/Screen+Shot+2022-06-19+at+2.49.40+AM.png"
+                    alt="user"
                   />
                 </div>
                 <div className="name-cont">

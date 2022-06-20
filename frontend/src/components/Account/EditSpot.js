@@ -23,7 +23,7 @@ function EditASpot() {
     dispatch(loadAllSpotsThunk())
       .then(() => dispatch(loadUserSpotsThunk(userId)))
       .then(() => setIsLoaded(true));
-  }, [dispatch]);
+  }, [dispatch, userId]);
 
   const [name, setName] = useState(spot?.name);
   const [description, setDescription] = useState(spot?.description);

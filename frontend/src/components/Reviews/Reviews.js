@@ -1,23 +1,30 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+// import { Modal } from "../../context/Modal";
 import {
   deleteReviewThunk,
   editReviewThunk,
+  // getReviewThunk,
   loadSpotReviewsThunk
 } from "../../store/review";
 import { getOneSpotThunk } from "../../store/spot";
 import Loading from "../LoadingAndPageNotFound/Loading";
 import ReviewForm from "./ReviewForm";
-
+import ReviewEdit from "./ReviewEdit"
 import "./Reviews.css";
+
 
 function Reviews({ spotId }) {
   // console.log("spotId from the modal",spotId)
   const dispatch = useDispatch();
-  const bat = useSelector((state) => state?.reviews);
-  const reviews = Object.values(bat);
-  const currReviews = reviews.filter((rev) => rev.spotId === spotId);
 
+  // const bat = useSelector((state) => state?.reviews);
+  // const reviews = Object.values(bat);
+
+  // const currReviews = reviews.filter((rev) => rev?.spotId === spotId);
+
+  const currReviews = useSelector((state) => state?.reviews?.reviews)
+  // const rev = useSelector((state) => state?.reviews?.review?.review)
   // console.log('currReviews is a result from a reviews.filter ===> \n\n', currReviews)
 
   // const user = useSelector((state) => state?.session?.user?.profilePic);
@@ -49,66 +56,59 @@ function Reviews({ spotId }) {
   //   let reviewText = review.text
   // })
 
-  const [rating, setRating] = useState(5);
+  // const [rating, setRating] = useState(5);
   const [reviewId, setReviewId] = useState();
-  const prevText = currReviews.filter((rev) => rev.id === reviewId);
+  // const prevText = currReviews.filter((rev) => rev.id === reviewId);
 
-  const bats = prevText[0]?.review;
+  // const bats = prevText[0]?.review;
   // console.log("Need the current Id to grab the current review text \n\n", reviewId)
   // const [rev, setRev] = useState(prevText[0]?.review);
   // const [updatedReview, setUpdatedReview] = useState(prevText[0]?.review);
-  const [updatedReview, setUpdatedReview] = useState("");
-
+  // const [updatedReview, setUpdatedReview] = useState();
+  // console.log("What is prev text", rev)
 
   // console.log("This is the current review---\n\n", prevText[0])
 
-  console.log("This is the review text ---- \n\n", prevText[0]?.review);
+  // console.log("This is the review text ---- \n\n", prevText[0]?.review);
 
-  console.log("THIS IS UPDATED REVIEW \n\n", updatedReview)
+  // console.log("THIS IS UPDATED REVIEW \n\n", updatedReview)
   const [isLoaded, setIsLoaded] = useState(false);
   const [edit, setEdit] = useState(false);
   // const [addReview, setAddReview] = useState(false);
   const [form, setForm] = useState(false);
-  const [errors, setErrors] = useState([]);
+  // const [errors, setErrors] = useState([]);
 
   // useEffect(() => { setRev(rev)}, [prevText[0]?.review]);
-  useEffect(() => {
-    setErrors([]);
-    const err = [];
-    if (!updatedReview || updatedReview.length < 50)
-      err.push("A review must be at least 50 chars long");
+  // useEffect(() => {
+  //   setErrors([]);
+  //   const err = [];
+  //   if (!updatedReview || updatedReview.length < 50)
+  //     err.push("A review must be at least 50 chars long");
 
-    setErrors(err);
-  }, [updatedReview, isLoaded]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // console.log("CLICK")
-    const updatedRev = {
-      id: reviewId,
-      review: updatedReview,
-      userId,
-      spotId: spotId,
-      rating
-    };
-    console.log("What is the thunk getting? \n\n", updatedRev);
-    dispatch(editReviewThunk(reviewId, updatedRev))
-      .then(() => dispatch(loadSpotReviewsThunk(spotId)))
-      .then(() => setEdit(false));
-    setUpdatedReview("");
-  };
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   // console.log("CLICK")
+  //   const updatedRev = {
+  //     id: reviewId,
+  //     review: updatedReview,
+  //     userId,
+  //     spotId: spotId,
+  //     rating
+  //   };
+  //   // console.log("What is the thunk getting? \n\n", updatedRev);
+  //   dispatch(editReviewThunk(reviewId, updatedRev))
+  //     .then(() => dispatch(loadSpotReviewsThunk(spotId)))
+  //     .then(() => setEdit(false));
+  //   setUpdatedReview("");
+  // };
 
   const deleteReview = (e, reviewId) => {
     e.preventDefault();
-
-    // e.stopPropagation();
-    dispatch(deleteReviewThunk(reviewId));
-    // .then(
-    //   dispatch(loadSpotReviewsThunk(spotId))
-    // ).then(setEdit(false))
+    dispatch(deleteReviewThunk(reviewId))
+    .then(()=>dispatch(loadSpotReviewsThunk(spotId)))
   };
-
-
 
   useEffect(() => {
     dispatch(loadSpotReviewsThunk(spotId))
@@ -149,6 +149,7 @@ function Reviews({ spotId }) {
                                   onClick={(e) => {
                                     setEdit(true);
                                     setReviewId(review.id);
+                                    console.log("Test test")
                                   }}
                                   id={`review-num-${review.id}`}
                                   className="lo"
@@ -158,6 +159,7 @@ function Reviews({ spotId }) {
                               </div>
                               <div>
                                 <button
+                                  id="lo-delete"
                                   className="lo"
                                   onClick={(e) => deleteReview(e, review.id)}
                                 >
@@ -188,31 +190,41 @@ function Reviews({ spotId }) {
                       </>
                     )}
                     {edit &&
-                      review.userId === userId &&
-                      reviewId !== review.id && (
+                    review.userId === userId &&
+                    reviewId !== review.id && (
                         <>
                           <p className="r-text">{review?.review}</p>
                         </>
                       )}
                     {edit &&
-                      review.userId === userId &&
-                      reviewId === review.id && (
+                    review.userId === userId &&
+                    reviewId === review.id && (
+                      <>
+                        <ReviewEdit reviewId={review.id} setEdit={setEdit} spotId={spotId}/>
+                      </>
+                    )}
+                    {/* {edit &&
+                    review.userId === userId &&
+                    review === review.id && (
                         <>
                           <div>
                             <form onSubmit={handleSubmit}>
-                              {errors.map((error, idx) => (
-                                <li className="e-error" key={idx}>
-                                  {error}
+                              {errors.map((error,idx) => (
+                                <li className="e-error" key={idx}>\
+                                    {error}
                                 </li>
                               ))}
                               <label />
                               <input
                                 className="form-input"
                                 type="text"
-                                placeholder={review.review}
+                                // placeholder={review.review}
+
                                 value={updatedReview}
+
                                 onChange={(e) =>
                                   setUpdatedReview(e.target.value)
+
                                 }
                               />
                               <button id='sb-e-rev'>Submit</button>
@@ -222,7 +234,7 @@ function Reviews({ spotId }) {
                             </form>
                           </div>
                         </>
-                      )}
+                      )} */}
                   </div>
                 </div>
               </div>
@@ -240,7 +252,7 @@ function Reviews({ spotId }) {
                   <ReviewForm spotId={spotId} setForm={setForm} />
                 </div>
                 <div>
-                  <button className="lo" onClick={() => setForm(false)}>Cancel</button>
+                  <button className="lo-2" onClick={() => setForm(false)}>Cancel</button>
                 </div>
               </>
             )}

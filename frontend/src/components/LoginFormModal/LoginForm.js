@@ -101,7 +101,7 @@ function LoginForm({ setShowModal }) {
             </div>
             <div id="sign-up-button-div">
               <div id="logo-d">
-                <img id="logo" src={airbnblogo} />
+                <img id="logo" src={airbnblogo} alt="logo"/>
               </div>
               <button id="signup-button" onClick={()=>setSignup(true)}>
                 Sign up

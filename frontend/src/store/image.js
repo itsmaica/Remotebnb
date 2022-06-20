@@ -5,10 +5,10 @@ const CREATE_IMAGES = "images/createImages"
 
 // //------ Actions -----
 
-const createImages = (pic) => ({
-    type: CREATE_IMAGES,
-    payload: pic
-})
+// const createImages = (pic) => ({
+//     type: CREATE_IMAGES,
+//     payload: pic
+// })
 
 export const loadAllImages = (images) => ({
     type: LOAD_ALL_IMAGES,

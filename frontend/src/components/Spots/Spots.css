@@ -11,6 +11,7 @@
   width: 75%;
   row-gap: 30px;
   column-gap: 8px;
+  margin-top: 2rem;
 }
 
 .box {
@@ -51,6 +52,10 @@
   width: 245px; */
   /* height: 100%; */
   /* width: 100%; */
+}
+
+.g-img-y{
+  cursor: pointer;
 }
 
 .g-img:hover{

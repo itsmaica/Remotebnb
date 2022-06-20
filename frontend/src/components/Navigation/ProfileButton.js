@@ -43,7 +43,7 @@ function ProfileButton({ user }) {
 
   const logout = (e) => {
     e.preventDefault();
-    dispatch(sessionActions.logout()).then(() => history.push(`/spots`));
+    dispatch(sessionActions.logout()).then(() => history.push(`/`));
   };
 
   return (
@@ -55,7 +55,7 @@ function ProfileButton({ user }) {
           {/* <p>{user.email}</p> */}
           <i id="hamb" class="fa-solid fa-bars"></i>
           {!user && <i className="fas fa-user-circle" />}
-          <img id="birdy" src={defaultbird} />
+          <img id="birdy" src={defaultbird} alt="bird"/>
         </button>
       </div>
       <div>

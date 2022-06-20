@@ -69,9 +69,6 @@ function CreateASpot({ setShowModal, setIsLoaded }) {
     if (!images.length || images.length < 5)
       err.push("Please upload 5 images of your spots");
     setErrors(err);
-
-    // if (images.length < 5) err.push("Please upload 5 images of your spots");
-    // // console.log("What is error's not empty?", errors)
   }, [
     name,
     description,
@@ -133,7 +130,7 @@ function CreateASpot({ setShowModal, setIsLoaded }) {
     // .then(()=> console.log("WHAT IS RES \n\n", res))
   };
 
-  console.log("WHat is images", images.length);
+  // console.log("WHat is images", images.length);
 
 
   // console.log("What happens after correction to errors?", errors)
@@ -197,8 +194,6 @@ function CreateASpot({ setShowModal, setIsLoaded }) {
                 ))}
               </ul>
               </div>
-              {/* <h3>Form</h3> */}
-
               <div className="c-input">
                 <div>
                   <label>

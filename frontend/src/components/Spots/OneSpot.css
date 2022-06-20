@@ -295,11 +295,50 @@
     text-decoration: underline;
 }
 
-.add-your-rev{
-    background-color: white;
-    border: black solid 1px;
-    border-radius: 8px;
-    width: 15em;
-    height: 3em;
-    margin-bottom: 2rem;
+
+.amenities-holder{
+    /* background-color: aqua; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.amenities{
+    /* background-color: olivedrab; */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 80%;
+    height: 20rem;
+}
+
+.font-am{
+    height: 3rem;
+    width: 3rem;
+    /* background-color: pink; */
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+}
+
+#cats{
+    width: 100%;
+    height: 100%;
+}
+
+.ams{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 2rem; */
+}
+
+.font-am-explination{
+    /* height: 3rem; */
+}
+
+.ams-i-about{
+    color: darkgray;
 }
