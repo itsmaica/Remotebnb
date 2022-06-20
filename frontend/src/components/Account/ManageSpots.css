@@ -54,6 +54,7 @@
     background-color: white;
     color: black;
     font-weight: bold;
+    box-shadow: 1px 1px 3px 1px darkgrey;
 }
 
 #user-spots{
@@ -70,9 +71,14 @@
     margin-bottom: 4rem;
 }
 
-.center-spot-slots{
+/* .center-spot-slots{
     /* background-color: olivedrab; */
     /* width: 85%; */
+/* } */
+
+.fa-solid.fa-house-chimney-user:hover{
+   box-shadow: 1px 1px 8px 1px darkgray;
+   border-radius: 50%;
 }
 
 #pic-name {
@@ -109,6 +115,7 @@
 
 #spot-pic:hover{
     cursor: pointer;
+    /* box-shadow: 1px 1px 3px 1px darkgrey; */
 }
 
 #spot-slots{
@@ -132,7 +139,7 @@
     width: 150px;
     height: 50px;
     text-decoration: none;
-    background-color: blueviolet;
+    background-color: #037afb;
     color: white;
     display: flex;
     align-items: center;
@@ -143,7 +150,7 @@
 
 #create:hover{
     cursor: pointer;
-    /* background-color:; */
+    box-shadow: 1px 1px 3px 1px darkgrey;
 }
 
 .lo-delete-manage-spots{
@@ -156,5 +163,5 @@
 .lo-delete-manage-spots:hover{
     cursor: pointer;
     background-color: red;
-
+    box-shadow: 1px 1px 3px 1px darkgrey;
 }
