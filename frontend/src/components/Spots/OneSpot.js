@@ -76,7 +76,6 @@ function OneSpot() {
                     <div>
                       <p>{currRev?.length} Reviews</p>
                     </div>
-                    {/* <div><p>{spot?.Reviews.length} Reviews</p></div> */}
 
                     <div>
                       <p>
@@ -108,15 +107,15 @@ function OneSpot() {
 
                 <div id="user-div">
                   <div id="u-home-by-user">
-                    <div>
+                    <div className="homeby-and-s-info">
                       <div id="home-by">
                         Entire Home Hosted by {spot?.User?.firstName}
                       </div>
 
                       <span id="s-info">
-                        <p>{spot?.guests} Guests</p>
-                        <p>{spot?.beds} Beds</p>
-                        <p>{spot?.baths} Baths</p>
+                        <p className="s-info-p">{spot?.guests} Guests</p>
+                        <p className="s-info-p">{spot?.beds} Beds</p>
+                        <p className="s-info-p">{spot?.baths} Baths</p>
                       </span>
                     </div>
                     <div id="user-pic">
@@ -125,49 +124,54 @@ function OneSpot() {
                   </div>
                 </div>
 
-          <div className="amenities-holder">
+                <div className="one-page-divider"></div>
 
-                <div className="amenities">
-                  <div className="ams">
-                    <div className="font-am">
-                      <i class="fa-solid fa-medal"></i>
+                <div className="amenities-holder">
+                  <div className="amenities">
+                    <div className="ams">
+                      <div className="font-am">
+                        <i class="fa-solid fa-medal"></i>
+                      </div>
+
+                      <div className="font-am-explination">
+                        <h4>{spot?.User?.firstName} is a superhost</h4>
+                        <p className="ams-i-about">
+                          Superhosts are experienced, highly rated hosts who are
+                          committed to providing great stays for guests.
+                        </p>
+                      </div>
                     </div>
 
-                    <div className="font-am-explination">
-                      <h4>{spot?.User?.firstName} is a superhost</h4>
-                      <p className="ams-i-about">
-                        Superhosts are experienced, highly rated hosts who are
-                        committed to providing great stays for guests.
-                      </p>
-                    </div>
-                  </div>
+                    <div className="ams">
+                      <div className="font-am">
+                        <i class="fa-solid fa-location-dot"></i>
+                      </div>
 
-                  <div className="ams">
-                    <div className="font-am">
-                      <i class="fa-solid fa-location-dot"></i>
-                    </div>
-
-                    <div className="font-am-explination">
-                      <h4>Great Location</h4>
-                      <p className="ams-i-about">
-                        100% of recent guests at this spot have left a
-                        positive review.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="ams">
-                    <div className="font-am">
-                      <i class="fa-solid fa-wifi"></i>
+                      <div className="font-am-explination">
+                        <h4>Great Location</h4>
+                        <p className="ams-i-about">
+                          100% of recent guests at this spot have left a
+                          positive review.
+                        </p>
+                      </div>
                     </div>
 
-                    <div className="font-am-explination">
-                      <h4>High Speed Internet</h4>
-                      <p className="ams-i-about">Uninterrupted service guaranteed</p>
+                    <div className="ams">
+                      <div className="font-am">
+                        <i class="fa-solid fa-wifi"></i>
+                      </div>
+
+                      <div className="font-am-explination">
+                        <h4>High Speed Internet</h4>
+                        <p className="ams-i-about">
+                          Uninterrupted service guaranteed
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
-          </div>
+
+                <div className="one-page-divider"></div>
 
 
                 <div className="description">
@@ -175,6 +179,8 @@ function OneSpot() {
                 </div>
 
                 {/* If no Reviews show this */}
+                <div className="one-page-divider"></div>
+
                 <div>
                   {currRev.length < 4 && (
                     // console.log("Test")
@@ -230,15 +236,15 @@ function OneSpot() {
                         </div>
                         <div id="rev-text-n">
                           <div id="rev-t">
-                            {`${review?.review}`.substring(0, 150)}
-                            {review?.review?.length >= 150 && (
+                            {`${review?.review}`.substring(0, 100)}
+                            {review?.review?.length >= 100 && (
                               <>
                                 {/* <span></span> */}
                                 <button
                                   className="showMore"
                                   onClick={() => setShowModal(true)}
                                 >
-                                  ..show more
+                                  ..show more <i className="fa-solid fa-angle-right"></i>
                                 </button>
                               </>
                             )}

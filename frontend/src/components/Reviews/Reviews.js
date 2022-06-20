@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 // import { Modal } from "../../context/Modal";
 import {
   deleteReviewThunk,
-  editReviewThunk,
+  // editReviewThunk,
   // getReviewThunk,
   loadSpotReviewsThunk
 } from "../../store/review";

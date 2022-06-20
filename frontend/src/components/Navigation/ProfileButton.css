@@ -9,9 +9,6 @@
     border: #EEEEEE solid 1px;
 }
 
-#stay{
-    /* position: absolute; */
-}
 
 /* #button-and-menu{
     position: sticky;
@@ -19,6 +16,7 @@
 
 #the-user:hover{
     box-shadow: 4px 4px 4px #dad8d8;
+    cursor: pointer;
 }
 
 #the-user:active{
