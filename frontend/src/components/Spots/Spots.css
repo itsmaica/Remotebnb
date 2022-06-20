@@ -73,7 +73,6 @@
 }
 
 .s-bottom{
-  /* same as gallery */
   width: 305px;
   display: flex;
   align-items: flex-start;
