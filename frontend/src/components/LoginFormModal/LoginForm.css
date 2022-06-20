@@ -130,8 +130,8 @@
 } */
 
 #input-div{
-    background-color: fuchsia;
-    width: 99%;
+    /* background-color: fuchsia; */
+    width: 98%;
     border-radius: 0.5rem;
     height: auto;
     /* z-index: -1; */
