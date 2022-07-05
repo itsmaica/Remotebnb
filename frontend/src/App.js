@@ -16,6 +16,7 @@ import OneSpot from './components/Spots/OneSpot';
 // import Test from './components/Test.js.bak';
 import SplashSpot from './components/Spots/SplashSpot';
 import Building from './components/LoadingAndPageNotFound/Building';
+import CalendarComponent from './components/Bookings/Calendar/Calendar';
 // import { getReviewThunk } from './store/review';
 // import Reviews from './components/Reviews/Reviews';
 
@@ -49,7 +50,8 @@ function App() {
 
           <Route exact path='/test'>
             {/* <Splash /> */}
-            <Building />
+            <CalendarComponent/>
+
           </Route>
 
           <Route exact path='/Maica'>
