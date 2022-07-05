@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { useHistory } from "react-router-dom";
-import * as sessionActions from "../../store/session";
-import LoginFormModal from '../LoginFormModal';
+// import { useHistory } from "react-router-dom";
+// import * as sessionActions from "../../store/session";
+// import LoginFormModal from '../LoginFormModal';
 // import defaultbird from "../../images/defaultbird.png";
 import "./ProfileButton.css";
 // import LoginFormModal from "../LoginFormModal";
@@ -11,7 +11,7 @@ import "./ProfileButton.css";
 function ProfileButton() {
 //   const history = useHistory();
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
 
   // const sessionUser = useSelector((state) => state.session.user);
@@ -53,7 +53,7 @@ function ProfileButton() {
       <div id='stay'>
         <button id="the-user" onClick={openMenu}>
 
-          <i id="hamb" class="fa-solid fa-bars"></i>
+          <i id="hamb" className="fa-solid fa-bars"></i>
           <i className="fas fa-user-circle"></i>
         </button>
       </div>

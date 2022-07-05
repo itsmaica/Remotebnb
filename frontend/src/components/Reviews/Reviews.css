@@ -17,6 +17,14 @@
     border-radius: 5px;
 }
 
+#sb-e-rev:hover{
+    cursor: pointer;
+    background-color: #dd1462;
+    color: white;
+    font-weight: bolder;
+    box-shadow: 1px 1px 1px 1px darkgray;
+}
+
 #cxl-rev{
     background-color: black;
     border: black solid 2px;
@@ -24,10 +32,41 @@
     color: white;
 }
 
+#cxl-rev:hover{
+    cursor: pointer;
+    background-color: white;
+    font-weight: bolder;
+    color: #dd1462;
+}
+
 .lo{
     background-color: white;
     border: black solid 2px;
     border-radius: 5px;
+}
+
+.lo-2{
+    background-color: white;
+    border: black solid 2px;
+    border-radius: 5px;
+}
+
+.lo:hover{
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    font-weight: bolder;
+    box-shadow: 1px 1px 3px 1px darkgray;
+
+}
+
+.lo-2:hover{
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    font-weight: bolder;
+    box-shadow: 1px 1px 3px 1px darkgray;
+
 }
 
 #review-c-m{
@@ -72,7 +111,12 @@
     /* border: red solid 4px; */
 }
 
+#lo-delete:hover{
+    background-color: red;
+}
 .u-edit-delete{
+    position: absolute;
+    right: 0;
     /* width: 50%; */
     /* padding-left: 15rem; */
     height: 20%;
@@ -81,6 +125,8 @@
     justify-content: flex-end;
     align-items: center;
     position: relative;
+    /* background-color: orange; */
+    margin-left: 1rem;
 
 }
 
@@ -104,4 +150,23 @@
     border: red solid 1px;
     width: 85%;
     border-radius: 6px;
+}
+
+.add-your-rev{
+    background-color: white;
+    border: black solid 1px;
+    border-radius: 8px;
+    width: 15em;
+    height: 3em;
+    margin-bottom: 2rem;
+    font-weight: bolder;
+}
+
+.add-your-rev:hover{
+    cursor: pointer;
+    background-color: #dd1462;
+    color: white;
+    font-weight: bolder;
+    box-shadow: 1px 1px 3px 1px darkgray;
+
 }

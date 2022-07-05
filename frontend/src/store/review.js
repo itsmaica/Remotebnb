@@ -78,6 +78,7 @@ export const createReviewThunk = (spotId, review) => async (dispatch) => {
 
 export const editReviewThunk = (reviewId, updatedRev) => async (dispatch) => {
   // console.log("What is reviewId? -- thunk", reviewId);
+  // console.log("Hello from edit review thunk")
   const response = await csrfFetch(`/api/reviews/${reviewId}/edit`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
@@ -113,14 +114,18 @@ export const reviewReducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {
     case LOAD_SPOT_REVIEWS:
-      newState = { ...state };
-      action.reviews.forEach((review) => {
-        newState[review.id] = review;
-      });
+      // newState = { ...state };
+      // action.reviews.forEach((review) => {
+      //   newState[review.id] = review;
+      // });
+      // return newState;
+      newState={...state};
+      newState["reviews"] = action.reviews
       return newState;
     case GET_REVIEW:
       newState = { ...state };
-      newState = { ...state, ["review"]: action.review };
+      // newState = { ...state, ["review"]: action.review };
+      newState["review"] = action.review
       return newState;
     case CREATE_REVIEW:
       newState = { ...state, [action.review.id]: action.review };
@@ -131,8 +136,8 @@ export const reviewReducer = (state = initialState, action) => {
       return newState;
     case DELETE_REVIEW:
       newState = { ...state };
-      const id = action.review.id;
-      delete newState[id];
+        const id = action.review.id;
+        delete newState[id];
       return newState;
     default:
       return state;

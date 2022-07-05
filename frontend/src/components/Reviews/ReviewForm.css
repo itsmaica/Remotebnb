@@ -50,6 +50,12 @@
     height: 1.5rem;
 }
 
+#r-sub:hover{
+    cursor: pointer;
+    background-color: #13de8f;
+    box-shadow: 1px 1px 3px 1px darkgray;
+}
+
 /* #r-sub::disabled{
     background-color: rgb(253, 186, 186);
 } */

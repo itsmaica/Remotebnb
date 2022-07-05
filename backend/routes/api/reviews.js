@@ -12,8 +12,8 @@ const ValidateReviewForm = [
   check("review")
     .notEmpty({ checkFalsey: true })
     .isLength({ min: 50 })
-    .isLength({ max: 500 })
-    .withMessage("A review must be at least 50 chars long and less than 500."),
+    .isLength({ max: 650 })
+    .withMessage("A review must be at least 50 chars long and less than 650."),
     handleValidationErrors,
 ];
 

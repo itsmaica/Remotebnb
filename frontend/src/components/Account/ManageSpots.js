@@ -2,11 +2,11 @@
 // import { useEffect } from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { deleteSpotThunk } from "../../store/userSpots";
-import { loadAllSpotsThunk } from "../../store/spot";
+// import { loadAllSpotsThunk } from "../../store/spot";
 import { loadUserSpotsThunk } from "../../store/userSpots";
-import Loading from "../LoadingAndPageNotFound/Loading.js";
+// import Loading from "../LoadingAndPageNotFound/Loading.js";
 import Building from "../LoadingAndPageNotFound/Building";
 import "./ManageSpots.css";
 import { Modal } from "../../context/Modal";
@@ -33,7 +33,7 @@ function ManageSpots() {
     dispatch(loadUserSpotsThunk(userId))
       .then(() => setIsLoaded(true))
       .then(() => setSpotsLoaded(true));
-  }, [dispatch]);
+  }, [dispatch, userId]);
 
   const deleteSpot = (e, userId, spotId) => {
     // console.log("What is spotId for DELETE \n\n")
@@ -53,7 +53,6 @@ function ManageSpots() {
   //     spotPicDiv.onclick = goToOnePage()
   // }
 
-
   const goToOnePage = (spotId) => {
     history.push(`/spots/${spotId}`);
   };
@@ -69,21 +68,34 @@ function ManageSpots() {
           <Building />
         </Modal>
       )}
-      <h1>Manage Spots</h1>
+      <div className="manage-spots-title">
+        <div className="spots-heading">
+          <h1>Manage Spots</h1>
+        </div>
+      </div>
       <div className="spots-num-and-button">
-        <h2>{Object.values(userSpots).length} SPOTS</h2>
-        {/* <NavLink exact to={`/users/${userId}/spots/new`} id='create'>Create a Spot</NavLink> */}
-        <button onClick={() => setShowModal(true)} id="create">
-          Create a Spot
-        </button>
-        {showModal && (
-          <Modal onClose={() => setShowModal(false)}>
-            <CreateASpot
-              setShowModal={setShowModal}
-              setIsLoaded={setIsLoaded}
-            />
-          </Modal>
-        )}
+        <div className="center-spots-num-and-button">
+          <h2>{Object.values(userSpots).length} SPOTS</h2>
+          <button onClick={() => setShowModal(true)} id="create">
+            Create a Spot
+          </button>
+          {showModal && (
+            <Modal onClose={() => setShowModal(false)}>
+              <CreateASpot
+                setShowModal={setShowModal}
+                setIsLoaded={setIsLoaded}
+              />
+            </Modal>
+          )}
+        </div>
+      </div>
+      <div className="heading-list">
+        <p>Spot</p>
+        <p>To Do</p>
+        <p>Guests</p>
+        <p>Beds</p>
+        <p>Baths</p>
+        <p>Location</p>
       </div>
       {userSpots &&
         Object.values(userSpots).map((spot) => (
@@ -91,15 +103,7 @@ function ManageSpots() {
           // console.log(spot.name)
           <>
             <div id="spot-slots" key={spot?.id}>
-              <div className="">
-                <div className="heading-list">
-                  <p>Spot</p>
-                  <p>To Do</p>
-                  <p>Guests</p>
-                  <p>Beds</p>
-                  <p>Baths</p>
-                  <p>Location</p>
-                </div>
+              <div className="center-spot-slots">
                 <div id="user-spots">
                   <div id="pic-name">
                     <div
@@ -108,14 +112,13 @@ function ManageSpots() {
                         goToOnePage(spot?.id);
                       }}
                     >
-                      <i id ='l-s' class="fa-solid fa-house-chimney-user"></i>
-                      {/* <i id='spot-pic' class="fa-solid fa-house-chimney-heart"></i> */}
-                      {/* <i class="fa-solid fa-house-chimney-heart"></i> */}
+                      <i id="l-s" className="fa-solid fa-house-chimney-user"></i>
                     </div>
-                    <div></div>
-                    <div>{spot?.name}</div>
+                    <div className="center-spot-name">
+                      <div id="spot-name">{spot?.name}</div>
+                    </div>
                   </div>
-                  <div>
+                  <div className="edit-and-delete">
                     <button
                       id={`edit-${spot?.id}`}
                       onClick={(e) => toEdit(e, userId, spot?.id)}
@@ -124,7 +127,7 @@ function ManageSpots() {
                       EDIT
                     </button>
                     <button
-                      className="lo"
+                      className="lo-delete-manage-spots"
                       id={`delete-${spot?.id}`}
                       onClick={(e) => deleteSpot(e, userId, spot?.id)}
                     >

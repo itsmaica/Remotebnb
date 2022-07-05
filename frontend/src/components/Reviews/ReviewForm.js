@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createReviewThunk, loadSpotReviewsThunk } from "../../store/review";
-import Loading from "../LoadingAndPageNotFound/Loading";
+// import Loading from "../LoadingAndPageNotFound/Loading";
 
 import "./ReviewForm.css";
 function ReviewForm({ spotId, setForm }) {
@@ -29,7 +29,7 @@ function ReviewForm({ spotId, setForm }) {
     const err = [];
     if (review.length && review.length < 50)
       err.push("A review cannot be blank and must be at least 50 chars long.")
-    if (review.length > 500) err.push("A review cannot be more than 500 chars long.")
+    if (review.length > 650) err.push("A review cannot be more than 650 chars long.")
     setErrors(err);
   }, [review, isLoaded]);
 

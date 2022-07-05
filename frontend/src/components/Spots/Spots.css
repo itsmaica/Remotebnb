@@ -11,6 +11,7 @@
   width: 75%;
   row-gap: 30px;
   column-gap: 8px;
+  margin-top: 2rem;
 }
 
 .box {
@@ -22,12 +23,12 @@
 }
 
 #s-gallery-y{
-  height: 245px;
-  width: 245px;
+  height: 305px;
+  width: 305px;
   overflow-y: hidden;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  background-color: palevioletred;
+  /* background-color: palevioletred; */
   border-radius: 5%;
   display: flex;
   justify-content: center;
@@ -35,10 +36,10 @@
 }
 
 .g-con-y{
-  height: 245px;
-  width: 245px;
+  /* height: 305px;
+  width: 305px; */
   border-radius: 5%;
-  background-color: green;
+  /* background-color: green; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -46,11 +47,15 @@
 }
 
 .g-img-y{
-  object-fit: fill;
-  /* height:245px;
-  width: 245px; */
-  /* height: 100%; */
-  /* width: 100%; */
+  object-fit: scale-down;
+  /* height:305px;
+  width: 305px; */
+  /* height: 100%;
+  width: 100%; */
+}
+
+.g-img-y{
+  cursor: pointer;
 }
 
 .g-img:hover{
@@ -68,8 +73,7 @@
 }
 
 .s-bottom{
-  /* same as gallery */
-  width: 245px;
+  width: 305px;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;

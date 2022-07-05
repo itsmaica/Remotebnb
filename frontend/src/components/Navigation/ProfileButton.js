@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import defaultbird from "../../images/defaultbird.png";
@@ -16,7 +16,7 @@ function ProfileButton({ user }) {
   // console.log("Hi Maica from Profile Button", sessionUser)
 
   const userId = user.id;
-  console.log("Hello I am the user in the button", user);
+  // console.log("Hello I am the user in the button", user);
   // console.log("Hello from profile button", user.id)
 
   // const toManageSpots = (e, userId) => {
@@ -43,7 +43,7 @@ function ProfileButton({ user }) {
 
   const logout = (e) => {
     e.preventDefault();
-    dispatch(sessionActions.logout()).then(() => history.push(`/spots`));
+    dispatch(sessionActions.logout()).then(() => history.push(`/`));
   };
 
   return (
@@ -53,9 +53,9 @@ function ProfileButton({ user }) {
       <div id='stay'>
         <button id="the-user" onClick={openMenu}>
           {/* <p>{user.email}</p> */}
-          <i id="hamb" class="fa-solid fa-bars"></i>
+          <i id="hamb" className="fa-solid fa-bars"></i>
           {!user && <i className="fas fa-user-circle" />}
-          <img id="birdy" src={defaultbird} />
+          <img id="birdy" src={defaultbird} alt="bird"/>
         </button>
       </div>
       <div>

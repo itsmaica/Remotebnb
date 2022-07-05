@@ -32,7 +32,7 @@ export const loadUserSpotsThunk = (userId) => async (dispatch) => {
     const response = await csrfFetch(`/api/users/${userId}/spots`);
     if(response.ok) {
         const userSpots = await response.json();
-        console.log("Hello from userSpots Thunk! \n\n", userSpots)
+        // console.log("Hello from userSpots Thunk! \n\n", userSpots)
         dispatch(loadUserSpots(userSpots));
         return userSpots
     };

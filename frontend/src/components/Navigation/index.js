@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import airbnblogo from "../../images/airbnblogo.png"
-import DemoProfileButton from "./DemoProfileButton"
+// import DemoProfileButton from "./DemoProfileButton"
 import './Navigation.css';
 
 
@@ -12,7 +12,7 @@ function Navigation({ isLoaded }){
   // const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
 
-  console.log("Who is the sessionUser in nav", sessionUser)
+  // console.log("Who is the sessionUser in nav", sessionUser)
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (

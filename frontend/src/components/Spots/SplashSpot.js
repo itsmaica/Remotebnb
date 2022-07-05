@@ -17,7 +17,7 @@ function SplashSpot({spotId}) {
     useEffect(() => {
         dispatch(loadAllImagesThunk(spotId))
             .then(() => setIsLoaded(true))
-    }, [dispatch])
+    }, [dispatch, spotId])
 
     if (!isLoaded) {
 
