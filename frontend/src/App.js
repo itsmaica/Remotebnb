@@ -17,6 +17,7 @@ import OneSpot from './components/Spots/OneSpot';
 import SplashSpot from './components/Spots/SplashSpot';
 import Building from './components/LoadingAndPageNotFound/Building';
 import CalendarComponent from './components/Bookings/Calendar/Calendar';
+import DateTimeRangePicker from '@wojtekmaj/react-daterange-picker';
 // import { getReviewThunk } from './store/review';
 // import Reviews from './components/Reviews/Reviews';
 
@@ -50,7 +51,8 @@ function App() {
 
           <Route exact path='/test'>
             {/* <Splash /> */}
-            <CalendarComponent/>
+            {/* <CalendarComponent/> */}
+            <DateTimeRangePicker />
 
           </Route>
 
