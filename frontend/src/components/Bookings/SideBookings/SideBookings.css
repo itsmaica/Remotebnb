@@ -1,0 +1,46 @@
+.box{
+    /* background-color: pink; */
+    border: solid grey 1px;
+    border-radius: 1rem;
+    width: 25rem;
+    height: 30rem;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+}
+
+#cost{
+    font-weight: bolder;
+    margin-right: .25em;
+    font-size: 22px;
+}
+
+#price{
+    font-size: 16px;
+}
+
+.price-night{
+    width: 85%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#reserve-button{
+    background-color: #DC2062;
+    border: none;
+    width: 85%;
+    height: 13%;
+    border-radius: 1rem;
+    color: white;
+    font-size: 1em;
+}
+
+#checkin-dates{
+    /* background-color: orange; */
+    width: 85%;
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 2rem;
+}
