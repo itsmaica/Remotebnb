@@ -3,6 +3,8 @@ import "./FooterModal.css";
 function FooterModal({ setShowModal }) {
   return (
     <>
+    <div id='grey-out' onClick={()=>setShowModal(false)}>
+    </div>
       <div className="tech-div">
         <div id="close-tech">
           <div onClick={() => setShowModal(false)} id="close-bg">
@@ -68,6 +70,7 @@ function FooterModal({ setShowModal }) {
           </div>
         </div>
       </div>
+
     </>
   );
 }

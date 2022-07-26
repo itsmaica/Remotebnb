@@ -9,13 +9,7 @@ function NewFooter() {
     const [showModal, setShowModal] = useState(false);
   return (
     <>
-      {/* <h1>HEEEEY YOU GUYS!!!!</h1> */}
-
         {showModal && (
-            // <Modal>
-            //     <FooterModal />
-            // </Modal>
-
                <FooterModal setShowModal={setShowModal}/>
         )}
 
@@ -60,8 +54,6 @@ function NewFooter() {
           </p>
           <p onClick={() => setShowModal(true)} id="tech" className="f-item">Technologies <i class="fa-solid fa-angle-up"></i></p>
         </div>
-
-
       </div>
     </>
   );
