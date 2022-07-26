@@ -1,14 +1,14 @@
-.box{
+/* .box{
     /* background-color: pink; */
-    border: solid grey 1px;
-    border-radius: 1rem;
-    width: 25rem;
-    height: 30rem;
-    display: flex;
+    /* border: solid grey 1px; */
+    /* border-radius: 1rem; */
+    /* width: 25rem; */
+    /* height: 30rem; */
+    /* display: flex; */
     /* justify-content: center; */
-    align-items: center;
-    flex-direction: column;
-}
+    /* align-items: center; */
+    /* flex-direction: column; */
+
 
 #cost{
     font-weight: bolder;

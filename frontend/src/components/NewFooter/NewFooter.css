@@ -1,0 +1,53 @@
+.footer-tab{
+    position: absolute;
+    bottom: 0;
+    /* padding-bottom: 1rem; */
+    background-color: #FFFFFF;
+    border-top: solid #EEEEEE 1px;
+    width: 100vw;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-left{
+    /* background-color: green; */
+    height: 100%;
+    width: 50vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-right{
+    /* background-color: aqua; */
+    height: 100%;
+    width: 50vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.f-item{
+    margin-right: 5px;
+    text-decoration: none;
+    color: black;
+}
+
+#port:hover{
+    text-decoration: underline;
+}
+
+#linkedin:hover{
+    text-decoration: underline;
+}
+
+#github:hover{
+    text-decoration: underline;
+}
+
+#tech:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}

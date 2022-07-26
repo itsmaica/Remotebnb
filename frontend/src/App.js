@@ -20,9 +20,9 @@ import CalendarComponent from './components/Bookings/Calendar/Calendar';
 import DateTimeRangePicker from '@wojtekmaj/react-daterange-picker';
 import DateRange from './components/Bookings/DateRange/DateRange';
 import SideBookings from './components/Bookings/SideBookings/SideBooking';
+import NewFooter from './components/NewFooter/NewFooter';
 // import { getReviewThunk } from './store/review';
 // import Reviews from './components/Reviews/Reviews';
-
 
 
 function App() {
@@ -56,7 +56,8 @@ function App() {
             {/* <CalendarComponent/> */}
             {/* <DateTimeRangePicker /> */}
             {/* <DateRange /> */}
-            <SideBookings />
+            {/* <SideBookings /> */}
+            <NewFooter />
 
           </Route>
 
