@@ -22,6 +22,7 @@ function NewFooter() {
             className="f-item"
             href="https://www.maicasantos.com"
             target="_blank"
+            rel="noopener"
           >
             Maica Santos
           </a>
@@ -31,6 +32,7 @@ function NewFooter() {
             className="f-item"
             href="https://www.linkedin.com/in/maicasantos/"
             target="_blank"
+            rel="noopener"
           >
             Linkedin
           </a>
@@ -40,6 +42,7 @@ function NewFooter() {
             className="f-item"
             href="https://github.com/itsmaica/Remotebnb"
             target="_blank"
+            rel="noopener"
           >
             GitHub
           </a>
