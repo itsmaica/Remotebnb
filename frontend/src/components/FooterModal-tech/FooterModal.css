@@ -19,7 +19,7 @@
     flex-direction: column;
     padding-bottom: 3rem;
     z-index: 2;
-    opacity: 100%;
+    /* opacity: 100%; */
 }
 
 #close-tech{
