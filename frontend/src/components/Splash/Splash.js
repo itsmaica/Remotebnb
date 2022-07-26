@@ -1,6 +1,6 @@
 import "./Splash.css";
 
-import Footer from "../Footer/Footer";
+// import Footer from "../Footer/Footer";
 import nydigitalnomad from "../../images/nydigitalnomad.jpeg";
 import modern from "../../images/modern.jpeg";
 import NewFooter from "../NewFooter/NewFooter";

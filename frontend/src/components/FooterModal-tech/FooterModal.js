@@ -43,6 +43,7 @@ function FooterModal({ setShowModal }) {
                 className="f-item"
                 href="https://www.maicasantos.com"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 Maica Santos
               </a>
@@ -53,6 +54,7 @@ function FooterModal({ setShowModal }) {
                 className="f-item"
                 href="https://www.linkedin.com/in/maicasantos/"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 Linkedin
               </a>
@@ -63,6 +65,7 @@ function FooterModal({ setShowModal }) {
                 className="f-item"
                 href="https://github.com/itsmaica/Remotebnb"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 GitHub
               </a>
