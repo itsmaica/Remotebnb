@@ -3,13 +3,15 @@ import "./Splash.css";
 import Footer from "../Footer/Footer";
 import nydigitalnomad from "../../images/nydigitalnomad.jpeg";
 import modern from "../../images/modern.jpeg";
+import NewFooter from "../NewFooter/NewFooter";
 
 function Splash() {
   return (
     <>
+    <div className="container">
       <div className="pic-try-hosting">
         <div id="splash-house">
-          <img id="nynomad" src={nydigitalnomad} alt="remote worker"/>
+          <img id="nynomad" src={nydigitalnomad} alt="remote worker" />
         </div>
         <div id="splash-host">
           <h1>Welcome To Remotebnb</h1>
@@ -27,7 +29,7 @@ function Splash() {
 
       <div className="try-host">
         <div id="modern">
-          <img id="mod" src={modern} alt="a house"/>
+          <img id="mod" src={modern} alt="a house" />
         </div>
         <div id="host-ad">
           <div>
@@ -138,8 +140,13 @@ function Splash() {
         </div>
       </div>
 
-      <div className="bottom-foot">
+      {/* <div className="bottom-foot">
         <Footer />
+      </div> */}
+
+      </div>
+      <div className="new-footer">
+        <NewFooter />
       </div>
     </>
   );

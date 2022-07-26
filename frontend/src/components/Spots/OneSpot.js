@@ -6,9 +6,11 @@ import { loadSpotReviewsThunk } from "../../store/review";
 import { getOneSpotThunk } from "../../store/spot";
 // import Building from "../LoadingAndPageNotFound/Building";
 import Loading from "../LoadingAndPageNotFound/Loading";
+import NewFooter from "../NewFooter/NewFooter";
 // import ReviewForm from "../Reviews/ReviewForm";
 import Reviews from "../Reviews/Reviews";
 import "./OneSpot.css";
+
 
 function OneSpot() {
   const dispatch = useDispatch();
@@ -173,7 +175,6 @@ function OneSpot() {
 
                 <div className="one-page-divider"></div>
 
-
                 <div className="description">
                   <h3>{spot?.description}</h3>
                 </div>
@@ -244,7 +245,8 @@ function OneSpot() {
                                   className="showMore"
                                   onClick={() => setShowModal(true)}
                                 >
-                                  ..show more <i className="fa-solid fa-angle-right"></i>
+                                  ..show more{" "}
+                                  <i className="fa-solid fa-angle-right"></i>
                                 </button>
                               </>
                             )}
@@ -279,6 +281,9 @@ function OneSpot() {
             </div>
           </>
         )}
+        <div className="new-footer">
+          <NewFooter />
+        </div>
       </>
     );
   }

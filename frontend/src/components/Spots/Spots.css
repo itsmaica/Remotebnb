@@ -85,3 +85,8 @@
   display: flex;
   justify-content: space-between;
 }
+
+.new-footer{
+  position: fixed;
+  bottom: 0;
+}

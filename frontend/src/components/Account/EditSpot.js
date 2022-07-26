@@ -4,6 +4,7 @@ import { useHistory, useParams } from "react-router-dom";
 
 import { loadAllSpotsThunk } from "../../store/spot";
 import { editSpotThunk, loadUserSpotsThunk } from "../../store/userSpots";
+import NewFooter from "../NewFooter/NewFooter";
 
 import "./EditSpot.css";
 
@@ -298,6 +299,9 @@ function EditASpot() {
               </div>
             </form>
           </div>
+        </div>
+        <div className="new-footer">
+          <NewFooter />
         </div>
       </>
     );
