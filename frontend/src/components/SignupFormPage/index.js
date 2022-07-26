@@ -112,67 +112,77 @@ function SignupFormPage({ setShowModal }) {
             </ul>
             </div>
             )}
-            <div id="input-div">
+            <div className="signup-input-border">
+
               <input
+                className="signup-inputs"
                 placeholder="First Name"
                 type="text"
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
-                className="in-log"
+                // className="in-log"
               />
-            </div>
 
-            <div id="input-div">
+
               <input
+                className="signup-inputs"
                 placeholder="Last Name"
                 type="text"
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
-                className="in-log"
+                // className="in-log"
               />
-            </div>
 
-            <div id="input-div">
+
+
               <input
                 placeholder="Email Address"
                 type="text"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="in-log"
-              />
-            </div>
+                // className="in-log"
+                className="signup-inputs"
 
-            <div id="input-div">
+              />
+
+
               <input
-                className="in-log"
+                // className="in-log"
+                className="signup-inputs"
+
                 placeholder="Username"
                 type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 // required
               />
-            </div>
 
-            <div id="input-div">
+
+
               <input
-                className="in-log"
+                // className="in-log"
+                className="signup-inputs"
+
                 placeholder="Password"
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 // required
               />
-            </div>
 
-            <div id="input-div">
+
+
               <input
-                className="in-log"
+                // className="in-log"
+                className="signup-inputs"
+
                 placeholder="Confirm Password"
                 type="password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 // required
               />
+           
             </div>
 
             <button id="l-button" type="submit">Sign Up</button>

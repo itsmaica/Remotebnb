@@ -121,33 +121,32 @@
 
 }
 
-.in-log{
+/* .in-log{
     width: 100%;
     height: 2.5rem;
     outline: grey solid 1px;
-    /* border-radius: 0.5rem; */
-
-}
-
-/* .in-log:active{
-    border: black solid 2px;
-} */
-
-/* #round-edges{
     border-radius: 0.5rem;
-    background-color: yellow;
-    height: 100px;
-    width: 100%;
+    border-top: none;
 } */
 
-#input-div{
-    /* background-color: fuchsia; */
+/* #input-div{
     width: 99%;
     border-radius: 0.5rem;
     height: auto;
-    /* z-index: -1; */
     overflow: hidden;
     border: grey solid 1px;
+} */
+
+.signup-inputs{
+    width: 100%;
+    height: 2.5rem;
+    outline: grey solid 1px;
+    border-top: none;
+    border-left: none;
+    border-bottom: none;
+    border-bottom: none;
+    text-indent: 0.5rem;
+
 }
 
 #l-bt-dv{
@@ -190,16 +189,16 @@
 }
 
 
-#demo-button{
+/* #demo-button{
     width: 100%;
     height: 3rem;
     border-radius: 0.5rem;
-    border: black solid 2px;
+    border: green solid 1px;
     background-color: white;
     font-size: 1em;
     font-weight: bolder;
     margin-bottom: 1rem;
-}
+} */
 
 #demo-button:hover{
     background-color: #dd1462;
@@ -251,6 +250,16 @@
     width: 80%;
 }
 
-::placeholder{
+/* ::placeholder{
     padding-left: 0.5rem;
+} */
+
+
+.signup-input-border{
+    background-color: orange;
+    width: 90%;
+    border-radius: 0.5rem;
+    height: auto;
+    overflow: hidden;
+    border: grey solid 1px;
 }

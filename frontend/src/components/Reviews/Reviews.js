@@ -251,7 +251,7 @@ function Reviews({ spotId }) {
                 <div>
                   <ReviewForm spotId={spotId} setForm={setForm} />
                 </div>
-                <div>
+                <div id="cxl-btn-div">
                   <button className="lo-2" onClick={() => setForm(false)}>Cancel</button>
                 </div>
               </>
