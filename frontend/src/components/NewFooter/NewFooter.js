@@ -1,6 +1,6 @@
 import "./NewFooter.css";
 
-import { Modal } from "../../context/Modal";
+// import { Modal } from "../../context/Modal";
 import { useState } from "react";
 
 import FooterModal from "../FooterModal-tech/FooterModal"
@@ -22,7 +22,7 @@ function NewFooter() {
             className="f-item"
             href="https://www.maicasantos.com"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
           >
             Maica Santos
           </a>
@@ -32,7 +32,7 @@ function NewFooter() {
             className="f-item"
             href="https://www.linkedin.com/in/maicasantos/"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
           >
             Linkedin
           </a>
@@ -42,7 +42,7 @@ function NewFooter() {
             className="f-item"
             href="https://github.com/itsmaica/Remotebnb"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
           >
             GitHub
           </a>
@@ -50,12 +50,12 @@ function NewFooter() {
 
         <div className="footer-right">
           <p className="f-item">
-            <i class="fa-solid fa-globe"></i> English (US)
+            <i className="fa-solid fa-globe"></i> English (US)
           </p>
           <p className="f-item">
-            <i class="fa-solid fa-dollar-sign"></i> USD
+            <i className="fa-solid fa-dollar-sign"></i> USD
           </p>
-          <p onClick={() => setShowModal(true)} id="tech" className="f-item">Technologies <i class="fa-solid fa-angle-up"></i></p>
+          <p onClick={() => setShowModal(true)} id="tech" className="f-item">Technologies <i className="fa-solid fa-angle-up"></i></p>
         </div>
       </div>
     </>
