@@ -65,26 +65,12 @@ router.put(
   "/:reviewId/edit",
   ValidateReviewForm,
   asyncHandler(async (req, res) => {
-    // console.log("BODY \n\n", req.body)
-    // console.log("Hello from the put router!!!\n\n")
     const { reviewId } = req.params;
-    // console.log("What is {reviewId }", reviewId)
-    // const { userId } = req.params
-
     const id = reviewId;
-    // console.log("Need Id", id)
-
-    // const id = req.body.id
-    // console.log("ID IS UNDEFINED", id)
-    // const userId = req.body.userId
-    // const spotId = req.body.spotId
     const newReview = req.body.review;
-    // console.log("newReview \n\n", newReview)
     const newRating = req.body.rating;
-    // console.log("newRatng\n\n", newRating )
 
     const rev = await Review.findByPk(id);
-    // console.log("reviewView.save is not func??", rev)
 
     const { review, rating } = rev;
 

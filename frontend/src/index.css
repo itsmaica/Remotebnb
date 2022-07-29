@@ -9,8 +9,10 @@
     justify-content: flex-start;
     flex-direction: column;
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+    /* margin: 0; */
+    /* padding: 0; */
+    margin-bottom: 6rem;
+
 }
 
 * {
@@ -18,8 +20,18 @@
     ont-family: 'Oleo Script', cursive;
 }
 
+body{
+    margin: 0;
+    padding: 0;
+}
+
 
 #l-s.fa-solid.fa-house-chimney-user:before{
     height: 50px;
     width: 50px;
+}
+
+
+button:hover{
+    cursor: pointer;
 }

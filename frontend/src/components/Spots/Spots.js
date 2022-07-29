@@ -7,6 +7,7 @@ import Loading from "../../components/LoadingAndPageNotFound/Loading";
 import { useHistory } from "react-router-dom";
 
 import "./Spots.css";
+import NewFooter from "../NewFooter/NewFooter";
 
 function Spots() {
   const dispatch = useDispatch();
@@ -75,6 +76,9 @@ function Spots() {
               </div>
             ))}
           </div>
+        </div>
+        <div className="new-footer">
+          <NewFooter />
         </div>
       </>
     );

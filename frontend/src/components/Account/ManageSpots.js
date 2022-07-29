@@ -15,6 +15,7 @@ import { Modal } from "../../context/Modal";
 // import {Loading} from "../../components/LoadingAndPageNotFound/Loading"
 
 import CreateASpot from "../Account/CreateASpot.js";
+import NewFooter from "../NewFooter/NewFooter";
 
 function ManageSpots() {
   const dispatch = useDispatch();
@@ -112,7 +113,10 @@ function ManageSpots() {
                         goToOnePage(spot?.id);
                       }}
                     >
-                      <i id="l-s" className="fa-solid fa-house-chimney-user"></i>
+                      <i
+                        id="l-s"
+                        className="fa-solid fa-house-chimney-user"
+                      ></i>
                     </div>
                     <div className="center-spot-name">
                       <div id="spot-name">{spot?.name}</div>
@@ -143,6 +147,9 @@ function ManageSpots() {
             </div>
           </>
         ))}
+      <div className="new-footer">
+        <NewFooter />
+      </div>
     </>
   );
 }

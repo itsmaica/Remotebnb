@@ -47,6 +47,7 @@
   },
   "devDependencies": {
     "dotenv-cli": "^4.1.1",
+    "file-loader": "^6.2.0",
     "nodemon": "^2.0.16"
   }
 }
