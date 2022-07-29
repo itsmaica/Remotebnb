@@ -10,23 +10,26 @@ function SideBookings({ spotPrice, user }) {
       <div id="top-b" className="booking-box">
 
         <div className="inner-box">
-          <div>
-            <p id="cost">${Math.round(spotPrice)}</p>
-            <p id="night">night</p>
+
+            <div id="pri-and-ni">
+
+                <p id="cost">${Math.round(spotPrice)} night</p>
+
+            </div>
 
           <div id="checkin-dates">
             <DateRange />
           </div>
 
           <button id="reserve-button">Reserve</button>
-          </div>
+
           <p>You won't be charged yet.</p>
         </div>
       </div>
 
-      <div id="rare-box" className="booking-box">
-        <div className="inner-box">
-          <p>
+      <div className="booking-box">
+        <div id="rare-box"  className="inner-box">
+          <p id="find-txt">
             <strong>This is a rare find.</strong> {user}'s place on Remotebnb is
             usually fully booked.
           </p>

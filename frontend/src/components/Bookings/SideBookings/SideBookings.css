@@ -1,38 +1,19 @@
-/* .box{
-    /* background-color: pink; */
-    /* border: solid grey 1px; */
-    /* border-radius: 1rem; */
-    /* width: 25rem; */
-    /* height: 30rem; */
-    /* display: flex; */
-    /* justify-content: center; */
-    /* align-items: center; */
-    /* flex-direction: column; */
-
-.booking-box{
-    /* background-color: #DC2062; */
-    border: darkgray solid 1px;
-    border-radius: 1rem;
-    width: 100%;
-}
 
 
 #cost{
-    font-weight: bolder;
+    /* font-weight: bold; */
     margin-right: .25em;
     font-size: 22px;
+    /* height: 100%; */
+}
+
+#night{
+    /* height: 100%; */
 }
 
 #price{
     font-size: 16px;
 }
-
-/* .price-night{
-    width: 90%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-} */
 
 #reserve-button{
     background-color: #DC2062;
@@ -46,7 +27,7 @@
 
 #checkin-dates{
     /* background-color: orange; */
-    width: 85%;
+    /* width: 85%; */
     display: flex;
     justify-content: flex-start;
     margin-bottom: 2rem;
@@ -65,16 +46,42 @@
     flex-direction: row;
 }
 
+.booking-box{
+    /* background-color: #DC2062; */
+    border: darkgray solid 1px;
+    border-radius: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#pri-and-ni{
+    display: flex;
+    justify-content: flex-start;
+    height: 4rem;
+    width: 100%;
+}
+
 .inner-box{
     width: 90%;
+    /* height: 95%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 #dia-div{
-    /* height: 90%;
-    width: 90%; */
+    height: 2rem;
+    width: 2rem;
 }
 
 #diamond{
-    /* height: 100%;
-    width: 100%; */
+    height: 100%;
+    width: 100%;
+}
+
+#find-txt{
+    width: 80%;
 }
