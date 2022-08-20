@@ -27,10 +27,12 @@
 
 #checkin-dates{
     /* background-color: orange; */
-    /* width: 85%; */
+    width: 85%;
+    height: 40%;
     display: flex;
     justify-content: flex-start;
     margin-bottom: 2rem;
+    border: grey solid 1px;
 }
 
 #top-b{

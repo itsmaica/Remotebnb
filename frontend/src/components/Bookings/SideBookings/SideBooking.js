@@ -1,9 +1,13 @@
 import DateRange from "../DateRange/DateRange";
 import "./SideBookings.css";
+import Calendar from 'react-calendar'
 
 import svgexport35 from "../../../images/svgexport35.svg";
+import { useState } from "react";
 
 function SideBookings({ spotPrice, user }) {
+  const [showCal, setShowCal] = useState(false)
+
   console.log(spotPrice);
   return (
     <>
@@ -18,7 +22,27 @@ function SideBookings({ spotPrice, user }) {
             </div>
 
           <div id="checkin-dates">
-            <DateRange />
+            {/* <DateRange /> */}
+            {/* hey */}
+            <div onClick={()=>setShowCal(true)} id="ch-in">
+              CHECK-IN
+
+                {/* {showCal && (
+
+                  <Calendar />
+                )} */}
+
+            </div>
+
+            <div id="ch-out">
+              CHECK-OUT
+              {/* <Calendar /> */}
+            </div>
+
+            <div id="num-of-g">
+
+            </div>
+            {/* <Calendar/> */}
           </div>
 
           <button id="reserve-button">Reserve</button>
