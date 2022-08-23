@@ -8,7 +8,9 @@ import { useState } from "react";
 function SideBookings({ spotPrice, user }) {
   const [showCal, setShowCal] = useState(false)
 
-  console.log(spotPrice);
+  const [downAngle, setUpAngle] = useState(false)
+
+  // console.log(spotPrice);
   return (
     <>
       <div id="top-b" className="booking-box">
@@ -22,26 +24,30 @@ function SideBookings({ spotPrice, user }) {
             </div>
 
           <div id="checkin-dates">
-            {/* <DateRange /> */}
-            {/* hey */}
-            <div onClick={()=>setShowCal(true)} id="ch-in">
-              CHECK-IN
 
-                {/* {showCal && (
+            <div className="dt-holder">
+              <div onClick={()=>setShowCal(true)} id="ch-in">
+                <p>CHECK-IN</p>
+              </div>
 
-                  <Calendar />
-                )} */}
-
-            </div>
-
-            <div id="ch-out">
-              CHECK-OUT
-              {/* <Calendar /> */}
-            </div>
-
-            <div id="num-of-g">
+              <div id="ch-out">
+                <p>CHECK-OUT</p>
+              </div>
 
             </div>
+
+
+
+            <div onClick={()=> setUpAngle(true)} id="num-of-g">
+              <p>Guests</p>
+              {downAngle && (
+              <i class="fa-solid fa-angle-down"></i>
+              )}
+              {!downAngle && (
+                <i class="fa-solid fa-angle-up"></i>
+              )}
+            </div>
+
             {/* <Calendar/> */}
           </div>
 
