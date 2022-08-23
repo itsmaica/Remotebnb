@@ -6,9 +6,11 @@ import svgexport35 from "../../../images/svgexport35.svg";
 import { useState } from "react";
 
 function SideBookings({ spotPrice, user }) {
-  const [showCal, setShowCal] = useState(false)
+  const [showCal, setShowCal] = useState(false);
 
-  const [downAngle, setUpAngle] = useState(false)
+  const [downAngle, setUpAngle] = useState(false);
+
+  const [dropDown, setDropDown] = useState(false);
 
   // console.log(spotPrice);
   return (
@@ -38,7 +40,7 @@ function SideBookings({ spotPrice, user }) {
 
 
 
-            <div onClick={()=> setUpAngle(true)} id="num-of-g">
+            {/* <div onClick={()=> setUpAngle(true)} id="num-of-g">
               <p>Guests</p>
               {downAngle && (
               <i class="fa-solid fa-angle-down"></i>
@@ -46,10 +48,36 @@ function SideBookings({ spotPrice, user }) {
               {!downAngle && (
                 <i class="fa-solid fa-angle-up"></i>
               )}
-            </div>
+            </div> */}
 
+
+            <div onClick={()=>setDropDown(true)}id="num-of-g">
+              <p>Guests</p>
+                {!dropDown && (
+                <i class="fa-solid fa-angle-down"></i>
+                )}
+                {dropDown && (
+                <i class="fa-solid fa-angle-up"></i>
+                )}
+            </div>
             {/* <Calendar/> */}
           </div>
+          {dropDown && (
+              <>
+              <div>
+                Hello?
+                <div>
+                  <p>Adults</p>
+                </div>
+                <div>
+                  <p>Children</p>
+                </div>
+                <div>
+                  <p>CLOSE</p>
+                </div>
+              </div>
+              </>
+            )}
 
           <button id="reserve-button">Reserve</button>
 

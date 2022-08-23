@@ -23,6 +23,7 @@ import SideBookings from './components/Bookings/SideBookings/SideBooking';
 import NewFooter from './components/NewFooter/NewFooter';
 // import { getReviewThunk } from './store/review';
 // import Reviews from './components/Reviews/Reviews';
+import GuestTracker from './components/Bookings/GuestTracker/GuestTracker';
 
 
 function App() {
@@ -56,8 +57,9 @@ function App() {
             {/* <CalendarComponent/> */}
             {/* <DateTimeRangePicker /> */}
             {/* <DateRange /> */}
-            <SideBookings />
-            <NewFooter />
+            {/* <SideBookings /> */}
+            {/* <NewFooter /> */}
+            <GuestTracker />
 
           </Route>
 

@@ -1,0 +1,23 @@
+
+
+#g-count{
+    background-color: skyblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.round{
+    border: darkgray solid 1px;
+    border-radius: 50%;
+}
+
+#sub{
+    /* height: 100%;
+    width: 100%; */
+}
+#add{
+    /* height: 100%;
+    width: 100%; */
+
+}
