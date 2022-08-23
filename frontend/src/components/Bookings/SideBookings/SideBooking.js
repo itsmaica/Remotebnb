@@ -6,9 +6,13 @@ import svgexport35 from "../../../images/svgexport35.svg";
 import { useState } from "react";
 
 function SideBookings({ spotPrice, user }) {
-  const [showCal, setShowCal] = useState(false)
+  const [showCal, setShowCal] = useState(false);
 
-  console.log(spotPrice);
+  const [downAngle, setUpAngle] = useState(false);
+
+  const [dropDown, setDropDown] = useState(false);
+
+  // console.log(spotPrice);
   return (
     <>
       <div id="top-b" className="booking-box">
@@ -22,28 +26,58 @@ function SideBookings({ spotPrice, user }) {
             </div>
 
           <div id="checkin-dates">
-            {/* <DateRange /> */}
-            {/* hey */}
-            <div onClick={()=>setShowCal(true)} id="ch-in">
-              CHECK-IN
 
-                {/* {showCal && (
+            <div className="dt-holder">
+              <div onClick={()=>setShowCal(true)} id="ch-in">
+                <p>CHECK-IN</p>
+              </div>
 
-                  <Calendar />
-                )} */}
+              <div id="ch-out">
+                <p>CHECK-OUT</p>
+              </div>
 
             </div>
 
-            <div id="ch-out">
-              CHECK-OUT
-              {/* <Calendar /> */}
-            </div>
 
-            <div id="num-of-g">
 
+            {/* <div onClick={()=> setUpAngle(true)} id="num-of-g">
+              <p>Guests</p>
+              {downAngle && (
+              <i class="fa-solid fa-angle-down"></i>
+              )}
+              {!downAngle && (
+                <i class="fa-solid fa-angle-up"></i>
+              )}
+            </div> */}
+
+
+            <div onClick={()=>setDropDown(true)}id="num-of-g">
+              <p>Guests</p>
+                {!dropDown && (
+                <i class="fa-solid fa-angle-down"></i>
+                )}
+                {dropDown && (
+                <i class="fa-solid fa-angle-up"></i>
+                )}
             </div>
             {/* <Calendar/> */}
           </div>
+          {dropDown && (
+              <>
+              <div>
+                Hello?
+                <div>
+                  <p>Adults</p>
+                </div>
+                <div>
+                  <p>Children</p>
+                </div>
+                <div>
+                  <p>CLOSE</p>
+                </div>
+              </div>
+              </>
+            )}
 
           <button id="reserve-button">Reserve</button>
 

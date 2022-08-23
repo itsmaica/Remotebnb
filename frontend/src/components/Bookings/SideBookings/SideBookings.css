@@ -1,5 +1,4 @@
 
-
 #cost{
     /* font-weight: bold; */
     margin-right: .25em;
@@ -28,11 +27,14 @@
 #checkin-dates{
     /* background-color: orange; */
     width: 85%;
-    height: 40%;
+    /* height: 40%; */
     display: flex;
     justify-content: flex-start;
+    flex-direction: column;
     margin-bottom: 2rem;
     border: grey solid 1px;
+    border-radius: .5rem;
+    cursor: pointer;
 }
 
 #top-b{
@@ -86,4 +88,56 @@
 
 #find-txt{
     width: 80%;
+}
+
+/* the div that holds the chin/out - need to center it */
+.dt-holder{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.dt-holder > div {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+#ch-in{
+    border-right :  darkgray solid 1px;
+    border-bottom:  darkgray solid 1px;
+    width: 50%;
+    /* text-align: center; */
+
+
+}
+
+#ch-out{
+    /* border: darkgray solid 1px; */
+    border-bottom:  darkgray solid 1px;
+    width: 50%;
+    /* text-align: center; */
+}
+
+#num-of-g{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#num-of-g > p, i {
+    padding-left: 1em;
+    padding-right: 1em;
+
+}
+#num-of-g:active{
+    border: black 1px solid;
+    border-radius: .50em;
+    z-index: 2;
+}
+
+
+.fa-solid.fa-angle-down{
+    text-align: center;
+    text-justify: center;
 }
