@@ -13,6 +13,10 @@
     border-radius: 50%;
 }
 
+.round:hover{
+   border : black solid 1px;
+}
+
 #sub{
     /* height: 100%;
     width: 100%; */
@@ -30,8 +34,8 @@
 
 }
 .fill{
-    height: 3em;
-    width: 3em;
+    height: 2em;
+    width: 2em;
     /* background-color: blue; */
     display: flex;
     justify-content: center;
@@ -46,10 +50,37 @@
 
 }
 
-.fa-solid.fa-minus.fa-plus:hover{
+.fa-plus:hover{
+    color: black
+}
+
+.fa-minus:hover{
     color: black
 }
 
 #sub-disable:hover{
     cursor:not-allowed;
+    border: rgb(156, 156, 156);
+}
+
+
+/* .round ~ i:hover{
+    color: black;
+} */
+
+
+#sub-grey{
+    border: lightgray solid 1px;
+    color: lightgray;
+
+}
+
+#sub-grey:hover{
+    border: lightgrey solid 1px;
+}
+
+#dis-i:hover{color: lightgray}
+
+#g-ct-num > p{
+    font-size: 1em;
 }

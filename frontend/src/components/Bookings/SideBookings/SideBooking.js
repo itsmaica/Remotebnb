@@ -1,11 +1,12 @@
 import DateRange from "../DateRange/DateRange";
 import "./SideBookings.css";
-import Calendar from 'react-calendar'
+import Calendar from "react-calendar";
 
 import svgexport35 from "../../../images/svgexport35.svg";
 import { useState } from "react";
+import GuestTracker from "../GuestTracker/GuestTracker";
 
-function SideBookings({ spotPrice, user }) {
+function SideBookings ({ spotPrice, user }) {
   const [showCal, setShowCal] = useState(false);
 
   const [downAngle, setUpAngle] = useState(false);
@@ -16,68 +17,57 @@ function SideBookings({ spotPrice, user }) {
   return (
     <>
       <div id="top-b" className="booking-box">
-
         <div className="inner-box">
-
-            <div id="pri-and-ni">
-
-                <p id="cost">${Math.round(spotPrice)} night</p>
-
-            </div>
+          <div id="pri-and-ni">
+            <p id="cost">${Math.round(spotPrice)} night</p>
+          </div>
 
           <div id="checkin-dates">
-
             <div className="dt-holder">
-              <div onClick={()=>setShowCal(true)} id="ch-in">
+              <div onClick={() => setShowCal(true)} id="ch-in">
                 <p>CHECK-IN</p>
               </div>
 
-              <div id="ch-out">
-                <p>CHECK-OUT</p>
+              <div>
+                <p id="ch-out">CHECK-OUT</p>
               </div>
-
             </div>
-
-
-
-            {/* <div onClick={()=> setUpAngle(true)} id="num-of-g">
+            <div onClick={() => setDropDown(true)} id="num-of-g">
               <p>Guests</p>
-              {downAngle && (
-              <i class="fa-solid fa-angle-down"></i>
-              )}
-              {!downAngle && (
-                <i class="fa-solid fa-angle-up"></i>
-              )}
-            </div> */}
-
-
-            <div onClick={()=>setDropDown(true)}id="num-of-g">
-              <p>Guests</p>
-                {!dropDown && (
-                <i class="fa-solid fa-angle-down"></i>
-                )}
-                {dropDown && (
-                <i class="fa-solid fa-angle-up"></i>
-                )}
+              {!dropDown && <i class="fa-solid fa-angle-down"></i>}
+              {dropDown && <i class="fa-solid fa-angle-up"></i>}
             </div>
             {/* <Calendar/> */}
-          </div>
           {dropDown && (
-              <>
-              <div>
-                Hello?
-                <div>
-                  <p>Adults</p>
+            <>
+              <div className="gst-drop">
+                <div className="gst-d">
+
+                  <div>
+                    <p>Adults</p>
+                  </div>
+
+                  <div className="trk">
+                    <GuestTracker />
+                  </div>
                 </div>
-                <div>
-                  <p>Children</p>
+
+                <div className="gst-d">
+                  <div>
+                    <p>Children</p>
+                  </div>
+
+                  <div className="trk">
+                    <GuestTracker />
+                  </div>
                 </div>
                 <div>
                   <p>CLOSE</p>
                 </div>
               </div>
-              </>
-            )}
+            </>
+          )}
+          </div>
 
           <button id="reserve-button">Reserve</button>
 
@@ -86,13 +76,13 @@ function SideBookings({ spotPrice, user }) {
       </div>
 
       <div className="booking-box">
-        <div id="rare-box"  className="inner-box">
+        <div id="rare-box" className="inner-box">
           <p id="find-txt">
             <strong>This is a rare find.</strong> {user}'s place on Remotebnb is
             usually fully booked.
           </p>
           <div id="dia-div">
-            <img id="diamond"src={svgexport35} />
+            <img id="diamond" src={svgexport35} />
           </div>
         </div>
       </div>

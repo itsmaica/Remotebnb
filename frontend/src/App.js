@@ -23,7 +23,7 @@ import SideBookings from './components/Bookings/SideBookings/SideBooking';
 import NewFooter from './components/NewFooter/NewFooter';
 // import { getReviewThunk } from './store/review';
 // import Reviews from './components/Reviews/Reviews';
-import GuestTracker from './components/Bookings/GuestTracker/GuestTracker';
+// import GuestTracker from './components/Bookings/GuestTracker/GuestTracker';
 
 
 function App() {
@@ -59,7 +59,7 @@ function App() {
             {/* <DateRange /> */}
             {/* <SideBookings /> */}
             {/* <NewFooter /> */}
-            <GuestTracker />
+            {/* <GuestTracker /> */}
 
           </Route>
 
