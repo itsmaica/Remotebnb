@@ -1,19 +1,67 @@
+import { useState } from "react";
 import "./GuestTracker.css";
 
 function GuestTracker() {
-  let count = 0;
+
+    const [counter, setCounter] = useState(0)
+
+
+
+    const add =()=>{ setCounter(counter+1) }
+    const sub=()=>{ setCounter(counter-1) }
+
+
   return (
     <>
       {/* <p>Maica is the greatest of all time!</p> */}
       <div id="g-count">
-        <div id="sub" className="round">
-          <i class="fa-solid fa-minus"></i>
+
+        {counter === 0 ? (
+        <div
+        id="sub"
+        className="round">
+            { counter === 0 ? (
+                 <div id="sub-disable"className="fill">
+                    <i class="fa-solid fa-minus"></i>
+                </div>
+                ) :
+                <div className="fill">
+                <i class="fa-solid fa-minus"></i>
+                </div>
+                }
         </div>
+        ) :
+        <div
+        onClick={sub}
+        id="sub"
+        className="round">
+            { counter === 0 ? (
+                 <div id="sub-disable"className="fill">
+                    <i class="fa-solid fa-minus"></i>
+                </div>
+                ) :
+                <div className="fill">
+                <i class="fa-solid fa-minus"></i>
+                </div>
+                }
+        </div>
+
+
+        }
+
+
         <div>
-          <p>{count}</p>
+          <p>{counter}</p>
         </div>
-        <div id="add" className="round">
+
+        <div
+        onClick={add}
+        id="add"
+        className="round">
+            <div className="fill">
+
           <i class="fa-solid fa-plus"></i>
+            </div>
         </div>
       </div>
     </>
