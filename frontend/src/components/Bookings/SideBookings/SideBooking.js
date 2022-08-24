@@ -44,7 +44,8 @@ function SideBookings ({ spotPrice, user }) {
                 <div className="gst-d">
 
                   <div>
-                    <p>Adults</p>
+                    <p className="bg-tx">Adults</p>
+                    <p className="sml-tx">Ages 13+</p>
                   </div>
 
                   <div className="trk">
@@ -54,20 +55,25 @@ function SideBookings ({ spotPrice, user }) {
 
                 <div className="gst-d">
                   <div>
-                    <p>Children</p>
+                    <p className="bg-tx">Children</p>
+                    <p className="sml-tx">Ages 2-12</p>
                   </div>
 
                   <div className="trk">
                     <GuestTracker />
                   </div>
                 </div>
-                <div>
-                  <p>CLOSE</p>
+                <div className="c-cls">
+                  <div onClick={()=> setDropDown(false)} id="c-gst">
+                    <p><u>CLOSE</u></p>
+                  </div>
                 </div>
               </div>
             </>
           )}
-          </div>
+            </div>
+
+
 
           <button id="reserve-button">Reserve</button>
 

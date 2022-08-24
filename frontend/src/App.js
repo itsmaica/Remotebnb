@@ -57,7 +57,7 @@ function App() {
             {/* <CalendarComponent/> */}
             {/* <DateTimeRangePicker /> */}
             {/* <DateRange /> */}
-            {/* <SideBookings /> */}
+            <SideBookings />
             {/* <NewFooter /> */}
             {/* <GuestTracker /> */}
 
