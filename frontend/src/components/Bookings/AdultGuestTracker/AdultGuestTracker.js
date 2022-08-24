@@ -1,15 +1,13 @@
 import { useState } from "react";
-import "./GuestTracker.css";
+import "./AdultGuestTracker.css";
 
-function GuestTracker() {
-
-    const [counter, setCounter] = useState(0)
-
-    console.log(counter)
+function AdultGuestTracker({counter, setAdultCounter}) {
 
 
-    const add =()=>{ setCounter(counter+1) }
-    const sub=()=>{ setCounter(counter-1) }
+
+
+    const add =()=>{ setAdultCounter(counter+1) }
+    const sub=()=>{ setAdultCounter(counter-1) }
 
 
   return (
@@ -65,4 +63,4 @@ function GuestTracker() {
   );
 }
 
-export default GuestTracker;
+export default AdultGuestTracker;
