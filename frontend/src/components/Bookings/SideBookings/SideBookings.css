@@ -58,6 +58,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+    /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
 }
 
 #pri-and-ni{
@@ -142,23 +147,73 @@
     text-justify: center;
 }
 
+/* adult and children cont */
 .gst-drop{
-    /* background-color: green; */
-    width: 100%;
+    background-color: #FFFFFF;
+    /* background-color: indianred; */
+    width: 88.5%;
+    position: absolute;
+    top: 11.5em;
+    z-index: 3;
+    border-radius: .5rem;
+    height: 15em;
+    display: flex;
+    justify-content: space-around;
+    /* align-content: space-between; */
+    flex-direction: column;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
+/* person and counter */
 .gst-d{
-    background-color: pink;
+    /* background-color: pink; */
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 1em 0 1em;
-    /* position: relative;
-    top: 1; */
-    z-index: 2;
 }
 
+
+
 .trk{
-    /* background-color: blueviolet; */
     width: 35%;
+}
+
+#c-gst{
+    width: 4rem;
+    border-radius: .5rem;
+    cursor: pointer;
+    padding: 0 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+#c-gst:hover{
+    background-color: lightgrey;
+    /* height: 1rem; */
+    width: 4rem;
+    border-radius: .5rem;
+    cursor: pointer;
+}
+
+.c-cls{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    /* background-color: red; */
+    /* padding-right: 5em; */
+}
+
+.sml-tx{
+    /* font-size: 1em; */
+    /* color: pink; */
+    margin-top: 1px;
+}
+
+.bg-tx{
+    margin-bottom: 0;
+    font-size: 1.25em;
 }
