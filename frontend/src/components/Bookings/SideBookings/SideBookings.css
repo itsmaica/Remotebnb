@@ -6,9 +6,9 @@
     /* height: 100%; */
 }
 
-#night{
-    /* height: 100%; */
-}
+/* #night{
+    height: 100%;
+} */
 
 #price{
     font-size: 16px;
@@ -26,7 +26,7 @@
 
 #checkin-dates{
     /* background-color: orange; */
-    width: 85%;
+    width: 98%;
     /* height: 40%; */
     display: flex;
     justify-content: flex-start;
@@ -140,4 +140,25 @@
 .fa-solid.fa-angle-down{
     text-align: center;
     text-justify: center;
+}
+
+.gst-drop{
+    /* background-color: green; */
+    width: 100%;
+}
+
+.gst-d{
+    background-color: pink;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1em 0 1em;
+    /* position: relative;
+    top: 1; */
+    z-index: 2;
+}
+
+.trk{
+    /* background-color: blueviolet; */
+    width: 35%;
 }

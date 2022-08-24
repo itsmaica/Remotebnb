@@ -15,14 +15,13 @@ function GuestTracker() {
     <>
       {/* <p>Maica is the greatest of all time!</p> */}
       <div id="g-count">
-
         {counter === 0 ? (
         <div
-        id="sub"
+        id="sub-grey"
         className="round">
             { counter === 0 ? (
                  <div id="sub-disable"className="fill">
-                    <i class="fa-solid fa-minus"></i>
+                    <i id="dis-i"class="fa-solid fa-minus"></i>
                 </div>
                 ) :
                 <div className="fill">
@@ -45,12 +44,9 @@ function GuestTracker() {
                 </div>
                 }
         </div>
-
-
         }
 
-
-        <div>
+        <div id="g-ct-num">
           <p>{counter}</p>
         </div>
 
