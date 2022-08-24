@@ -1,10 +1,11 @@
 
 
 #g-count{
-    background-color: skyblue;
+    /* background-color: skyblue; */
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    /* color: darkgray; */
 }
 
 .round{
@@ -15,9 +16,40 @@
 #sub{
     /* height: 100%;
     width: 100%; */
+    color: darkgray;
+    cursor: pointer;
+
+
 }
 #add{
     /* height: 100%;
     width: 100%; */
+    color: darkgray;
+    cursor: pointer;
 
+
+}
+.fill{
+    height: 3em;
+    width: 3em;
+    /* background-color: blue; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fa-solid.fa-minus.fa-plus{
+    /* font-size: 2em; */
+    height: 100%;
+    width: 100%;
+    color: darkgray;
+
+}
+
+.fa-solid.fa-minus.fa-plus:hover{
+    color: black
+}
+
+#sub-disable:hover{
+    cursor:not-allowed;
 }
