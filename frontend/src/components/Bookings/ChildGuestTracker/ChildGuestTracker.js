@@ -1,24 +1,25 @@
 import { useState } from "react";
 import "./ChildGuestTracker.css";
 
-function ChildGuestTracker({counter, setChildCounter}) {
+function ChildGuestTracker({child, setChild}) {
 
 
 
 
-    const add =()=>{ setChildCounter(counter+1) }
-    const sub=()=>{ setChildCounter(counter-1) }
+
+    const add =()=>{ setChild(child+1) }
+    const sub=()=>{ setChild(child-1) }
 
 
   return (
     <>
       {/* <p>Maica is the greatest of all time!</p> */}
       <div id="g-count">
-        {counter === 0 ? (
+        {child === 0 ? (
         <div
         id="sub-grey"
         className="round">
-            { counter === 0 ? (
+            { child === 0 ? (
                  <div id="sub-disable"className="fill">
                     <i id="dis-i"class="fa-solid fa-minus"></i>
                 </div>
@@ -33,7 +34,7 @@ function ChildGuestTracker({counter, setChildCounter}) {
         onClick={sub}
         id="sub"
         className="round">
-            { counter === 0 ? (
+            { child === 0 ? (
                  <div id="sub-disable"className="fill">
                     <i class="fa-solid fa-minus"></i>
                 </div>
@@ -46,7 +47,7 @@ function ChildGuestTracker({counter, setChildCounter}) {
         }
 
         <div id="g-ct-num">
-          <p>{counter}</p>
+          <p>{child}</p>
         </div>
 
         <div

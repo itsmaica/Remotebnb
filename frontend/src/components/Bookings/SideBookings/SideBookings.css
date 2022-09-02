@@ -97,6 +97,7 @@
 
 /* the div that holds the chin/out - need to center it */
 .dt-holder{
+    /* background-color: pink; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -113,6 +114,7 @@
     border-bottom:  darkgray solid 1px;
     width: 50%;
     /* text-align: center; */
+    /* background-color: yellow; */
 
 
 }
@@ -122,9 +124,15 @@
     border-bottom:  darkgray solid 1px;
     width: 50%;
     /* text-align: center; */
+    /* background-color: yellowgreen; */
+}
+
+.c-text{
+    font-size: smaller;
 }
 
 #num-of-g{
+    /* background-color: aqua; */
     display: flex;
     justify-content: space-between;
     align-items: center;

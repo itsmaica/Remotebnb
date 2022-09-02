@@ -4,7 +4,9 @@ import Calendar from "react-calendar";
 
 import svgexport35 from "../../../images/svgexport35.svg";
 import { useState } from "react";
-import GuestTracker from "../GuestTracker/GuestTracker";
+// import GuestTracker from "../GuestTracker/GuestTracker";
+import AdultGuestTracker from "../AdultGuestTracker/AdultGuestTracker"
+import ChildGuestTracker from "../ChildGuestTracker/ChildGuestTracker"
 
 function SideBookings ({ spotPrice, user }) {
   const [showCal, setShowCal] = useState(false);
@@ -13,7 +15,27 @@ function SideBookings ({ spotPrice, user }) {
 
   const [dropDown, setDropDown] = useState(false);
 
-  // console.log(spotPrice);
+  //universal var that can be passed to both components
+
+  // const [guest, setGuest] = useState(0)
+
+  let guest = 0;
+
+
+  // const [plus, setPlus] =();
+  // const [let,]
+
+  // let plus;
+  // let minus
+
+  const [adult, setAdult] = useState(guest)
+  console.log("I am a grown up",adult)
+
+  const [child, setChild] = useState(guest)
+  // console.log("I am a kiddo", child)
+
+  // guest = (plus && minus)
+  // console.log("Guest Number",guest)
   return (
     <>
       <div id="top-b" className="booking-box">
@@ -25,15 +47,15 @@ function SideBookings ({ spotPrice, user }) {
           <div id="checkin-dates">
             <div className="dt-holder">
               <div onClick={() => setShowCal(true)} id="ch-in">
-                <p>CHECK-IN</p>
+                <p className="c-text">CHECK-IN</p>
               </div>
 
-              <div>
-                <p id="ch-out">CHECK-OUT</p>
+              <div onClick={() => setShowCal(true)} id="ch-out">
+                <p className="c-text">CHECK-OUT</p>
               </div>
             </div>
             <div onClick={() => setDropDown(true)} id="num-of-g">
-              <p>Guests</p>
+              <p>Guests {child+adult}</p>
               {!dropDown && <i class="fa-solid fa-angle-down"></i>}
               {dropDown && <i class="fa-solid fa-angle-up"></i>}
             </div>
@@ -49,7 +71,7 @@ function SideBookings ({ spotPrice, user }) {
                   </div>
 
                   <div className="trk">
-                    <GuestTracker />
+                    <AdultGuestTracker adult={adult} setAdult={setAdult}/>
                   </div>
                 </div>
 
@@ -60,7 +82,7 @@ function SideBookings ({ spotPrice, user }) {
                   </div>
 
                   <div className="trk">
-                    <GuestTracker />
+                    <ChildGuestTracker child={child} setChild={setChild}/>
                   </div>
                 </div>
                 <div className="c-cls">
