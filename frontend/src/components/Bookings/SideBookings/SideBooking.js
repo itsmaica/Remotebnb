@@ -5,37 +5,34 @@ import Calendar from "react-calendar";
 import svgexport35 from "../../../images/svgexport35.svg";
 import { useState } from "react";
 // import GuestTracker from "../GuestTracker/GuestTracker";
-import AdultGuestTracker from "../AdultGuestTracker/AdultGuestTracker"
-import ChildGuestTracker from "../ChildGuestTracker/ChildGuestTracker"
-
-function SideBookings ({ spotPrice, user }) {
-  const [showCal, setShowCal] = useState(false);
+import AdultGuestTracker from "../AdultGuestTracker/AdultGuestTracker";
+import ChildGuestTracker from "../ChildGuestTracker/ChildGuestTracker";
+import DatePicker from "react-date-picker";
+function SideBookings({ showCal, setShowCal, spotPrice, user }) {
+  // const [showCal, setShowCal] = useState(false);
 
   const [downAngle, setUpAngle] = useState(false);
 
   const [dropDown, setDropDown] = useState(false);
 
-  //universal var that can be passed to both components
+  const [adult, setAdult] = useState(1);
 
-  // const [guest, setGuest] = useState(0)
+  const [child, setChild] = useState(0);
 
-  let guest = 0;
+  // calendar
+  const [value, onChange] = useState(new Date());
+  // console.log("Check in-->", value)
 
+  const [checkIn, setCheckIn] = useState(new Date());
+  // console.log("Checkin!",checkIn)
 
-  // const [plus, setPlus] =();
-  // const [let,]
+  const [checkOut, setCheckOut] = useState(new Date());
+  // console.log("check out", checkOut)
 
-  // let plus;
-  // let minus
+  //change from add date -> cal
 
-  const [adult, setAdult] = useState(guest)
-  console.log("I am a grown up",adult)
+  const [showCalCompo, setShowCalCompo] = useState(false);
 
-  const [child, setChild] = useState(guest)
-  // console.log("I am a kiddo", child)
-
-  // guest = (plus && minus)
-  // console.log("Guest Number",guest)
   return (
     <>
       <div id="top-b" className="booking-box">
@@ -47,55 +44,93 @@ function SideBookings ({ spotPrice, user }) {
           <div id="checkin-dates">
             <div className="dt-holder">
               <div onClick={() => setShowCal(true)} id="ch-in">
-                <p className="c-text">CHECK-IN</p>
+                <div>
+
+                  <p className="c-text">CHECK-IN</p>
+                </div>
+
+                {!showCalCompo && (
+                  <div
+                    className="calCompo"
+                    onClick={() => setShowCalCompo(true)}
+                  >
+                    <p>Add date</p>
+                  </div>
+                )}
+
+                {showCalCompo && (
+                  <DatePicker
+                    onChange={setCheckIn}
+                    value={checkIn}
+                    calendarIcon={false}
+                    clearIcon={false}
+                  />
+                )}
               </div>
 
               <div onClick={() => setShowCal(true)} id="ch-out">
-                <p className="c-text">CHECK-OUT</p>
+                <p className="c-text">CHECKOUT</p>
+
+                {!showCalCompo && (
+                  <div
+                    className="calCompo"
+                    onClick={() => setShowCalCompo(true)}
+                  >
+                    <p>Add date</p>
+                  </div>
+                )}
+
+                {showCalCompo && (
+                  <DatePicker
+                    onChange={setCheckOut}
+                    value={checkOut}
+                    calendarIcon={false}
+                    clearIcon={false}
+                  />
+                )}
               </div>
             </div>
             <div onClick={() => setDropDown(true)} id="num-of-g">
-              <p>Guests {child+adult}</p>
-              {!dropDown && <i class="fa-solid fa-angle-down"></i>}
-              {dropDown && <i class="fa-solid fa-angle-up"></i>}
+              <p>Guests {child + adult}</p>
+              {!dropDown && <i className="fa-solid fa-angle-down"></i>}
+              {dropDown && <i className="fa-solid fa-angle-up"></i>}
             </div>
             {/* <Calendar/> */}
-          {dropDown && (
-            <>
-              <div className="gst-drop">
-                <div className="gst-d">
+            {dropDown && (
+              <>
+                <div className="gst-drop">
+                  <div className="gst-d">
+                    <div>
+                      <p className="bg-tx">Adults</p>
+                      <p className="sml-tx">Ages 13+</p>
+                    </div>
 
-                  <div>
-                    <p className="bg-tx">Adults</p>
-                    <p className="sml-tx">Ages 13+</p>
+                    <div className="trk">
+                      <AdultGuestTracker adult={adult} setAdult={setAdult} />
+                    </div>
                   </div>
 
-                  <div className="trk">
-                    <AdultGuestTracker adult={adult} setAdult={setAdult}/>
+                  <div className="gst-d">
+                    <div>
+                      <p className="bg-tx">Children</p>
+                      <p className="sml-tx">Ages 2-12</p>
+                    </div>
+
+                    <div className="trk">
+                      <ChildGuestTracker child={child} setChild={setChild} />
+                    </div>
+                  </div>
+                  <div className="c-cls">
+                    <div onClick={() => setDropDown(false)} id="c-gst">
+                      <p>
+                        <u>CLOSE</u>
+                      </p>
+                    </div>
                   </div>
                 </div>
-
-                <div className="gst-d">
-                  <div>
-                    <p className="bg-tx">Children</p>
-                    <p className="sml-tx">Ages 2-12</p>
-                  </div>
-
-                  <div className="trk">
-                    <ChildGuestTracker child={child} setChild={setChild}/>
-                  </div>
-                </div>
-                <div className="c-cls">
-                  <div onClick={()=> setDropDown(false)} id="c-gst">
-                    <p><u>CLOSE</u></p>
-                  </div>
-                </div>
-              </div>
-            </>
-          )}
-            </div>
-
-
+              </>
+            )}
+          </div>
 
           <button id="reserve-button">Reserve</button>
 

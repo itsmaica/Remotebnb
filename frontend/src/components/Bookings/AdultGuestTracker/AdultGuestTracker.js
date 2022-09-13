@@ -14,11 +14,11 @@ function AdultGuestTracker({adult, setAdult}) {
     <>
       {/* <p>Maica is the greatest of all time!</p> */}
       <div id="g-count">
-        {adult === 0 ? (
+        {adult === 1 ? (
         <div
         id="sub-grey"
         className="round">
-            { adult === 0 ? (
+            { adult === 1 ? (
                  <div id="sub-disable"className="fill">
                     <i id="dis-i"class="fa-solid fa-minus"></i>
                 </div>
@@ -33,7 +33,7 @@ function AdultGuestTracker({adult, setAdult}) {
         onClick={sub}
         id="sub"
         className="round">
-            { adult === 0 ? (
+            { adult === 1 ? (
                  <div id="sub-disable"className="fill">
                     <i class="fa-solid fa-minus"></i>
                 </div>
