@@ -1,26 +1,38 @@
 import { useState } from "react";
 import "./GuestTracker.css";
 
-function GuestTracker() {
+function GuestTracker({guest, setGuest}) {
 
-    const [counter, setCounter] = useState(0)
+  // guest = setGuest
+  // console.log("happy bday", guest)
+    // const [counter, setCounter] = useState(guest)
 
-    console.log(counter)
+    // console.log(counter)
+
+    // console.log("GuestTracker compo", guest)
 
 
-    const add =()=>{ setCounter(counter+1) }
-    const sub=()=>{ setCounter(counter-1) }
+    const add =()=>{setGuest(guest+1)}
+    // guest(add)
+    const sub =()=>{ (setGuest(guest-1)) }
+    // guest(sub)
+
+    // guest(sub, add)
+
+
+
+    // guest = counter
 
 
   return (
     <>
       {/* <p>Maica is the greatest of all time!</p> */}
       <div id="g-count">
-        {counter === 0 ? (
+        {guest === 0 ? (
         <div
         id="sub-grey"
         className="round">
-            { counter === 0 ? (
+            { guest === 0 ? (
                  <div id="sub-disable"className="fill">
                     <i id="dis-i"class="fa-solid fa-minus"></i>
                 </div>
@@ -35,7 +47,7 @@ function GuestTracker() {
         onClick={sub}
         id="sub"
         className="round">
-            { counter === 0 ? (
+            { guest === 0 ? (
                  <div id="sub-disable"className="fill">
                     <i class="fa-solid fa-minus"></i>
                 </div>
@@ -48,7 +60,7 @@ function GuestTracker() {
         }
 
         <div id="g-ct-num">
-          <p>{counter}</p>
+          <p>{guest}</p>
         </div>
 
         <div

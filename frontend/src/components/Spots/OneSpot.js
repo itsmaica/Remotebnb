@@ -32,28 +32,22 @@ function OneSpot() {
 
   const session = useSelector((state) => state?.session?.user);
 
-  // console.log("session", session)
-  //
-  // console.log('My current reviews ===> \n\n', currRev)
-  // const reviews = useSelector((state) => state?.allSpots?.spot?.Reviews)
 
-  // console.log("where are the reviews?--- why other spot included \n\n", reviews)
-
-  //how to get user FirstName
-  // console.log("User Details =-- \n\n", spot?.User?.firstName)
-  //spot pics for gallery
-  // console.log('What are the images?', spot.Images[0].url)
-  //Reviews
-  // console.log("Need to get Reviews", spot?.Reviews)
   const [showModal, setShowModal] = useState(false);
 
-  const [isLoaded, setIsLoaded] = useState(false);
-  // const [showMore, setShowMore] = useState(false)
+  //set the calendar
+  const [showCal, setShowCal] = useState(false);
 
-  // const click = (e) => {
-  //     e.stopPropagation();
-  //     setShowMore(!showMore);
-  // }
+  const closeCal=(e)=>{
+    console.log("Inside function")
+    if (e.type==='click'){
+      setShowCal(false)
+    }
+  }
+
+
+  const [isLoaded, setIsLoaded] = useState(false);
+
 
   useEffect(() => {
     // console.log("What is spotId from the useEffect that will dispatch-- \n\n", spotId)
@@ -186,7 +180,12 @@ function OneSpot() {
                 </div>
 
                 <div className="bookings-div">
-                  <SideBookings spotPrice={spot.price} user={spot?.User?.firstName}/>
+                  <SideBookings
+                  showCal={showCal}
+                  setShowCal={setShowCal}
+                  spotPrice={spot.price}
+                  user={spot?.User?.firstName}
+                  />
                 </div>
 
                 </div>

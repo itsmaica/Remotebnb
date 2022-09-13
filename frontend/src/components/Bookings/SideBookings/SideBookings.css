@@ -97,6 +97,7 @@
 
 /* the div that holds the chin/out - need to center it */
 .dt-holder{
+    /* background-color: pink; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -109,11 +110,13 @@
 }
 
 #ch-in{
-    border-right :  darkgray solid 1px;
+    border-right :  rgb(153, 150, 150) solid 1px;
     border-bottom:  darkgray solid 1px;
     width: 50%;
     /* text-align: center; */
-
+    /* background-color: yellow; */
+    display: flex;
+    flex-direction: column;
 
 }
 
@@ -122,9 +125,18 @@
     border-bottom:  darkgray solid 1px;
     width: 50%;
     /* text-align: center; */
+    /* background-color: yellowgreen; */
+    display: flex;
+    flex-direction: column;
+}
+
+.c-text{
+    font-size: smaller;
+    font-weight: bold;
 }
 
 #num-of-g{
+    /* background-color: aqua; */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -216,4 +228,21 @@
 .bg-tx{
     margin-bottom: 0;
     font-size: 1.25em;
+}
+
+
+/* The Calendar div*/
+.cal{
+
+    background-color: aqua;
+    z-index: 5;
+    position: absolute;
+
+}
+
+
+.calCompo{
+    /* background-color: pink; */
+    margin-top: 0;
+    padding: 0;
 }
