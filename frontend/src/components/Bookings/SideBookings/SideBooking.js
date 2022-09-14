@@ -74,6 +74,7 @@ function SideBookings({ showCal, setShowCal, spotPrice, user, guestNum }) {
                       calendarIcon={false}
                       clearIcon={false}
                       minDate={new Date()}
+                      className="test"
                     />
                   {/* )} */}
                 </div>

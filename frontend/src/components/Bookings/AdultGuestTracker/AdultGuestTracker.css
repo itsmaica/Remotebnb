@@ -84,3 +84,8 @@
 #g-ct-num > p{
     font-size: 1em;
 }
+
+#add-disable:hover{
+    cursor:not-allowed;
+    border: rgb(156, 156, 156);
+}
