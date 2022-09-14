@@ -56,9 +56,9 @@ function AdultGuestTracker({ adult, setAdult, guestNum }) {
             </div>
           </div>
         ) : (
-          <div id="add-disable" className="round">
+          <div id="add-disable" className="round-dis">
             <div className="fill">
-              <i class="fa-solid fa-plus"></i>
+              <i id="dis-add"class="fa-solid fa-plus"></i>
             </div>
           </div>
         )}
