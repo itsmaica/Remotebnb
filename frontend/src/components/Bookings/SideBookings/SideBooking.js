@@ -8,7 +8,9 @@ import { useState } from "react";
 import AdultGuestTracker from "../AdultGuestTracker/AdultGuestTracker";
 import ChildGuestTracker from "../ChildGuestTracker/ChildGuestTracker";
 import DatePicker from "react-date-picker";
-function SideBookings({ showCal, setShowCal, spotPrice, user }) {
+function SideBookings({ showCal, setShowCal, spotPrice, user, guestNum }) {
+
+  // console.log("How many ppl can stay here?", guestNum)
   // const [showCal, setShowCal] = useState(false);
 
   const [downAngle, setUpAngle] = useState(false);
@@ -33,6 +35,15 @@ function SideBookings({ showCal, setShowCal, spotPrice, user }) {
 
   const [showCalCompo, setShowCalCompo] = useState(false);
 
+  //A function to check the max num of guests and stop the counter
+  const guestCheck=(adult, child, guestNum)=>{
+
+    if (adult+child === guestNum) {
+      return setDropDown(false)
+    }
+
+  }
+
   return (
     <>
       <div id="top-b" className="booking-box">
@@ -44,50 +55,51 @@ function SideBookings({ showCal, setShowCal, spotPrice, user }) {
           <div id="checkin-dates">
             <div className="dt-holder">
               <div onClick={() => setShowCal(true)} id="ch-in">
-                <div>
-
+                <div onClick={() => setShowCalCompo(true)}>
                   <p className="c-text">CHECK-IN</p>
+
+                  {/* {!showCalCompo && (
+                    <div
+                      className="calCompo"
+                      // onClick={() => setShowCalCompo(true)}
+                    >
+                      <p>Add date</p>
+                    </div>
+                  )} */}
+
+                  {/* {showCalCompo && ( */}
+                    <DatePicker
+                      onChange={setCheckIn}
+                      value={checkIn}
+                      calendarIcon={false}
+                      clearIcon={false}
+                      minDate={new Date()}
+                    />
+                  {/* )} */}
                 </div>
-
-                {!showCalCompo && (
-                  <div
-                    className="calCompo"
-                    onClick={() => setShowCalCompo(true)}
-                  >
-                    <p>Add date</p>
-                  </div>
-                )}
-
-                {showCalCompo && (
-                  <DatePicker
-                    onChange={setCheckIn}
-                    value={checkIn}
-                    calendarIcon={false}
-                    clearIcon={false}
-                  />
-                )}
               </div>
 
               <div onClick={() => setShowCal(true)} id="ch-out">
-                <p className="c-text">CHECKOUT</p>
+                <div onClick={() => setShowCalCompo(true)}>
+                  <p className="c-text">CHECKOUT</p>
 
-                {!showCalCompo && (
-                  <div
-                    className="calCompo"
-                    onClick={() => setShowCalCompo(true)}
-                  >
-                    <p>Add date</p>
-                  </div>
-                )}
+                  {/* {!showCalCompo && (
+                    <div className="calCompo">
+                      <p>Add date</p>
+                    </div>
+                  )} */}
 
-                {showCalCompo && (
-                  <DatePicker
-                    onChange={setCheckOut}
-                    value={checkOut}
-                    calendarIcon={false}
-                    clearIcon={false}
-                  />
-                )}
+                  {/* {showCalCompo && ( */}
+                    <DatePicker
+                      onChange={setCheckOut}
+                      value={checkOut}
+                      calendarIcon={false}
+                      clearIcon={false}
+                      minDate={new Date()}
+
+                    />
+                  {/* // )} */}
+                </div>
               </div>
             </div>
             <div onClick={() => setDropDown(true)} id="num-of-g">
@@ -106,7 +118,7 @@ function SideBookings({ showCal, setShowCal, spotPrice, user }) {
                     </div>
 
                     <div className="trk">
-                      <AdultGuestTracker adult={adult} setAdult={setAdult} />
+                      <AdultGuestTracker adult={adult} setAdult={setAdult} guestNum={guestNum}/>
                     </div>
                   </div>
 

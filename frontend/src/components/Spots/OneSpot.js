@@ -185,6 +185,7 @@ function OneSpot() {
                   setShowCal={setShowCal}
                   spotPrice={spot.price}
                   user={spot?.User?.firstName}
+                  guestNum={spot?.guests}
                   />
                 </div>
 
