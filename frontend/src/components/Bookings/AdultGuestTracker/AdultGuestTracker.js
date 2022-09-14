@@ -1,14 +1,10 @@
 import { useState } from "react";
 import "./AdultGuestTracker.css";
 
-function AdultGuestTracker({adult, setAdult}) {
-
-
-
+function AdultGuestTracker({adult, setAdult, guestNum}) {
 
     const add =()=>{ setAdult(adult+1) }
     const sub=()=>{ setAdult(adult-1) }
-
 
   return (
     <>
