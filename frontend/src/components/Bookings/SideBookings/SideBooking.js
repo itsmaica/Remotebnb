@@ -8,8 +8,15 @@ import { useState } from "react";
 import AdultGuestTracker from "../AdultGuestTracker/AdultGuestTracker";
 import ChildGuestTracker from "../ChildGuestTracker/ChildGuestTracker";
 import DatePicker from "react-date-picker";
-function SideBookings({ showCal, setShowCal, spotPrice, user, guestNum }) {
+import { useSelector } from "react-redux";
+// import booking from "../../../../../backend/db/models/booking";
+function SideBookings({ showCal, setShowCal, spotPrice, spotId, user, guestNum }) {
   let remainingSpots = guestNum;
+
+  const userId = useSelector((state) => state?.session?.user?.id)
+  // console.log("I'm this user!", userId)
+
+  // console.log("This is my ID!", spotId)
 
   const [dropDown, setDropDown] = useState(false);
   const [adult, setAdult] = useState(1);
@@ -19,20 +26,42 @@ function SideBookings({ showCal, setShowCal, spotPrice, user, guestNum }) {
   // console.log("Check in-->", value)
 
   const [checkIn, setCheckIn] = useState(new Date());
-  // console.log("Checkin!",checkIn)
+  console.log("Checkin DAY!", checkIn.getDate())
+  console.log("Check in YEAR", checkIn.getFullYear())
+  console.log("Check in MONTH", checkIn.getMonth())
+
+
+  let startDate = "";
+  startDate += checkIn.getFullYear().toString() + checkIn.getMonth().toString() + checkIn.getUTCDate().toString()
+  console.log("I'm the string of start date!",startDate);
+
 
   const [checkOut, setCheckOut] = useState(new Date());
-  // console.log("check out", checkOut)
+  console.log("check out", checkOut)
 
   //change from add date -> cal
   const [showCalCompo, setShowCalCompo] = useState(false);
 
   //Booking information
-  const [spotId, setSpotId] = useState();
-  const [userId, setUserId] = useState();
-  const [startDate, setStateDate] = useState();
+  // const [spotId, setSpotId] = useState();
+  // const [userId, setUserId] = useState();
+  // const [startDate, setStateDate] = useState();
   const [endDate, setEndDate] = useState();
-  
+
+  const makeBooking = async(e)=>{
+    e.preventDefault();
+
+    const booking = {
+      spotId,
+      userId,
+      startDate,
+      endDate
+
+    }
+    console.log("What is a 'booking'?", booking)
+  }
+
+
 
   return (
     <>
@@ -54,7 +83,7 @@ function SideBookings({ showCal, setShowCal, spotPrice, user, guestNum }) {
                     calendarIcon={false}
                     clearIcon={false}
                     minDate={new Date()}
-                    className="test"
+                    // format={"y-MM-DD"}
                   />
                 </div>
               </div>
