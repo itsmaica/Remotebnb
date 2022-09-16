@@ -91,10 +91,13 @@
     border-radius: 50%;
 }
 
-#dis-add{color:lightgrey}
+#dis-add{
+    color:lightgrey;
+    cursor: not-allowed;
+}
 
 .round-dis{
-    border: rgb(156, 156, 156) solid 1px;
+    border: lightgray solid 1px;
     border-radius: 50%;
     cursor: not-allowed;
 

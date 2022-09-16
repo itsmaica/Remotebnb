@@ -47,23 +47,6 @@ function SideBookings({ showCal, setShowCal, spotPrice, user, guestNum }) {
 
   const [showCalCompo, setShowCalCompo] = useState(false);
 
-
-
-
-  //A function to check the max num of guests and stop the counter
-  // const guestCheck=(adult, child, guestNum)=>{
-
-  //   if (adult+child === guestNum) {
-  //     return dropDown(false)
-  //     // (()=>setDropDown(false))
-  //   }
-
-  // }
-
-  // if (adult+child === guestNum){
-  //   setDropDown(false)
-  // }
-
   return (
     <>
       <div id="top-b" className="booking-box">
@@ -139,7 +122,7 @@ function SideBookings({ showCal, setShowCal, spotPrice, user, guestNum }) {
                     </div>
 
                     <div className="trk">
-                      <AdultGuestTracker adult={adult} setAdult={setAdult} guestNum={guestNum} remainingSpots={remainingSpots} child={child}/>
+                      <AdultGuestTracker adult={adult} setAdult={setAdult} guestNum={guestNum} child={child}/>
                     </div>
                   </div>
 
