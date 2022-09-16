@@ -1,6 +1,6 @@
 import DateRange from "../DateRange/DateRange";
 import "./SideBookings.css";
-import Calendar from "react-calendar";
+// import Calendar from "react-calendar";
 
 import svgexport35 from "../../../images/svgexport35.svg";
 import { useState } from "react";
@@ -9,30 +9,11 @@ import AdultGuestTracker from "../AdultGuestTracker/AdultGuestTracker";
 import ChildGuestTracker from "../ChildGuestTracker/ChildGuestTracker";
 import DatePicker from "react-date-picker";
 function SideBookings({ showCal, setShowCal, spotPrice, user, guestNum }) {
-
-  // console.log("How many ppl can stay here?", guestNum)
-  // const [showCal, setShowCal] = useState(false);
-  let remainingSpots = guestNum
-
-  // console.log(`You have ${remainingSpots} left to add.`)
-
-  //substract from totalGuests?
-
-  //if a child or adult is added we sub from remaining spots.
-
-  // know how many spots are left
-
-  //each time a guest is added (adult or child), we sub one from total guests
-  //each time a guest is sub tracked we add one, unless we are AT the totalGuests numbers
-
-  const [downAngle, setUpAngle] = useState(false);
+  let remainingSpots = guestNum;
 
   const [dropDown, setDropDown] = useState(false);
-
   const [adult, setAdult] = useState(1);
-
   const [child, setChild] = useState(0);
-
   // calendar
   const [value, onChange] = useState(new Date());
   // console.log("Check in-->", value)
@@ -44,8 +25,14 @@ function SideBookings({ showCal, setShowCal, spotPrice, user, guestNum }) {
   // console.log("check out", checkOut)
 
   //change from add date -> cal
-
   const [showCalCompo, setShowCalCompo] = useState(false);
+
+  //Booking information
+  const [spotId, setSpotId] = useState();
+  const [userId, setUserId] = useState();
+  const [startDate, setStateDate] = useState();
+  const [endDate, setEndDate] = useState();
+  
 
   return (
     <>
@@ -61,48 +48,27 @@ function SideBookings({ showCal, setShowCal, spotPrice, user, guestNum }) {
                 <div onClick={() => setShowCalCompo(true)}>
                   <p className="c-text">CHECK-IN</p>
 
-                  {/* {!showCalCompo && (
-                    <div
-                      className="calCompo"
-                      // onClick={() => setShowCalCompo(true)}
-                    >
-                      <p>Add date</p>
-                    </div>
-                  )} */}
-
-                  {/* {showCalCompo && ( */}
-                    <DatePicker
-                      onChange={setCheckIn}
-                      value={checkIn}
-                      calendarIcon={false}
-                      clearIcon={false}
-                      minDate={new Date()}
-                      className="test"
-                    />
-                  {/* )} */}
+                  <DatePicker
+                    onChange={setCheckIn}
+                    value={checkIn}
+                    calendarIcon={false}
+                    clearIcon={false}
+                    minDate={new Date()}
+                    className="test"
+                  />
                 </div>
               </div>
 
               <div onClick={() => setShowCal(true)} id="ch-out">
                 <div onClick={() => setShowCalCompo(true)}>
                   <p className="c-text">CHECKOUT</p>
-
-                  {/* {!showCalCompo && (
-                    <div className="calCompo">
-                      <p>Add date</p>
-                    </div>
-                  )} */}
-
-                  {/* {showCalCompo && ( */}
-                    <DatePicker
-                      onChange={setCheckOut}
-                      value={checkOut}
-                      calendarIcon={false}
-                      clearIcon={false}
-                      minDate={new Date()}
-
-                    />
-                  {/* // )} */}
+                  <DatePicker
+                    onChange={setCheckOut}
+                    value={checkOut}
+                    calendarIcon={false}
+                    clearIcon={false}
+                    minDate={new Date()}
+                  />
                 </div>
               </div>
             </div>
@@ -111,7 +77,7 @@ function SideBookings({ showCal, setShowCal, spotPrice, user, guestNum }) {
               {!dropDown && <i className="fa-solid fa-angle-down"></i>}
               {dropDown && <i className="fa-solid fa-angle-up"></i>}
             </div>
-            {/* <Calendar/> */}
+
             {dropDown && (
               <>
                 <div className="gst-drop">
@@ -122,7 +88,12 @@ function SideBookings({ showCal, setShowCal, spotPrice, user, guestNum }) {
                     </div>
 
                     <div className="trk">
-                      <AdultGuestTracker adult={adult} setAdult={setAdult} guestNum={guestNum} child={child}/>
+                      <AdultGuestTracker
+                        adult={adult}
+                        setAdult={setAdult}
+                        guestNum={guestNum}
+                        child={child}
+                      />
                     </div>
                   </div>
 
@@ -133,7 +104,12 @@ function SideBookings({ showCal, setShowCal, spotPrice, user, guestNum }) {
                     </div>
 
                     <div className="trk">
-                      <ChildGuestTracker child={child} setChild={setChild} guestNum={guestNum} adult={adult}/>
+                      <ChildGuestTracker
+                        child={child}
+                        setChild={setChild}
+                        guestNum={guestNum}
+                        adult={adult}
+                      />
                     </div>
                   </div>
                   <div className="c-cls">

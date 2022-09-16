@@ -18,9 +18,9 @@ import SplashSpot from './components/Spots/SplashSpot';
 // import Building from './components/LoadingAndPageNotFound/Building';
 // import CalendarComponent from './components/Bookings/Calendar/Calendar';
 // import DateTimeRangePicker from '@wojtekmaj/react-daterange-picker';
-import DateRange from './components/Bookings/DateRange/DateRange';
-import SideBookings from './components/Bookings/SideBookings/SideBooking';
-import NewFooter from './components/NewFooter/NewFooter';
+// import DateRange from './components/Bookings/DateRange/DateRange';
+// import SideBookings from './components/Bookings/SideBookings/SideBooking';
+// import NewFooter from './components/NewFooter/NewFooter';
 // import { getReviewThunk } from './store/review';
 // import Reviews from './components/Reviews/Reviews';
 // import GuestTracker from './components/Bookings/GuestTracker/GuestTracker';
@@ -57,7 +57,7 @@ function App() {
             {/* <CalendarComponent/> */}
             {/* <DateTimeRangePicker /> */}
             {/* <DateRange /> */}
-            <SideBookings />
+            {/* <SideBookings /> */}
             {/* <NewFooter /> */}
             {/* <GuestTracker /> */}
 

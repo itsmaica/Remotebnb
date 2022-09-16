@@ -9,7 +9,7 @@ function AdultGuestTracker({ adult, setAdult, guestNum, child }) {
     setAdult(adult - 1);
   };
 
-  console.log("I'm counting children and adults", child);
+  // console.log("I'm counting children and adults", child);
 
   return (
     <>
