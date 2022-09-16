@@ -1,13 +1,15 @@
 import { useState } from "react";
 import "./AdultGuestTracker.css";
 
-function AdultGuestTracker({ adult, setAdult, guestNum }) {
+function AdultGuestTracker({ adult, setAdult, guestNum, child }) {
   const add = () => {
     setAdult(adult + 1);
   };
   const sub = () => {
     setAdult(adult - 1);
   };
+
+  console.log("I'm counting children and adults", child)
 
   return (
     <>
@@ -49,7 +51,7 @@ function AdultGuestTracker({ adult, setAdult, guestNum }) {
             </div>
           </div> */}
 
-        {adult !== guestNum ? (
+        {adult + child !== guestNum ? (
           <div onClick={add} id="add" className="round">
             <div className="fill">
               <i class="fa-solid fa-plus"></i>
