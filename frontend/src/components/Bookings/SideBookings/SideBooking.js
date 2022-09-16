@@ -12,6 +12,18 @@ function SideBookings({ showCal, setShowCal, spotPrice, user, guestNum }) {
 
   // console.log("How many ppl can stay here?", guestNum)
   // const [showCal, setShowCal] = useState(false);
+  let remainingSpots = guestNum
+
+  // console.log(`You have ${remainingSpots} left to add.`)
+
+  //substract from totalGuests?
+
+  //if a child or adult is added we sub from remaining spots.
+
+  // know how many spots are left
+
+  //each time a guest is added (adult or child), we sub one from total guests
+  //each time a guest is sub tracked we add one, unless we are AT the totalGuests numbers
 
   const [downAngle, setUpAngle] = useState(false);
 
@@ -39,18 +51,18 @@ function SideBookings({ showCal, setShowCal, spotPrice, user, guestNum }) {
 
 
   //A function to check the max num of guests and stop the counter
-  const guestCheck=(adult, child, guestNum)=>{
+  // const guestCheck=(adult, child, guestNum)=>{
 
-    if (adult+child === guestNum) {
-      return dropDown(false)
-      // (()=>setDropDown(false))
-    }
+  //   if (adult+child === guestNum) {
+  //     return dropDown(false)
+  //     // (()=>setDropDown(false))
+  //   }
 
-  }
+  // }
 
-  if (adult+child === guestNum){
-    setDropDown(false)
-  }
+  // if (adult+child === guestNum){
+  //   setDropDown(false)
+  // }
 
   return (
     <>
@@ -127,7 +139,7 @@ function SideBookings({ showCal, setShowCal, spotPrice, user, guestNum }) {
                     </div>
 
                     <div className="trk">
-                      <AdultGuestTracker adult={adult} setAdult={setAdult} guestNum={guestNum}/>
+                      <AdultGuestTracker adult={adult} setAdult={setAdult} guestNum={guestNum} remainingSpots={remainingSpots} child={child}/>
                     </div>
                   </div>
 
@@ -138,7 +150,7 @@ function SideBookings({ showCal, setShowCal, spotPrice, user, guestNum }) {
                     </div>
 
                     <div className="trk">
-                      <ChildGuestTracker child={child} setChild={setChild} />
+                      <ChildGuestTracker child={child} setChild={setChild} guestNum={guestNum} adult={adult}/>
                     </div>
                   </div>
                   <div className="c-cls">
