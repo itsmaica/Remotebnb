@@ -88,11 +88,15 @@
 #add-disable{
     cursor:not-allowed;
     border: rgb(156, 156, 156);
+    border-radius: 50%;
 }
+
 #dis-add{color:lightgrey}
 
 .round-dis{
-    border: darkgray solid 1px;
+    border: rgb(156, 156, 156) solid 1px;
     border-radius: 50%;
-    
+    cursor: not-allowed;
+
+
 }
