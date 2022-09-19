@@ -26,14 +26,20 @@ function SideBookings({ showCal, setShowCal, spotPrice, spotId, user, guestNum }
   // console.log("Check in-->", value)
 
   const [checkIn, setCheckIn] = useState(new Date());
-  console.log("Checkin DAY!", checkIn.getDate())
+  console.log("Check in DAY!", checkIn.getDate())
   console.log("Check in YEAR", checkIn.getFullYear())
   console.log("Check in MONTH", checkIn.getMonth())
 
 
-  let startDate = "";
-  startDate += checkIn.getFullYear().toString() + checkIn.getMonth().toString() + checkIn.getUTCDate().toString()
-  console.log("I'm the string of start date!",startDate);
+  // let startDate = "";
+  // startDate += checkIn.getFullYear().toString() +
+  // // if (checkIn.getMonth === 11){
+  // //   startDate+=12
+  // // }
+  //  (checkIn.getMonth().toString() )+ checkIn.getUTCDate().toString()
+  // console.log("I'm the string of start date!",startDate);
+
+  
 
 
   const [checkOut, setCheckOut] = useState(new Date());
