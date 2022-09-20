@@ -1,122 +1,110 @@
 import DateRange from "../DateRange/DateRange";
 import "./SideBookings.css";
-// import Calendar from "react-calendar";
 
 import svgexport35 from "../../../images/svgexport35.svg";
 import { useState } from "react";
-// import GuestTracker from "../GuestTracker/GuestTracker";
+
 import AdultGuestTracker from "../AdultGuestTracker/AdultGuestTracker";
 import ChildGuestTracker from "../ChildGuestTracker/ChildGuestTracker";
 import DatePicker from "react-date-picker";
 import { useSelector } from "react-redux";
-// import booking from "../../../../../backend/db/models/booking";
-function SideBookings({ showCal, setShowCal, spotPrice, spotId, user, guestNum }) {
+
+function SideBookings({
+  showCal,
+  setShowCal,
+  spotPrice,
+  spotId,
+  user,
+  guestNum,
+}) {
   let remainingSpots = guestNum;
 
-  const userId = useSelector((state) => state?.session?.user?.id)
-  // console.log("I'm this user!", userId)
-
-  // console.log("This is my ID!", spotId)
+  const userId = useSelector((state) => state?.session?.user?.id);
 
   const [dropDown, setDropDown] = useState(false);
   const [adult, setAdult] = useState(1);
   const [child, setChild] = useState(0);
+
   // calendar
   const [value, onChange] = useState(new Date());
-
-
-  // console.log("Check in-->", value)
 
   // LOGIC FOR CHECKIN DATE
   const [checkIn, setCheckIn] = useState(new Date());
 
-  let checkInDay = checkIn.getDate().toString()
+  let checkInDay = checkIn.getDate().toString();
   // console.log("Check in DAY!", checkInDay)
-
-  let checkInYear = checkIn.getFullYear().toString()
+  let checkInYear = checkIn.getFullYear().toString();
   // console.log("Check in YEAR", checkInYear)
-
-  //need to add 1 to month to offset
-  let checkInMonth = (checkIn.getUTCMonth() + 1)
-
-  // if (Math.abs(checkInMonth).charAt(0) == checkInMonth) {
-  //   "0" + checkInMonth
-  // }
-  // console.log("Month!",checkInMonth)
-
-
-  function isDigit(val) {
-    return String(+val).charAt(0) == val;
-  }
-
-  // console.log("Function test",isDigit(checkInDay))
-  // console.log("Function test",isDigit(checkInDay))
+  let checkInMonth = checkIn.getUTCMonth() + 1;
 
   let startDate = "";
+  //add the year
+  startDate += checkInYear + "-";
 
-  // function checkinDateParse(checkInYear, checkInDay, checkInMonth) {
-    //add the year
-    startDate += checkInYear
+  // add the month and account for single digit
+  if (String(checkInMonth).charAt(0) == checkInMonth) {
+    startDate += "0" + checkInMonth + "-";
+  } else {
+    startDate += checkInMonth + "-";
+  }
 
-    // add the month and account for single digit
-    if (String(+checkInMonth).charAt(0) == checkInMonth) {
-      startDate+= "0" + checkInMonth
-    } else {
-      startDate += checkInMonth
-    }
+  //add the day and account for single digit
+  if (String(checkInDay).charAt(0) == checkInDay) {
+    startDate += "0" + checkInDay;
+  } else {
+    startDate += checkInDay;
+  }
 
-    //add the day and account for single digit
-    if (String(+checkInDay).charAt(0) == checkInDay) {
-      startDate += "0" + checkInDay
-    } else {
-      startDate += checkInDay
-    }
+  console.log("Hey I'm startDate", startDate);
 
+  //End Date Logic
+  const [checkOut, setCheckOut] = useState(checkIn);
+  // console.log("check out", checkOut);
+  let checkOutDay = checkOut.getDate().toString();
+  // console.log("Check OUT DAY!", checkOutDay);
+  let checkOutYear = checkOut.getFullYear().toString();
+  // console.log("Check OUT YEAR", checkOutYear);
+  let checkOutMonth = checkOut.getUTCMonth() + 1;
+  // console.log("check OUT MONTH", checkInMonth);
 
+  let endDate = "";
+  endDate += checkOutYear + "-";
+  if (String(checkOutMonth).charAt(0).toString() == checkOutMonth) {
+    endDate += "0" + checkOutMonth + "-";
+  } else {
+    endDate += checkOutMonth + "-";
+  }
 
-    // return startDate;
+  //add the day and account for single digit
+  if (String(checkOutDay).charAt(0).toString() == checkOutDay) {
+    endDate += "0" + checkOutDay;
+  } else {
+    endDate += checkOutDay;
+  }
 
-    // if ()
-  // }
+  console.log("Hey I'm endDate", endDate);
 
-  console.log("Hey, I'm startdate", startDate)
-  // if (checkInDay)
-  // startDate += checkInYear + checkInMonth + checkInDay
+  // console.log("THis is testt", typeof 9)
 
-  // startDate += checkIn.getFullYear().toString() +
-  // // if (checkIn.getMonth === 11){
-  // //   startDate+=12
-  // // }
-  //  checkInMonth + checkIn.getDate().toString()
-  // console.log("Logic test", String(+checkInDay).charAt(0) == checkInDay);
-
-
-  const [checkOut, setCheckOut] = useState(new Date());
-  // console.log("check out", checkOut)
-
-  //change from add date -> cal
   const [showCalCompo, setShowCalCompo] = useState(false);
 
   //Booking information
   // const [spotId, setSpotId] = useState();
   // const [userId, setUserId] = useState();
   // const [startDate, setStateDate] = useState();
-  const [endDate, setEndDate] = useState();
+  // const [endDate, setEndDate] = useState();
 
-  const makeBooking = async(e)=>{
+  const makeBooking = async (e) => {
     e.preventDefault();
 
     const booking = {
       spotId,
       userId,
-      // startDate,
-      endDate
-
-    }
-    console.log("What is a 'booking'?", booking)
-  }
-
-
+      startDate,
+      endDate,
+    };
+    console.log("What is a 'booking'?", booking);
+  };
 
   return (
     <>
@@ -177,6 +165,7 @@ function SideBookings({ showCal, setShowCal, spotPrice, spotId, user, guestNum }
                         setAdult={setAdult}
                         guestNum={guestNum}
                         child={child}
+                        // format={"y-MM-dd"}
                       />
                     </div>
                   </div>
