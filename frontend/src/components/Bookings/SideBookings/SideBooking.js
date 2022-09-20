@@ -23,27 +23,76 @@ function SideBookings({ showCal, setShowCal, spotPrice, spotId, user, guestNum }
   const [child, setChild] = useState(0);
   // calendar
   const [value, onChange] = useState(new Date());
+
+
   // console.log("Check in-->", value)
 
+  // LOGIC FOR CHECKIN DATE
   const [checkIn, setCheckIn] = useState(new Date());
-  console.log("Check in DAY!", checkIn.getDate())
-  console.log("Check in YEAR", checkIn.getFullYear())
-  console.log("Check in MONTH", checkIn.getMonth())
+
+  let checkInDay = checkIn.getDate().toString()
+  // console.log("Check in DAY!", checkInDay)
+
+  let checkInYear = checkIn.getFullYear().toString()
+  // console.log("Check in YEAR", checkInYear)
+
+  //need to add 1 to month to offset
+  let checkInMonth = (checkIn.getUTCMonth() + 1)
+
+  // if (Math.abs(checkInMonth).charAt(0) == checkInMonth) {
+  //   "0" + checkInMonth
+  // }
+  // console.log("Month!",checkInMonth)
 
 
-  // let startDate = "";
+  function isDigit(val) {
+    return String(+val).charAt(0) == val;
+  }
+
+  // console.log("Function test",isDigit(checkInDay))
+  // console.log("Function test",isDigit(checkInDay))
+
+  let startDate = "";
+
+  // function checkinDateParse(checkInYear, checkInDay, checkInMonth) {
+    //add the year
+    startDate += checkInYear
+
+    // add the month and account for single digit
+    if (String(+checkInMonth).charAt(0) == checkInMonth) {
+      startDate+= "0" + checkInMonth
+    } else {
+      startDate += checkInMonth
+    }
+
+    //add the day and account for single digit
+    if (String(+checkInDay).charAt(0) == checkInDay) {
+      startDate += "0" + checkInDay
+    } else {
+      startDate += checkInDay
+    }
+
+
+
+    // return startDate;
+
+    // if ()
+  // }
+
+  console.log("Hey, I'm startdate", startDate)
+  // if (checkInDay)
+  // startDate += checkInYear + checkInMonth + checkInDay
+
   // startDate += checkIn.getFullYear().toString() +
   // // if (checkIn.getMonth === 11){
   // //   startDate+=12
   // // }
-  //  (checkIn.getMonth().toString() )+ checkIn.getUTCDate().toString()
-  // console.log("I'm the string of start date!",startDate);
-
-  
+  //  checkInMonth + checkIn.getDate().toString()
+  // console.log("Logic test", String(+checkInDay).charAt(0) == checkInDay);
 
 
   const [checkOut, setCheckOut] = useState(new Date());
-  console.log("check out", checkOut)
+  // console.log("check out", checkOut)
 
   //change from add date -> cal
   const [showCalCompo, setShowCalCompo] = useState(false);
@@ -60,7 +109,7 @@ function SideBookings({ showCal, setShowCal, spotPrice, spotId, user, guestNum }
     const booking = {
       spotId,
       userId,
-      startDate,
+      // startDate,
       endDate
 
     }
