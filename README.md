@@ -75,30 +75,3 @@ Logged-in Users can
 * Read all of their bookings
 * Delete/Cancel their booking
 
-# Deploy to Heroku 
-
-1. Create a new application in your Heroku account 
-
-2. Inside *Resources* add on "Heroku Postgres"
-
-3. Install Heroku CLI
-
-4. Log into Heroku on your terminal
-
-6 Add Heroku as a remote to your project's git repository with the following command and replace with the name of the application you created in the Heroku dashboard.
-
-   * `heroku git:remote -a <name-of-Heroku-app>`
-
-7. Update the "Reveal Config Vars" section
-
-8. Push to Heroku with: 
-
-   `git push heroku main`
-   
-9. Set up prodction database 
-
-   * `heroku run npm run sequelize db:migrate` 
-   * `heroku run npm run sequelize db:seed:all`
-
-
-
