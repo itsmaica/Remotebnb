@@ -67,11 +67,20 @@ Check out [Remotebnb](https://remotebnb.herokuapp.com/) (Moving from Heroku soon
 * users can read/view all of the Reviews on a Spot
 * Users can delete their Review(s) on a Spot
 
-## Future Features
-### Bookings
+## Bookings
 Logged-in Users can
 * Create a booking at a spot
 * Update their booking at a spot
 * Read all of their bookings
 * Delete/Cancel their booking
+
+## AWS
+Logged-in Users can
+* Upload multiple images of their spot to AWS S3
+
+
+## Future Features
+### Google Maps Api
+Logged in Users can
+* Locate their spot with Google Maps Api 
 
